@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df0480ea1f222443953c12583b2c076, type: 3}
+  m_Name: ItemSO-Stark
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  ItemID: 2
+  ItemName: Stark
+  Avatar: {fileID: 21300000, guid: 7f241eb55c4b15d409e370ef64d69068, type: 3}
+  ItemRank: {fileID: 11400000, guid: 86bd9720ce13dd44bb7568ab49c1188c, type: 2}
+  ItemCategorys:
+  - {fileID: 11400000, guid: 76508bd4a855ab54db3b43797fe3d7b0, type: 2}

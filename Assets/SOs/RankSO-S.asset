@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be6b4bc0b7dca344982972635e2cfc6, type: 3}
+  m_Name: RankSO-S
+  m_EditorClassIdentifier: Assembly-CSharp::RankSO
+  RankName: s
+  Color: {r: 1, g: 0.65392774, b: 0.33647794, a: 1}
