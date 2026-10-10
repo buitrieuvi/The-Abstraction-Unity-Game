@@ -15,34 +15,17 @@ public sealed class ViewManager : MonoBehaviour
 
     [Inject] private InputManager inputManager { get; set; }
     [Inject] private DataManager dataManager { get; set; }
+
     [Inject] private DiContainer container;
 
     public bool IsTransitioning { get; private set; }
 
     private ViewBase viewBase;
 
-    public void Awake()
-    {
-        inputManager.InputActions.Player.Inventory.performed += OnInventoryPerformed;
-        destroyCancellationToken.Register(() =>
-        {
-            if (inputManager.InputActions != null)
-                inputManager.InputActions.Player.Inventory.performed -= OnInventoryPerformed;
-            inputManager.IsInventoryOpen = false;
-            inputManager.SetCursorVisible(false);
-            if (darkPanel != null) darkPanel.DOKill();
-        });
-    }
-
-    private void OnInventoryPerformed(InputAction.CallbackContext context)
-    {
-        LoadView<InventoryView>(dataManager.PlayerInventory);
-    }
-
     public void LoadView<T>(ControllerBase ctrl) where T : ViewBase
     {
         if (IsTransitioning) return;
-
+        if (darkPanel != null) darkPanel.DOKill();
         if (ctrl == null)
         {
             Debug.LogWarning($"Cannot open {typeof(T).Name} without a DTO.", this);
@@ -72,10 +55,12 @@ public sealed class ViewManager : MonoBehaviour
                     viewBase.Close();
                     Destroy(viewBase.gameObject);
                     viewBase = null;
+
                 }
 
                 if (!closeCurrentView)
                 {
+
                     view = container.InstantiatePrefabForComponent<T>(prefab.gameObject, viewContainer);
                     view.Open(ctrl);
                     viewBase = view;

@@ -77,11 +77,11 @@ public sealed class DataManager : IInitializable, IDisposable
         }, error => { });
 
 
-        PlayerInventory.ChangedItem("0", 2);
+        PlayerInventory.ChangedItem("0", 1);
 
         PlayerInventory.ChangedItem("1", 2);
 
-        PlayerInventory.ChangedItem("2", 2);
+        PlayerInventory.ChangedItem("2", 3);
     }
     
     private void Load<T>(string label, Action<IList<T>> onLoaded, Action<Exception> onError)

@@ -20,6 +20,8 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public UnityAction<ViewBase> OnClick;
 
 
+
+
     public virtual void Awake()
     {
         tfView = GetComponent<RectTransform>();

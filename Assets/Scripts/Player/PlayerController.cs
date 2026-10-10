@@ -6,9 +6,10 @@ using Zenject;
 [RequireComponent(typeof(CharacterController))]
 public sealed class PlayerController : MonoBehaviour
 {
-    [Inject] public InputManager Input { get; private set; }
+    [Inject] public InputManager InputManager { get; private set; }
     [Inject] public LayerController Layer { get; private set; }
-    //[Inject] public GameDataManager GameData { get; private set; }
+    [Inject] public ViewManager ViewManager { get; set; }
+    [Inject] public DataManager DataManager { get; set; }
 
     public CharacterController CharCtrl { get; private set; }
     public PlayerState Movement { get; private set; }
@@ -55,31 +56,62 @@ public sealed class PlayerController : MonoBehaviour
         Movement = new PlayerState(this);
         Movement.ChangeState(Movement.idling);
         Animator = GetComponentInChildren<Animator>();
+
+        InputManager.SetCursorVisible(false);
+
+
+        InputManager.InputActions.Player.Inventory.performed += OnInventoryPerformed;
+        destroyCancellationToken.Register(() =>
+        {
+
+            if (InputManager.InputActions != null) 
+            {
+                InputManager.InputActions.Player.Inventory.performed -= OnInventoryPerformed;
+            }
+
+            InputManager.IsInventoryOpen = false;
+        });
+    }
+
+
+    private void OnInventoryPerformed(InputAction.CallbackContext context)
+    {
+        if (!InputManager.IsInventoryOpen)
+        {
+            Movement.ChangeState(Movement.freezing);
+        }
+        else
+        {
+            Movement.ChangeState(Movement.idling);
+        }
+
+        ViewManager.LoadView<InventoryView>(DataManager.PlayerInventory);
+        InputManager.IsInventoryOpen = true;
     }
 
     private void Start()
     {
-        Input.InputActions.Player.Interact.started += HandleInteract;
-        Input.InputActions.Player.Alt.started += HandleAlt;
-        Input.InputActions.Player.Ctrl.performed += HandleControl;
-        Input.InputActions.Player.Ctrl.canceled += HandleControl;
-        Input.InputActions.Player.Sprint.performed += HandleSprint;
-        Input.InputActions.Player.Sprint.canceled += HandleSprint;
+        InputManager.InputActions.Player.Interact.started += HandleInteract;
+        InputManager.InputActions.Player.Alt.started += HandleAlt;
+        InputManager.InputActions.Player.Ctrl.performed += HandleControl;
+        InputManager.InputActions.Player.Ctrl.canceled += HandleControl;
+        InputManager.InputActions.Player.Sprint.performed += HandleSprint;
+        InputManager.InputActions.Player.Sprint.canceled += HandleSprint;
     }
 
     private void OnDestroy()
     {
-        if (Input?.InputActions == null)
+        if (InputManager?.InputActions == null)
         {
             return;
         }
 
-        Input.InputActions.Player.Interact.started -= HandleInteract;
-        Input.InputActions.Player.Alt.started -= HandleAlt;
-        Input.InputActions.Player.Ctrl.performed -= HandleControl;
-        Input.InputActions.Player.Ctrl.canceled -= HandleControl;
-        Input.InputActions.Player.Sprint.performed -= HandleSprint;
-        Input.InputActions.Player.Sprint.canceled -= HandleSprint;
+        InputManager.InputActions.Player.Interact.started -= HandleInteract;
+        InputManager.InputActions.Player.Alt.started -= HandleAlt;
+        InputManager.InputActions.Player.Ctrl.performed -= HandleControl;
+        InputManager.InputActions.Player.Ctrl.canceled -= HandleControl;
+        InputManager.InputActions.Player.Sprint.performed -= HandleSprint;
+        InputManager.InputActions.Player.Sprint.canceled -= HandleSprint;
     }
 
     private void Update()

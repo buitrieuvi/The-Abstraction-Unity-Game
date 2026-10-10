@@ -12,6 +12,7 @@ public class InventoryView : ViewBase
 
     [Inject] private DiContainer container;
 
+
     [SerializeField] private Transform itemContainer;
     [SerializeField] private Button closeButton;
     [SerializeField] private Image avatar;
@@ -194,6 +195,8 @@ public class InventoryView : ViewBase
                     itemView.Close();
             }
 
+            inventoryItems[0]?.PointerClick();
+
             SelectFirstVisibleItem();
             AnimateItems();
 
@@ -203,6 +206,8 @@ public class InventoryView : ViewBase
             }
             inventoryCategoryView = categoryView;
             inventoryCategoryView.OnOutline(true);
+
+
         };
     }
 

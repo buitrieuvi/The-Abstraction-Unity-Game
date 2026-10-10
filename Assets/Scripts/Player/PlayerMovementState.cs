@@ -27,7 +27,7 @@ public class PlayerMovementState : IState
     public virtual void HandleInput()
     {
         PlayerController player = playerState.player;
-        player.Move = player.Input.InputActions.Player.Move.ReadValue<Vector2>();
+        player.Move = player.InputManager.InputActions.Player.Move.ReadValue<Vector2>();
         if (player.Move.sqrMagnitude > 0.0001f)
         {
             player.LastMove = player.Move;

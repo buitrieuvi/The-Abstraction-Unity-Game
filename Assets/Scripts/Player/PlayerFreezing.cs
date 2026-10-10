@@ -7,13 +7,15 @@ public class PlayerFreezing : PlayerMovementState
 
     public override void Enter()
     {
-        playerState.player.Input.InputActions.Player.Move.Disable();
+        playerState.player.InputManager.InputActions.Player.Move.Disable();
+        playerState.player.InputManager.SetCursorVisible(false);
         base.Enter();
     }
 
     public override void Exit()
     {
-        playerState.player.Input.InputActions.Player.Move.Enable();
+        playerState.player.InputManager.InputActions.Player.Move.Enable();
+        playerState.player.InputManager.SetCursorVisible(true);
         base.Exit();
     }
 

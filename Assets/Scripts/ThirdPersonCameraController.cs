@@ -129,7 +129,7 @@ public sealed class ThirdPersonCameraController : MonoBehaviour
 
         if (cursorCaptured && Cursor.lockState == CursorLockMode.Locked && Application.isFocused)
         {
-            InputAction lookAction = player.Input?.InputActions?.Player.Look;
+            InputAction lookAction = player.InputManager?.InputActions?.Player.Look;
             if (lookAction != null && lookAction.enabled)
             {
                 Vector2 look = lookAction.ReadValue<Vector2>();
@@ -193,7 +193,7 @@ public sealed class ThirdPersonCameraController : MonoBehaviour
 
     private void CaptureCursor()
     {
-        if (player != null && player.Input != null && player.Input.IsInventoryOpen)
+        if (player != null && player.InputManager != null && player.InputManager.IsInventoryOpen)
         {
             return;
         }
