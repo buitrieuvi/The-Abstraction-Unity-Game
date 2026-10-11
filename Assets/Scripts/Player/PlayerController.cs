@@ -10,7 +10,7 @@ public sealed class PlayerController : MonoBehaviour
     [Inject] public LayerController Layer { get; private set; }
     [Inject] public ViewManager ViewManager { get; set; }
     [Inject] public DataManager DataManager { get; set; }
-    //[Inject] public CameraManager CameraManager { get; set; }
+    [Inject] public CameraManager CameraManager { get; set; }
 
     public CharacterController CharCtrl { get; private set; }
     public PlayerState Movement { get; private set; }

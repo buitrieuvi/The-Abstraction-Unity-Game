@@ -12,7 +12,7 @@ public class PlayerFreezing : PlayerMovementState
     {
         playerState.player.InputManager.InputActions.Player.Move.Disable();
         playerState.player.InputManager.SetCursorVisible(false);
-        //playerState.player.CameraManager.SetInputIsActiveCameras("cam3", false);
+        playerState.player.CameraManager.SetInputIsActiveCameras("cam3", false);
         base.Enter();
     }
 
@@ -20,7 +20,7 @@ public class PlayerFreezing : PlayerMovementState
     {
         playerState.player.InputManager.InputActions.Player.Move.Enable();
         playerState.player.InputManager.SetCursorVisible(true);
-        //playerState.player.CameraManager.SetInputIsActiveCameras("cam3", true);
+        playerState.player.CameraManager.SetInputIsActiveCameras("cam3", true);
         base.Exit();
     }
 

@@ -9,8 +9,8 @@ public class SceneInstaller : MonoInstaller<SceneInstaller>
             .AsSingle()
             .NonLazy();
 
-        //Container.Bind<CameraManager>()
-        //    .FromComponentInHierarchy()
-        //    .AsSingle();
+        Container.Bind<CameraManager>()
+            .FromComponentInHierarchy()
+            .AsSingle();
     }
 }
