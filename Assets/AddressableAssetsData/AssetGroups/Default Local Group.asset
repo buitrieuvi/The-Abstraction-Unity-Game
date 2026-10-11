@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Default Local Group
+  m_GUID: f227e1860552a8c4fb9e40ca605290f1
+  m_SerializeEntries:
+  - m_GUID: 1725f163bde0e8743bb115e7d4b396ee
+    m_Address: Assets/Prefabs/View Manager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29db50be63c014e45ba8d04fb51a25f4
+    m_Address: Assets/SOs/RankSO-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - rank
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b5b60262feabc24bbc63aa762810d4b
+    m_Address: Assets/SOs/ItemSO-Stark.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 431f81eb163cff94993c6ab10ccf96b4
+    m_Address: Assets/SOs/CategorySO-f.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - category
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76508bd4a855ab54db3b43797fe3d7b0
+    m_Address: Assets/SOs/CategorySO-m.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - category
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86bd9720ce13dd44bb7568ab49c1188c
+    m_Address: Assets/SOs/RankSO-B.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - rank
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86fe087a702118041a8c78d353229f5a
+    m_Address: Assets/SOs/ItemSO-Friren.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c6d4371ddb05ac40bf143485cec6077
+    m_Address: Assets/Prefabs/Inventory/View Item Inventory 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a64fb2d93a2ee48448d580a7bddd7ffb
+    m_Address: Assets/SOs/RankSO-S 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - rank
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af6f55555fdd2e64d9ff16a0f1232759
+    m_Address: Assets/Prefabs/Inventory/View Item Inventory.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4f3fb457bd557b4b92771cd84c9339d
+    m_Address: Assets/SOs/RankSO-C.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - rank
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7331d55c157b6a4f84a518b9eb81c05
+    m_Address: Assets/Prefabs/Inventory/View Inventory.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff53154160bef2141a4021b8f34af404
+    m_Address: Assets/SOs/ItemSO-Fern.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f8b36866fe9321f43af73d3ee5578d58, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 63c1dfd44d92e5e4ab21a55f0ecf9f20, type: 2}
+    - {fileID: 11400000, guid: d64bf40845501ee4db80cf7ea81554e0, type: 2}
