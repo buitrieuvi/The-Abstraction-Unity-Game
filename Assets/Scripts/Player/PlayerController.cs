@@ -14,8 +14,8 @@ public sealed class PlayerController : MonoBehaviour
 
     public CharacterController CharCtrl { get; private set; }
     public PlayerState Movement { get; private set; }
-    public EventTrigger CurrentTrigger { get; private set; }
 
+    public EventTrigger CurrentTrigger { get; private set; }
     private readonly List<EventTrigger> _activeTriggers = new();
 
     [Header("Movement")]
@@ -129,32 +129,35 @@ public sealed class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Movement.OntriggerEnter(other);
-
-        EventTrigger trigger = other.GetComponentInParent<EventTrigger>();
-        if (trigger == null || _activeTriggers.Contains(trigger))
+        if (Layer.IsInteracLayer(other.gameObject.layer))
         {
-            return;
+            EventTrigger trigger = other.GetComponent<EventTrigger>();
+            trigger.Owner = gameObject;
+
+            trigger.TriggerEnter();
         }
 
-        _activeTriggers.Add(trigger);
-        CurrentTrigger = trigger;
-        trigger.TriggerEnter();
     }
 
     private void OnTriggerExit(Collider other)
     {
         Movement.OntriggerExit(other);
-
-        EventTrigger trigger = other.GetComponentInParent<EventTrigger>();
-        if (trigger == null || !_activeTriggers.Remove(trigger))
+        if (Layer.IsInteracLayer(other.gameObject.layer))
         {
-            return;
+            EventTrigger trigger = other.GetComponent<EventTrigger>();
+            trigger.Owner = null;
+            trigger.TriggerExit();
         }
+        //EventTrigger trigger = other.GetComponent<EventTrigger>();
+        //if (trigger == null || !_activeTriggers.Remove(trigger))
+        //{
+        //    return;
+        //}
 
-        trigger.TriggerExit();
-        CurrentTrigger = _activeTriggers.Count > 0
-            ? _activeTriggers[_activeTriggers.Count - 1]
-            : null;
+        //trigger.TriggerExit();
+        //CurrentTrigger = _activeTriggers.Count > 0
+        //    ? _activeTriggers[_activeTriggers.Count - 1]
+        //    : null;
     }
 
     public void SetAnimationSpeed()
@@ -167,7 +170,7 @@ public sealed class PlayerController : MonoBehaviour
 
     private void HandleInteract(InputAction.CallbackContext _)
     {
-        CurrentTrigger?.OnInteract();
+
     }
 
     private void HandleAlt(InputAction.CallbackContext _)

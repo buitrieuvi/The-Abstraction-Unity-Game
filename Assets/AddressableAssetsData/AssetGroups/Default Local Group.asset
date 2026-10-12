@@ -87,6 +87,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - view
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbb8c1aa16ae4924292ef4aa67b15a6b
+    m_Address: Assets/Prefabs/Elevator/Elevator View.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff53154160bef2141a4021b8f34af404
     m_Address: Assets/SOs/ItemSO-Fern.asset
     m_ReadOnly: 0

@@ -22,6 +22,8 @@ public sealed class ViewManager : MonoBehaviour
 
     private ViewBase viewBase;
 
+    public ViewBase ViewBase => viewBase;
+
     public void Awake()
     {
         DOTween.defaultAutoKill = true;
@@ -31,11 +33,10 @@ public sealed class ViewManager : MonoBehaviour
     {
         if (IsTransitioning) return;
         if (darkPanel != null) darkPanel.DOKill();
-        if (ctrl == null)
-        {
-            Debug.LogWarning($"Cannot open {typeof(T).Name} without a DTO.", this);
-            return;
-        }
+        //if (ctrl == null)
+        //{
+        //    return;
+        //}
 
         bool closeCurrentView = viewBase != null
             && viewBase.GetType() == typeof(T);
@@ -91,7 +92,6 @@ public sealed class ViewManager : MonoBehaviour
                 });
             }
         });
-
     }
 
     public void OnlyClose() 
@@ -124,5 +124,10 @@ public sealed class ViewManager : MonoBehaviour
                 });
             }
         });
+    }
+
+    public T GetView<T>() 
+    {
+        return viewContainer.GetComponentInChildren<T>();
     }
 }
