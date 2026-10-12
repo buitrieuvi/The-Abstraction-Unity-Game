@@ -78,7 +78,7 @@ MonoBehaviour:
     GroundLayer:
       serializedVersion: 2
       m_Bits: 1
-    NPCLayer:
+    InteracLayer:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
   viewManagerPrefab: {fileID: 8716241790183191961, guid: 1725f163bde0e8743bb115e7d4b396ee, type: 3}

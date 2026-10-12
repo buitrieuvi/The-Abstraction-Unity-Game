@@ -31,11 +31,10 @@ public sealed class ViewManager : MonoBehaviour
     {
         if (IsTransitioning) return;
         if (darkPanel != null) darkPanel.DOKill();
-        if (ctrl == null)
-        {
-            Debug.LogWarning($"Cannot open {typeof(T).Name} without a DTO.", this);
-            return;
-        }
+        //if (ctrl == null)
+        //{
+        //    return;
+        //}
 
         bool closeCurrentView = viewBase != null
             && viewBase.GetType() == typeof(T);
@@ -91,7 +90,6 @@ public sealed class ViewManager : MonoBehaviour
                 });
             }
         });
-
     }
 
     public void OnlyClose() 

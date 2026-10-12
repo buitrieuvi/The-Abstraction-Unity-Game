@@ -5,7 +5,7 @@ using UnityEngine;
 public class LayerController
 {
     public LayerMask GroundLayer;
-    public LayerMask NPCLayer;
+    public LayerMask InteracLayer;
 
     public bool ContainsLayer(LayerMask layerMask, int layer)
     {
@@ -17,8 +17,8 @@ public class LayerController
         return ContainsLayer(GroundLayer, layer);
     }
 
-    public bool IsNPCLayer(int layer)
+    public bool IsInteracLayer(int layer)
     {
-        return ContainsLayer(NPCLayer, layer);
+        return ContainsLayer(InteracLayer, layer);
     }
 }

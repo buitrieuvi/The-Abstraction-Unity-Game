@@ -1,20 +1,36 @@
 using UnityEngine;
+using UnityEngine.Events;
+using Zenject;
 
 public abstract class EventTrigger : MonoBehaviour,
     IEventTrigger
 {
-    public virtual void TriggerEnter()
-    {
+    public GameObject Owner;
 
+    public UnityAction OnTriggerEnterEvent;
+    public UnityAction OnTriggerExitEvent;
+
+    [Inject] protected InputManager inputManager;
+    [Inject] protected ViewManager viewManager;
+
+    public void TriggerEnter()
+    {
+        OnTriggerEnterEvent?.Invoke();
     }
 
-    public virtual void TriggerExit()
+    public void TriggerExit()
     {
-
+        OnTriggerExitEvent?.Invoke();
     }
 
-    public virtual void OnInteract()
-    {
 
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        TriggerEnter();
+    }
+
+    public virtual void OnTriggerExit(Collider other)
+    {
+        TriggerExit();
     }
 }
