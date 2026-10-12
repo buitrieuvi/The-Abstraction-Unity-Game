@@ -1,10 +1,21 @@
+using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ElevatorView : ViewBase
 {
+    [SerializeField] private List<ElevatorButtonView> btns;
+
+    public Transport_Elevator Elevator;
+
     public override void Awake()
     {
         base.Awake();
+
+        btns[0].OnClick += (e) =>
+        {
+            Elevator.GoFloor();
+        };
     }
 
     public override void Close()

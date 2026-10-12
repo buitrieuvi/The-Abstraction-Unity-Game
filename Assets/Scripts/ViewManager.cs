@@ -22,6 +22,8 @@ public sealed class ViewManager : MonoBehaviour
 
     private ViewBase viewBase;
 
+    public ViewBase ViewBase => viewBase;
+
     public void Awake()
     {
         DOTween.defaultAutoKill = true;
@@ -122,5 +124,10 @@ public sealed class ViewManager : MonoBehaviour
                 });
             }
         });
+    }
+
+    public T GetView<T>() 
+    {
+        return viewContainer.GetComponentInChildren<T>();
     }
 }
