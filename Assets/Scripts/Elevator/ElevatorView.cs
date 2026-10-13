@@ -6,21 +6,18 @@ public class ElevatorView : ViewBase
 {
     [SerializeField] private List<ElevatorButtonView> btns;
 
-    public Transport_Elevator Elevator;
+    public Elevator Elevator;
 
     public override void Awake()
     {
         base.Awake();
-
-        btns[0].OnClick += (e) =>
-        {
-            Elevator.GoFloor();
-        };
     }
 
     public override void Close()
     {
         base.Close();
+
+        Elevator = null;
     }
 
     public override void OnChanged()
@@ -31,6 +28,18 @@ public class ElevatorView : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
+
+        ElevatorController elevatorController = ctrl as ElevatorController;
+        Elevator = elevatorController.Elevator;
+
+        foreach (var item in btns)
+        {
+            item.OnClick += (e) => 
+            {
+                Debug.Log("Go");
+                Elevator.GoFloor(item.Floors() + 1);
+            };
+        }
     }
 
     public override void PointerClick()
