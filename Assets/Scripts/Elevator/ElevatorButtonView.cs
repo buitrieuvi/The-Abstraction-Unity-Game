@@ -1,3 +1,7 @@
+
+
+using UnityEngine;
+
 public class ElevatorButtonView : ViewBase
 {
     public override void Awake()
@@ -18,6 +22,8 @@ public class ElevatorButtonView : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
+
+        //OnClick += (e) => { Debug.Log(Floors()); };
     }
 
     public override void PointerClick()
@@ -33,5 +39,10 @@ public class ElevatorButtonView : ViewBase
     public override void PointerExit()
     {
         base.PointerExit();
+    }
+
+    public int Floors() 
+    {
+        return transform.GetSiblingIndex();
     }
 }
