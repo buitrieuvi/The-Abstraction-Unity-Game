@@ -72,8 +72,11 @@ public class Elevator : EventTrigger
         viewManager.LoadView<ElevatorView>(ElevatorController);
     }
 
+    Tween tween;
     public void GoFloor(int f)  
     {
+
+
         float time = f;
         if (f == 9) 
         {
@@ -81,7 +84,13 @@ public class Elevator : EventTrigger
             return;
         }
 
-        transform.DOMoveY(16.65f * f, 5 * time); 
+        transform.DOMoveY(16.65f * f, 5 * time);
+
+
+        tween.onComplete += () => 
+        {
+            
+        };
     }
 
 }
