@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 908671112489794079}
   - component: {fileID: 8209231648285093326}
   m_Layer: 5
-  m_Name: Floor Btn
+  m_Name: Elevator Btn View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

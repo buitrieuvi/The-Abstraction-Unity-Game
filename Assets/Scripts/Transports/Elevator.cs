@@ -4,14 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Transport_Elevator : EventTrigger
+public class Elevator : EventTrigger
 {
     [SerializeField] private List<float> floors;
 
     public ElevatorView ElevatorView;
 
+    public ElevatorController ElevatorController = new();
+
+    public List<float> Floors;
+
     public void Awake()
     {
+        //Floors.Add();
+
+        ElevatorController.Elevator = this;
+
         OnTriggerEnterEvent += () =>
         {
             Debug.Log("Open");
@@ -31,8 +39,6 @@ public class Transport_Elevator : EventTrigger
     {
         //base.OnTriggerEnter(other);
         //other.transform.SetParent(gameObject.transform);
-
-
     }
 
     public override void OnTriggerExit(Collider other)
@@ -43,19 +49,12 @@ public class Transport_Elevator : EventTrigger
 
     public void HandleInteract(InputAction.CallbackContext _)
     {
-        viewManager.LoadView<ElevatorView>(null);
-
-        ElevatorView = viewManager.GetView<ElevatorView>();
-        if (ElevatorView == null) 
-        {
-            Debug.Log(111);
-        }
-        ElevatorView.Elevator = this;
+        viewManager.LoadView<ElevatorView>(ElevatorController);
     }
 
-    public void GoFloor() 
+    public void GoFloor(int f) 
     {
-        transform.DOMoveY(16.65f, 5f);
+        transform.DOMoveY(16.65f * f, 5*f);
     }
 
 }
