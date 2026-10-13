@@ -128,36 +128,12 @@ public sealed class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Movement.OntriggerEnter(other);
-        if (Layer.IsInteracLayer(other.gameObject.layer))
-        {
-            EventTrigger trigger = other.GetComponent<EventTrigger>();
-            trigger.Owner = gameObject;
-
-            trigger.TriggerEnter();
-        }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Movement.OntriggerExit(other);
-        if (Layer.IsInteracLayer(other.gameObject.layer))
-        {
-            EventTrigger trigger = other.GetComponent<EventTrigger>();
-            trigger.Owner = null;
-            trigger.TriggerExit();
-        }
-        //EventTrigger trigger = other.GetComponent<EventTrigger>();
-        //if (trigger == null || !_activeTriggers.Remove(trigger))
-        //{
-        //    return;
-        //}
 
-        //trigger.TriggerExit();
-        //CurrentTrigger = _activeTriggers.Count > 0
-        //    ? _activeTriggers[_activeTriggers.Count - 1]
-        //    : null;
     }
 
     public void SetAnimationSpeed()

@@ -5,7 +5,7 @@ using Zenject;
 public abstract class EventTrigger : MonoBehaviour,
     IEventTrigger
 {
-    public GameObject Owner;
+    //public GameObject Owner;
 
     public UnityAction OnTriggerEnterEvent;
     public UnityAction OnTriggerExitEvent;
