@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
+using Cysharp.Threading.Tasks;
+
 
 public sealed class ViewManager : MonoBehaviour
 {
@@ -29,70 +29,145 @@ public sealed class ViewManager : MonoBehaviour
         DOTween.defaultAutoKill = true;
     }
 
-    public void LoadView<T>(ControllerBase ctrl) where T : ViewBase
+    public async UniTask<ViewBase> ShowView<T>(ControllerBase ctrl)
+    where T : ViewBase
     {
-        if (IsTransitioning) return;
-        if (darkPanel != null) darkPanel.DOKill();
-        //if (ctrl == null)
-        //{
-        //    return;
-        //}
+        if (IsTransitioning)
+            return null;
+
+        if (darkPanel != null)
+            darkPanel.DOKill();
 
         bool closeCurrentView = viewBase != null
             && viewBase.GetType() == typeof(T);
-        T prefab = closeCurrentView ? null : dataManager.GetView<T>();
+
+        T prefab = closeCurrentView
+            ? null
+            : dataManager.GetView<T>();
+
         if (!closeCurrentView && prefab == null)
         {
-            Debug.LogWarning($"View prefab {typeof(T).Name} is not loaded.", this);
-            return;
+            Debug.LogWarning(
+                $"View prefab {typeof(T).Name} is not loaded.", this);
+            return null;
         }
 
         IsTransitioning = true;
 
-        darkPanel.transform.SetAsLastSibling();
-        darkPanel.gameObject.SetActive(true);
-        darkPanel.DOFade(1, transitionDuration).From(0).OnComplete(() => 
+        try
         {
-            T view = null;
-            try
-            {
-                if (viewBase != null)
-                {
-                    viewBase.Close();
-                    Destroy(viewBase.gameObject);
-                    viewBase = null;
+            darkPanel.transform.SetAsLastSibling();
+            darkPanel.gameObject.SetActive(true);
 
-                }
+            await darkPanel
+                .DOFade(1, transitionDuration)
+                .From(0)
+                .AsyncWaitForCompletion();
 
-                if (!closeCurrentView)
-                {
+            if (viewBase != null)
+            {
+                viewBase.Close();
+                Destroy(viewBase.gameObject);
+                viewBase = null;
+            }
 
-                    view = container.InstantiatePrefabForComponent<T>(prefab.gameObject, viewContainer);
-                    view.Open(ctrl);
-                    viewBase = view;
-                }
-            }
-            catch (Exception exception)
+            if (!closeCurrentView)
             {
-                if (view != null)
-                {
-                    try { view.Close(); }
-                    finally { Destroy(view.gameObject); }
-                }
-                Debug.LogException(exception, this);
+                T view = container.InstantiatePrefabForComponent<T>(
+                    prefab.gameObject, viewContainer);
+
+                view.Open(ctrl);
+                viewBase = view;
             }
-            finally
+
+            return viewBase;
+        }
+        catch (Exception exception)
+        {
+            Debug.LogException(exception, this);
+            return viewBase;
+        }
+        finally
+        {
+            inputManager.IsInventoryOpen = viewBase is InventoryView;
+            inputManager.SetCursorVisible(viewBase != null);
+
+            if (darkPanel != null)
             {
-                inputManager.IsInventoryOpen = viewBase is InventoryView;
-                inputManager.SetCursorVisible(viewBase != null);
-                darkPanel.DOFade(0, transitionDuration).OnComplete(() =>
-                {
-                    IsTransitioning = false;
-                    darkPanel.gameObject.SetActive(false);
-                });
+                await darkPanel
+                    .DOFade(0, transitionDuration)
+                    .AsyncWaitForCompletion();
+
+                darkPanel.gameObject.SetActive(false);
             }
-        });
+
+            IsTransitioning = false;
+        }
     }
+
+    //public void LoadView<T>(ControllerBase ctrl) where T : ViewBase
+    //{
+    //    if (IsTransitioning) return;
+    //    if (darkPanel != null) darkPanel.DOKill();
+    //    //if (ctrl == null)
+    //    //{
+    //    //    return;
+    //    //}
+
+    //    bool closeCurrentView = viewBase != null
+    //        && viewBase.GetType() == typeof(T);
+    //    T prefab = closeCurrentView ? null : dataManager.GetView<T>();
+    //    if (!closeCurrentView && prefab == null)
+    //    {
+    //        Debug.LogWarning($"View prefab {typeof(T).Name} is not loaded.", this);
+    //        return;
+    //    }
+
+    //    IsTransitioning = true;
+
+    //    darkPanel.transform.SetAsLastSibling();
+    //    darkPanel.gameObject.SetActive(true);
+    //    darkPanel.DOFade(1, transitionDuration).From(0).OnComplete(() => 
+    //    {
+    //        T view = null;
+    //        try
+    //        {
+    //            if (viewBase != null)
+    //            {
+    //                viewBase.Close();
+    //                Destroy(viewBase.gameObject);
+    //                viewBase = null;
+    //            }
+
+    //            if (!closeCurrentView)
+    //            {
+
+    //                view = container.InstantiatePrefabForComponent<T>(prefab.gameObject, viewContainer);
+    //                view.Open(ctrl);
+    //                viewBase = view;
+    //            }
+    //        }
+    //        catch (Exception exception)
+    //        {
+    //            if (view != null)
+    //            {
+    //                try { view.Close(); }
+    //                finally { Destroy(view.gameObject); }
+    //            }
+    //            Debug.LogException(exception, this);
+    //        }
+    //        finally
+    //        {
+    //            inputManager.IsInventoryOpen = viewBase is InventoryView;
+    //            inputManager.SetCursorVisible(viewBase != null);
+    //            darkPanel.DOFade(0, transitionDuration).OnComplete(() =>
+    //            {
+    //                IsTransitioning = false;
+    //                darkPanel.gameObject.SetActive(false);
+    //            });
+    //        }
+    //    });
+    //}
 
     public void OnlyClose() 
     {
@@ -126,8 +201,10 @@ public sealed class ViewManager : MonoBehaviour
         });
     }
 
-    public T GetView<T>() 
+    public ViewBase GetView<T>() where T : ViewBase
     {
-        return viewContainer.GetComponentInChildren<T>();
+        return dataManager.GetView<T>();
     }
+
+
 }

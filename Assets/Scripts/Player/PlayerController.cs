@@ -75,7 +75,7 @@ public sealed class PlayerController : MonoBehaviour
     }
 
 
-    private void OnInventoryPerformed(InputAction.CallbackContext context)
+    private async void OnInventoryPerformed(InputAction.CallbackContext context)
     {
         if (!InputManager.IsInventoryOpen)
         {
@@ -86,8 +86,8 @@ public sealed class PlayerController : MonoBehaviour
             Movement.ChangeState(Movement.idling);
         }
 
-        ViewManager.LoadView<InventoryView>(DataManager.PlayerInventory);
         InputManager.IsInventoryOpen = true;
+        await ViewManager.ShowView<InventoryView>(DataManager.PlayerInventory);
     }
 
     private void Start()
