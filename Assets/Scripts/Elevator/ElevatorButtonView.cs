@@ -22,8 +22,6 @@ public class ElevatorButtonView : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
-
-        //OnClick += (e) => { Debug.Log(Floors()); };
     }
 
     public override void PointerClick()

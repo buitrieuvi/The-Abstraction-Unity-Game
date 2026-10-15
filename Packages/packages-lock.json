@@ -16,6 +16,13 @@
       },
       "hash": "a8d5fb3c2d0afd124223084e94c9e0ee73497510"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a77a1b4a89824fb6df293099de3060daf2a432c1"
+    },
     "com.nobi.roundedcorners": {
       "version": "https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git",
       "depth": 0,

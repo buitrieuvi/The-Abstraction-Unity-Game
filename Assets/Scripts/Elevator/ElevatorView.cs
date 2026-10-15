@@ -1,23 +1,24 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ElevatorView : ViewBase
 {
-    [SerializeField] private List<ElevatorButtonView> btns;
-
-    public Elevator Elevator;
+    [SerializeField] private Transform tfBtn;
+    List<ElevatorButtonView> btns;
 
     public override void Awake()
     {
         base.Awake();
+        btns = GetComponentsInChildren<ElevatorButtonView>().ToList();
     }
 
     public override void Close()
     {
         base.Close();
 
-        Elevator = null;
+        btns.Clear();
     }
 
     public override void OnChanged()
@@ -28,16 +29,16 @@ public class ElevatorView : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
-
         ElevatorController elevatorController = ctrl as ElevatorController;
-        Elevator = elevatorController.Elevator;
 
-        foreach (var item in btns)
+        foreach (var btn in btns)
         {
-            item.OnClick += (e) => 
+            btn.OnClick += (e) =>
             {
-                Debug.Log("Go");
-                Elevator.GoFloor(item.Floors() + 1);
+                int f = btn.Floors() + 1;
+                if (f == 11) f = 0;
+
+                elevatorController.GoFloor(f);
             };
         }
     }
