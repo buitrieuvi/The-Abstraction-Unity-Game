@@ -1,8 +1,11 @@
 
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 [Serializable]
 public class ElevatorController : ControllerBase
@@ -11,15 +14,18 @@ public class ElevatorController : ControllerBase
     public ElevatorView ElevatorView;
     public Elevator Elevator;
 
+    public List<Transform> Door_floors;
+
     public int Gf;
 
     private int curr = 0;
     private int next;
     private Tween moveTween;
 
+    public int numFloor = 0;
     private bool isPlay = false;
 
-    public void GoFloor(int f)
+    public async void GoFloor(int f)
     {
         if (isPlay) return;
 
@@ -61,14 +67,25 @@ public class ElevatorController : ControllerBase
         // Hủy chuyển động cũ nếu đang di chuyển
         moveTween?.Kill();
         isPlay = true;
+
+        Elevator.Door(false, f);
+        numFloor = f;
         moveTween = Elevator.transform
             .DOMoveY(FloorsTransform[f].position.y + 0.35f, 5f * t)
             .SetEase(Ease.InOutSine)
-            .OnComplete(() =>
+            .OnComplete(async () =>
             {
                 isPlay = false;
                 curr = next;
                 Gf = curr;
-            });
+
+                if (Elevator == null) { return; }
+                if (Elevator.isIn) 
+                {
+                    await UniTask.WaitForSeconds(0.5f);
+                    Elevator.Door(true, f);
+                }
+
+            }).SetDelay(2.5f);
     }
 }
