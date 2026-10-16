@@ -19,6 +19,12 @@ public class ElevatorView : ViewBase
         base.Close();
 
         btns.Clear();
+
+        PlayerController playerController = FindFirstObjectByType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.Movement.ChangeState(playerController.Movement.idling);
+        }
     }
 
     public override void OnChanged()
@@ -40,6 +46,13 @@ public class ElevatorView : ViewBase
 
                 elevatorController.GoFloor(f);
             };
+        }
+
+        PlayerController playerController = FindFirstObjectByType<PlayerController>();
+        if (playerController != null) 
+        {
+            
+            playerController.Movement.ChangeState(playerController.Movement.freezing);
         }
     }
 
