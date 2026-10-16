@@ -40,49 +40,107 @@ public class PlayerMovementState : IState
 
     public virtual void Update()
     {
-        PlayerController player = playerState.player;
-        player.IsGrounded = player.CharCtrl.isGrounded;
-        player.DistanceToGround = CheckDistanceToGround();
-        ApplyGravity();
-        player.SetAnimationSpeed();
+        //PlayerController player = playerState.player;
+        //player.IsGrounded = player.CharCtrl.isGrounded;
+        //player.DistanceToGround = CheckDistanceToGround();
+        //ApplyGravity();
+        //player.SetAnimationSpeed();
     }
 
     protected void OnMove()
     {
+        //PlayerController player = playerState.player;
+        //player.Speed = Mathf.MoveTowards(
+        //    player.Speed,
+        //    speed,
+        //    player.CrouchTime * Time.deltaTime);
+
+        //player.AnimationSpeed = Mathf.MoveTowards(
+        //    player.AnimationSpeed,
+        //    modeAnimation,
+        //    player.CrouchTime * Time.deltaTime);
+
+        //Camera mainCamera = Camera.main;
+        //if (mainCamera == null)
+        //{
+        //    Debug.LogError("Player movement requires a camera tagged MainCamera.", player);
+        //    return;
+        //}
+
+        //targetAngle = Mathf.Atan2(player.LastMove.x, player.LastMove.y) * Mathf.Rad2Deg
+        //    + mainCamera.transform.eulerAngles.y;
+
+        //angle = Mathf.SmoothDampAngle(
+        //    player.CharCtrl.transform.eulerAngles.y,
+        //    targetAngle,
+        //    ref turnSmoothVelocity,
+        //    turnSmoothTime);
+
+        //if (player.Move.sqrMagnitude > 0.0001f)
+        //{
+        //    player.CharCtrl.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        //}
+
+        //moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        //player.CharCtrl.Move(moveDir.normalized * player.Speed * Time.deltaTime);
+
         PlayerController player = playerState.player;
+
         player.Speed = Mathf.MoveTowards(
             player.Speed,
             speed,
-            player.CrouchTime * Time.deltaTime);
+            player.CrouchTime * Time.deltaTime
+        );
 
         player.AnimationSpeed = Mathf.MoveTowards(
             player.AnimationSpeed,
             modeAnimation,
-            player.CrouchTime * Time.deltaTime);
+            player.CrouchTime * Time.deltaTime
+        );
 
         Camera mainCamera = Camera.main;
+
         if (mainCamera == null)
         {
-            Debug.LogError("Player movement requires a camera tagged MainCamera.", player);
+            Debug.LogError("Không tìm thấy MainCamera.", player);
             return;
         }
 
-        targetAngle = Mathf.Atan2(player.LastMove.x, player.LastMove.y) * Mathf.Rad2Deg
-            + mainCamera.transform.eulerAngles.y;
+        // Tính hướng di chuyển theo camera
+        targetAngle = Mathf.Atan2(
+            player.LastMove.x,
+            player.LastMove.y
+        ) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
 
         angle = Mathf.SmoothDampAngle(
-            player.CharCtrl.transform.eulerAngles.y,
+            player.Rb.rotation.eulerAngles.y,
             targetAngle,
             ref turnSmoothVelocity,
-            turnSmoothTime);
+            turnSmoothTime
+        );
 
+        // Xoay nhân vật
         if (player.Move.sqrMagnitude > 0.0001f)
         {
-            player.CharCtrl.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            player.Rb.MoveRotation(
+                Quaternion.Euler(0f, angle, 0f)
+            );
         }
 
-        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        player.CharCtrl.Move(moveDir.normalized * player.Speed * Time.deltaTime);
+        // Tính vector di chuyển
+        moveDir = Quaternion.Euler(
+            0f,
+            targetAngle,
+            0f
+        ) * Vector3.forward;
+
+        // Di chuyển bằng Rigidbody
+        Vector3 velocity = player.Rb.linearVelocity;
+
+        velocity.x = moveDir.normalized.x * player.Speed;
+        velocity.z = moveDir.normalized.z * player.Speed;
+
+        player.Rb.linearVelocity = velocity;
     }
 
     protected void EvaluateLocomotionState()
@@ -128,19 +186,45 @@ public class PlayerMovementState : IState
 
     protected float CheckDistanceToGround()
     {
-        PlayerController player = playerState.player;
-        Vector3 bottom = player.transform.position
-            + Vector3.up * player.CharCtrl.center.y
-            - Vector3.up * (player.CharCtrl.height / 2f - player.CharCtrl.skinWidth);
+        //PlayerController player = playerState.player;
+        //Vector3 bottom = player.transform.position
+        //    + Vector3.up * player.CharCtrl.center.y
+        //    - Vector3.up * (player.CharCtrl.height / 2f - player.CharCtrl.skinWidth);
 
-        float maxDistance = player.CharCtrl.skinWidth + 0.25f;
+        //float maxDistance = player.CharCtrl.skinWidth + 0.25f;
+        //if (Physics.Raycast(
+        //        bottom,
+        //        Vector3.down,
+        //        out RaycastHit hit,
+        //        maxDistance,
+        //        player.GroundLayer,
+        //        QueryTriggerInteraction.Ignore))
+        //{
+        //    return hit.distance;
+        //}
+
+        //return -1f;
+        PlayerController player = playerState.player;
+
+        CapsuleCollider capsule =
+            player.GetComponent<CapsuleCollider>();
+
+        if (capsule == null)
+            return -1f;
+
+        Vector3 bottom = capsule.bounds.center
+            - Vector3.up * (capsule.bounds.extents.y
+            - capsule.radius);
+
+        float maxDistance = 0.5f;
+
         if (Physics.Raycast(
-                bottom,
-                Vector3.down,
-                out RaycastHit hit,
-                maxDistance,
-                player.GroundLayer,
-                QueryTriggerInteraction.Ignore))
+            bottom,
+            Vector3.down,
+            out RaycastHit hit,
+            maxDistance,
+            player.GroundLayer,
+            QueryTriggerInteraction.Ignore))
         {
             return hit.distance;
         }
@@ -150,17 +234,30 @@ public class PlayerMovementState : IState
 
     protected void ApplyGravity()
     {
-        PlayerController player = playerState.player;
-        if (player.CharCtrl.isGrounded && player.VerticalVelocity < 0f)
-        {
-            player.VerticalVelocity = -2f;
-        }
-        else
-        {
-            player.VerticalVelocity += Physics.gravity.y * Time.deltaTime;
-        }
+        //PlayerController player = playerState.player;
+        //if (player.CharCtrl.isGrounded && player.VerticalVelocity < 0f)
+        //{
+        //    player.VerticalVelocity = -2f;
+        //}
+        //else
+        //{
+        //    player.VerticalVelocity += Physics.gravity.y * Time.deltaTime;
+        //}
 
-        player.CharCtrl.Move(Vector3.up * player.VerticalVelocity * Time.deltaTime);
+        //player.CharCtrl.Move(Vector3.up * player.VerticalVelocity * Time.deltaTime);
+
+        PlayerController player = playerState.player;
+
+        player.IsGrounded = Physics.Raycast(
+            player.Rb.position,
+            Vector3.down,
+            out _,
+            1.1f,
+            player.GroundLayer,
+            QueryTriggerInteraction.Ignore
+        );
+
+        player.DistanceToGround = CheckDistanceToGround();
     }
 
     public virtual void OntriggerEnter(Collider coll)
