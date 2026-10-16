@@ -13,6 +13,7 @@ public sealed class PlayerController : MonoBehaviour
     [Inject] public CameraManager CameraManager { get; set; }
 
     public CharacterController CharCtrl { get; private set; }
+    public Rigidbody Rb { get; private set; }
     public PlayerState Movement { get; private set; }
 
     public EventTrigger CurrentTrigger { get; private set; }
@@ -54,10 +55,11 @@ public sealed class PlayerController : MonoBehaviour
     private void Awake()
     {
         CharCtrl = GetComponent<CharacterController>();
+
         Movement = new PlayerState(this);
         Movement.ChangeState(Movement.idling);
         Animator = GetComponentInChildren<Animator>();
-
+        Rb = GetComponent<Rigidbody>();
         InputManager.SetCursorVisible(false);
 
 
