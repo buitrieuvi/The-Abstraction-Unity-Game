@@ -40,11 +40,11 @@ public class PlayerMovementState : IState
 
     public virtual void Update()
     {
-        //PlayerController player = playerState.player;
-        //player.IsGrounded = player.CharCtrl.isGrounded;
-        //player.DistanceToGround = CheckDistanceToGround();
-        //ApplyGravity();
-        //player.SetAnimationSpeed();
+        PlayerController player = playerState.player;
+        player.IsGrounded = player.CharCtrl.isGrounded;
+        player.DistanceToGround = CheckDistanceToGround();
+        ApplyGravity();
+        player.SetAnimationSpeed();
     }
 
     protected void OnMove()
