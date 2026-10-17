@@ -1,5 +1,15 @@
 # The Abstraction — Unity Game
 
+https://drive.google.com/drive/folders/1GEylE2CiYRXm7m9bP85lcC3NmrnQsI0n?usp=sharing
+
+Nội dung bao gồm:
+- Công nghệ Unity, C# và Visual Studio.
+- Zenject, R3, DOTween, Input System, TextMeshPro và ProBuilder.
+- Chức năng nhân vật 3D, Inventory, Elevator và UI.
+- Kiến trúc State Machine, Model/Controller/View và Dependency Injection.
+
+![](./image.png)
+
 ## Công nghệ và Package sử dụng
 
 Dự án sử dụng Unity và các package được khai báo trong `Packages/manifest.json`.
