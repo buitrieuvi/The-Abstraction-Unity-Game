@@ -44,10 +44,7 @@ public class InventoryView : ViewBase
                     .ToList();
         }
 
-        if (closeButton != null)
-        {
-            closeButton.onClick.AddListener(() => viewManager.OnlyClose());
-        }
+
 
 
     }
@@ -109,6 +106,12 @@ public class InventoryView : ViewBase
                 selectedItem = itemView;
                 OnSelect();
             };
+        }
+
+
+        if (closeButton != null)
+        {
+            closeButton.onClick.AddListener(async () => await viewManager.ShowView<InventoryView>(inventory));
         }
     }
 
