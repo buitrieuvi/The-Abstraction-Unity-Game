@@ -1,3 +1,5 @@
+using EasyTextEffects;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
@@ -13,6 +15,9 @@ public abstract class EventTrigger : MonoBehaviour,
     [Inject] protected InputManager inputManager;
     [Inject] protected ViewManager viewManager;
 
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextEffect textEf;
+
     public void TriggerEnter()
     {
         OnTriggerEnterEvent?.Invoke();
@@ -27,10 +32,17 @@ public abstract class EventTrigger : MonoBehaviour,
     public virtual void OnTriggerEnter(Collider other)
     {
         TriggerEnter();
+
+        SetText();
     }
 
     public virtual void OnTriggerExit(Collider other)
     {
         TriggerExit();
+    }
+
+    public void SetText() 
+    {
+        textEf.Refresh();
     }
 }
