@@ -34,13 +34,13 @@ public class InventoryCategoryView : ViewBase
     public override void PointerEnter()
     {
         base.PointerEnter();
-        tfView.DOScale(1.1f, 0.1f);
+        //tfView.DOScale(1.1f, 0.1f);
     }
 
     public override void PointerExit()
     {
         base.PointerExit();
-        tfView.DOScale(1f, 0.1f);
+        //tfView.DOScale(1f, 0.1f);
     }
 
     public void OnOutline(bool b) 

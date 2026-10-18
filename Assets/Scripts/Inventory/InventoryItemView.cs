@@ -16,6 +16,8 @@ public sealed class InventoryItemView : ViewBase
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private Outline outline;
 
+    CanvasGroup canvasGroup;
+
     public Image AvatarImage => avatarImage;
     private Tween scaleTween;
     private IDisposable itemSub;
@@ -30,6 +32,8 @@ public sealed class InventoryItemView : ViewBase
     public override void Awake()
     {
         base.Awake();
+
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public override void PointerEnter()
@@ -96,8 +100,10 @@ public override void Open(ControllerBase ctrl)
         scaleTween = null;
     }
 
-private void ShowEmpty()
+    private void ShowEmpty()
     {
+        canvasGroup.interactable = false;
+
         if (emptyContainer != null)
             emptyContainer.SetActive(true);
 
@@ -132,6 +138,8 @@ private void ShowEmpty()
             return;
         }
 
+        canvasGroup.interactable = true;
+
         if (emptyContainer == null || itemDataContainer == null ||
             avatarImage == null || rankImage == null ||
             quantityText == null)
@@ -155,8 +163,8 @@ private void ShowEmpty()
         outline.enabled = false;
     }
 
-    public void Animation(float delay) 
-    {
-        tfView.DOScale(1, 0.35f).SetDelay(delay * transform.GetSiblingIndex()).From(0).SetEase(Ease.InOutFlash);
-    }
+    //public void Animation(float delay) 
+    //{
+    //    tfView.DOScale(1, 0.35f).SetDelay(delay * transform.GetSiblingIndex()).From(0).SetEase(Ease.InOutFlash);
+    //}
 }

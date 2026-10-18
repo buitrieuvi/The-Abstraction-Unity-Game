@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7817751552410466728}
   - component: {fileID: 4811597810201841738}
   - component: {fileID: 2270324981364488448}
+  - component: {fileID: 3841799928551537721}
+  - component: {fileID: 6583012000979772242}
   m_Layer: 5
   m_Name: InventoryCatView
   m_TagString: Untagged
@@ -120,3 +122,29 @@ MonoBehaviour:
   m_EffectColor: {r: 0.4156863, g: 0.3529412, b: 0.8039216, a: 1}
   m_EffectDistance: {x: 4, y: 4}
   m_UseGraphicAlpha: 1
+--- !u!114 &3841799928551537721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924830098552616875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1734c6b3507139049b1ab4d7e6aef62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverEnter
+  time: 0.35
+--- !u!114 &6583012000979772242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924830098552616875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06cbd77361888d04f89db90ea41fa217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverExit
+  time: 0.35

@@ -28,24 +28,22 @@ public class MenuView : ViewBase
     {
         base.Open(ctrl);
 
-        List<ViewButtonBase> slots = tfMenu.GetComponentsInChildren<ViewButtonBase>().ToList();
+        //List<ViewButtonBase> slots = tfMenu.GetComponentsInChildren<ViewButtonBase>().ToList();
 
-        foreach (var item in slots)
-        {
-            item.Anim_MenuSlot();
+        //foreach (var item in slots)
+        //{
+        //    item.Anim_MenuSlot();
 
-            item.OnEnter += (e) => 
-            {
-                item.Dotween_1();
-            };
+        //    item.OnEnter += (e) =>
+        //    {
+        //        item.Dotween_1();
+        //    };
 
-            item.OnExit += (e) =>
-            {
-                item.Dotween_2();
-            };
-        }
-
-
+        //    item.OnExit += (e) =>
+        //    {
+        //        item.Dotween_2();
+        //    };
+        //}
     }
 
     public override void PointerClick()
