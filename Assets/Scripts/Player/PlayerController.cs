@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
@@ -100,6 +101,8 @@ public sealed class PlayerController : MonoBehaviour
         InputManager.InputActions.Player.Ctrl.canceled += HandleControl;
         InputManager.InputActions.Player.Sprint.performed += HandleSprint;
         InputManager.InputActions.Player.Sprint.canceled += HandleSprint;
+
+        InputManager.SetCursorVisible(false);
     }
 
     private void OnDestroy()

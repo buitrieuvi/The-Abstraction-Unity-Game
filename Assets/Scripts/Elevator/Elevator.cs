@@ -18,26 +18,29 @@ public class Elevator : EventTrigger
 
     public ElevatorController ElevatorController = new();
 
-    [SerializeField] GameObject door_r;
-    [SerializeField] GameObject door_l;
-
     [SerializeField] List<BoxCollider> doors;
 
     public bool isIn;
 
 
+
     public void Awake()
     {
-        foreach (var door in doors)
+        ElevatorController.Door.OnInteract += async () => 
         {
-            door.OnTriggerEnterAsObservable()
-                .Where(e => e.CompareTag("Player"))
-                .Subscribe(e =>
-                {
-                    Door(true, ElevatorController.numFloor);
-                })
-                .AddTo(this);
-        }
+            ElevatorController.ElevatorView = (ElevatorView)await ViewManager.ShowView<ElevatorView>(ElevatorController);
+        };
+
+        //foreach (var door in doors)
+        //{
+        //    door.OnTriggerEnterAsObservable()
+        //        .Where(e => e.CompareTag("Player"))
+        //        .Subscribe(e =>
+        //        {
+        //            //Door(true, ElevatorController.numFloor);
+        //        })
+        //        .AddTo(this);
+        //}
 
         //door.OnTriggerExitAsObservable()
         //    .Where(e => e.CompareTag("Player"))
@@ -48,15 +51,15 @@ public class Elevator : EventTrigger
         //    })
         //    .AddTo(this);
 
-        OnTriggerEnterEvent += () =>
-        {
-            inputManager.InputActions.Player.Interact.started += HandleInteract;
-        };
+        //OnTriggerEnterEvent += () =>
+        //{
+        //    inputManager.InputActions.Player.Interact.started += HandleInteract;
+        //};
 
-        OnTriggerExitEvent += () => 
-        {
-            inputManager.InputActions.Player.Interact.started -= HandleInteract;
-        };
+        //OnTriggerExitEvent += () => 
+        //{
+        //    inputManager.InputActions.Player.Interact.started -= HandleInteract;
+        //};
     }
 
     public void Start()
@@ -67,51 +70,51 @@ public class Elevator : EventTrigger
 
     public override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
-        ElevatorController.Elevator = this;
+        //base.OnTriggerEnter(other);
+        //ElevatorController.Elevator = this;
 
-        other.transform.SetParent(transform);
-        isIn = true;
+        //other.transform.SetParent(transform);
+        //isIn = true;
     }
 
     public override async void OnTriggerExit(Collider other)
     {
-        await UniTask.WaitForSeconds(2);
-        ElevatorController.GoFloor(0);
+        //await UniTask.WaitForSeconds(2);
+        //ElevatorController.GoFloor(0);
 
-        base.OnTriggerExit(other);
-        ElevatorController.Elevator = null;
+        //base.OnTriggerExit(other);
+        //ElevatorController.Elevator = null;
 
-        other.transform.SetParent(null);
-        isIn = false;
+        //other.transform.SetParent(null);
+        //isIn = false;
     }
 
-    public async void HandleInteract(InputAction.CallbackContext _)
-    {
-        ElevatorController.ElevatorView = (ElevatorView)await ViewManager.ShowView<ElevatorView>(ElevatorController);
-    }
+    //public async void HandleInteract(InputAction.CallbackContext _)
+    //{
+    //    ElevatorController.ElevatorView = (ElevatorView)await ViewManager.ShowView<ElevatorView>(ElevatorController);
+    //}
 
-    public async void Door(bool b, int floor) 
-    {
+    //public async void Door(bool b, int floor) 
+    //{
 
-        if (b) 
-        {
-            door_r.transform.DOLocalMoveX(-3.5f, 2);
-            door_l.transform.DOLocalMoveX(3.5f, 2);
+    //    if (b) 
+    //    {
+    //        door_r.transform.DOLocalMoveX(-3.5f, 2);
+    //        door_l.transform.DOLocalMoveX(3.5f, 2);
 
-            ElevatorController.Door_floors[floor].GetChild(0).transform.DOLocalMoveX(8f, 1);
-            ElevatorController.Door_floors[floor].GetChild(1).transform.DOLocalMoveX(-8f, 1);
+    //        ElevatorController.Door_floors[floor].GetChild(0).transform.DOLocalMoveX(8f, 1);
+    //        ElevatorController.Door_floors[floor].GetChild(1).transform.DOLocalMoveX(-8f, 1);
 
-            return;
-        }
+    //        return;
+    //    }
 
-        door_r.transform.DOLocalMoveX(-1, 2);
-        door_l.transform.DOLocalMoveX(1, 2);
+    //    door_r.transform.DOLocalMoveX(-1, 2);
+    //    door_l.transform.DOLocalMoveX(1, 2);
 
 
-        ElevatorController.Door_floors[floor].GetChild(0).transform.DOLocalMoveX(2.5f, 1);
-        ElevatorController.Door_floors[floor].GetChild(1).transform.DOLocalMoveX(-2.5f, 1);
+    //    ElevatorController.Door_floors[floor].GetChild(0).transform.DOLocalMoveX(2.5f, 1);
+    //    ElevatorController.Door_floors[floor].GetChild(1).transform.DOLocalMoveX(-2.5f, 1);
 
-        ViewManager.OnlyClose();
-    }
+    //    ViewManager.OnlyClose();
+    //}
 }
