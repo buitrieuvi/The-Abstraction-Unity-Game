@@ -43,10 +43,6 @@ public class InventoryView : ViewBase
                     .GetComponentsInChildren<InventoryCategoryView>(true)
                     .ToList();
         }
-
-
-
-
     }
 
     public override void Open(ControllerBase ctrl)
@@ -84,18 +80,6 @@ public class InventoryView : ViewBase
 
         foreach (var itemView in inventoryItems)
         {
-            //itemView.OnEnter += e =>
-            //{
-            //    if (!itemView.IsEmpty)
-            //        itemView.Dotween_1();
-            //};
-
-            //itemView.OnExit += e =>
-            //{
-            //    if (!itemView.IsEmpty)
-            //        itemView.Dotween_2();
-            //};
-
             itemView.OnClick += e =>
             {
                 inventory.UpdateItem(inventoryItems.IndexOf(itemView), 1);
@@ -211,8 +195,6 @@ public class InventoryView : ViewBase
             }
             inventoryCategoryView = categoryView;
             inventoryCategoryView.OnOutline(true);
-
-
         };
     }
 

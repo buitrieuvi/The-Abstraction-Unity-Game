@@ -52,7 +52,7 @@ public sealed class InventoryItemView : ViewBase
         base.PointerClick();
     }
 
-public override void Open(ControllerBase ctrl)
+    public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
 
@@ -103,6 +103,7 @@ public override void Open(ControllerBase ctrl)
     private void ShowEmpty()
     {
         canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
 
         if (emptyContainer != null)
             emptyContainer.SetActive(true);
@@ -139,6 +140,11 @@ public override void Open(ControllerBase ctrl)
         }
 
         canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+
+        var ani1 = GetComponent<Ani_List_Scale>();
+        ani1.enabled = false;
+        ani1.enabled = true;
 
         if (emptyContainer == null || itemDataContainer == null ||
             avatarImage == null || rankImage == null ||

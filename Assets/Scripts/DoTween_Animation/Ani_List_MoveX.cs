@@ -15,7 +15,7 @@ public class Ani_List_MoveX : ViewBase
     }
 
 
-    public void Start()
+    public void OnEnable()
     {
         int index = gameObject.transform.GetSiblingIndex();
         tfView.DOMoveX(Y, time).From(X).SetDelay(index* Space);
