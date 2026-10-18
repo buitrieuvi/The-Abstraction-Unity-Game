@@ -11,8 +11,7 @@ public class Ani_List_Scale : ViewBase
         base.Awake();
     }
 
-
-    public void Start()
+    public void OnEnable()
     {
         int index = gameObject.transform.GetSiblingIndex();
         tfView.DOScale(1, time).From(0).SetDelay(index * Space);
