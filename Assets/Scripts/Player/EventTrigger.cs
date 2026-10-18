@@ -12,6 +12,8 @@ public abstract class EventTrigger : MonoBehaviour,
     public UnityAction OnTriggerEnterEvent;
     public UnityAction OnTriggerExitEvent;
 
+    public UnityAction OnInteract;
+
     [Inject] protected InputManager inputManager;
     [Inject] protected ViewManager viewManager;
 
@@ -44,5 +46,10 @@ public abstract class EventTrigger : MonoBehaviour,
     public void SetText() 
     {
         textEf.Refresh();
+    }
+
+    public virtual void OnOnInteracted() 
+    {
+        OnInteract?.Invoke();
     }
 }

@@ -18,9 +18,9 @@ public sealed class InputManager : IInitializable, IDisposable
 
     public void SetCursorVisible(bool isVisible)
     {
-        //Cursor.visible = isVisible;
-        //Cursor.lockState = isVisible
-        //    ? CursorLockMode.None
-        //    : CursorLockMode.Locked;
+        Cursor.visible = isVisible;
+        Cursor.lockState = isVisible
+            ? CursorLockMode.None
+            : CursorLockMode.Locked;
     }
 }

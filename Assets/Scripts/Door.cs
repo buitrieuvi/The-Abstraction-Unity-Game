@@ -4,6 +4,7 @@ using R3.Triggers;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Door : EventTrigger
 {
@@ -12,7 +13,6 @@ public class Door : EventTrigger
 
     [SerializeField] float o;
     [SerializeField] float c;
-
 
     private void Start()
     {
@@ -40,15 +40,26 @@ public class Door : EventTrigger
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        OnOpen(true);
+
+        inputManager.InputActions.Player.Interact.started += HandleInteract;
     }
 
     public override async void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
 
-        await UniTask.WaitForSeconds(1.5f);
 
-        OnOpen(false);
+        inputManager.InputActions.Player.Interact.started -= HandleInteract;
+    }
+
+    public async void HandleInteract(InputAction.CallbackContext _)
+    {
+        OnOnInteracted();
+    }
+
+    public override void OnOnInteracted()
+    {
+        base.OnOnInteracted();
+
     }
 }
