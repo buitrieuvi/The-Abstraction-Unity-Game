@@ -6,12 +6,12 @@ using UnityEngine;
 public class ElevatorView : ViewBase
 {
     [SerializeField] private Transform tfBtn;
-    List<ElevatorButtonView> btns;
+    List<ViewButtonBase> btns;
 
     public override void Awake()
     {
         base.Awake();
-        btns = GetComponentsInChildren<ElevatorButtonView>().ToList();
+        btns = GetComponentsInChildren<ViewButtonBase>().ToList();
     }
 
     public override void Close()

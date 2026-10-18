@@ -93,6 +93,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - view
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f49adcc05d54fb5409504c16d207bf45
+    m_Address: Assets/Prefabs/Menu/View Menu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff53154160bef2141a4021b8f34af404
     m_Address: Assets/SOs/ItemSO-Fern.asset
     m_ReadOnly: 0
