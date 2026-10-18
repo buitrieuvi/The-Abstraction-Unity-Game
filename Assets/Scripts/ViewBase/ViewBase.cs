@@ -13,7 +13,9 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     [Inject] protected ViewManager viewManager;
 
     protected RectTransform tfView;
+    protected RectTransform tfViewChild;
 
+    
     public UnityAction<ViewBase> OnEnter;
     public UnityAction<ViewBase> OnExit;
 
@@ -22,6 +24,7 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public virtual void Awake()
     {
         tfView = GetComponent<RectTransform>();
+        tfViewChild = GetComponentInChildren<RectTransform>();
     }
 
     public virtual void Open(ControllerBase ctrl)

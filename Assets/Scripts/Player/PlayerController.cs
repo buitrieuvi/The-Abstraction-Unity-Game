@@ -65,6 +65,8 @@ public sealed class PlayerController : MonoBehaviour
 
 
         InputManager.InputActions.Player.Inventory.performed += OnInventoryPerformed;
+        InputManager.InputActions.Player.Esc.performed += OnMenuPerformed;
+
         destroyCancellationToken.Register(() =>
         {
 
@@ -74,6 +76,17 @@ public sealed class PlayerController : MonoBehaviour
             }
 
             InputManager.IsInventoryOpen = false;
+        });
+
+        destroyCancellationToken.Register(() =>
+        {
+
+            if (InputManager.InputActions != null)
+            {
+                InputManager.InputActions.Player.Esc.performed -= OnMenuPerformed;
+            }
+
+            InputManager.IsMenuOpen = false;
         });
     }
 
@@ -91,6 +104,21 @@ public sealed class PlayerController : MonoBehaviour
 
         InputManager.IsInventoryOpen = true;
         await ViewManager.ShowView<InventoryView>(DataManager.PlayerInventory);
+    }
+
+    private async void OnMenuPerformed(InputAction.CallbackContext context)
+    {
+        if (!InputManager.IsMenuOpen)
+        {
+            Movement.ChangeState(Movement.freezing);
+        }
+        else
+        {
+            Movement.ChangeState(Movement.idling);
+        }
+
+        InputManager.IsMenuOpen = true;
+        await ViewManager.ShowView<MenuView>(DataManager.PlayerInventory);
     }
 
     private void Start()

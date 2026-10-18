@@ -1,8 +1,9 @@
 
 
+using DG.Tweening;
 using UnityEngine;
 
-public class ElevatorButtonView : ViewBase
+public class ViewButtonBase : ViewBase
 {
     public override void Awake()
     {
@@ -42,5 +43,10 @@ public class ElevatorButtonView : ViewBase
     public int Floors() 
     {
         return transform.GetSiblingIndex();
+    }
+
+    public void Anim_MenuSlot() 
+    {
+        tfViewChild.DOMoveX(250f, 0.35f).From(-500).SetEase(Ease.OutBack).SetDelay(tfView.transform.GetSiblingIndex() * 0.02f);
     }
 }
