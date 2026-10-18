@@ -84,17 +84,17 @@ public class InventoryView : ViewBase
 
         foreach (var itemView in inventoryItems)
         {
-            itemView.OnEnter += e =>
-            {
-                if (!itemView.IsEmpty)
-                    itemView.Dotween_1();
-            };
+            //itemView.OnEnter += e =>
+            //{
+            //    if (!itemView.IsEmpty)
+            //        itemView.Dotween_1();
+            //};
 
-            itemView.OnExit += e =>
-            {
-                if (!itemView.IsEmpty)
-                    itemView.Dotween_2();
-            };
+            //itemView.OnExit += e =>
+            //{
+            //    if (!itemView.IsEmpty)
+            //        itemView.Dotween_2();
+            //};
 
             itemView.OnClick += e =>
             {
@@ -204,7 +204,6 @@ public class InventoryView : ViewBase
             inventoryItems[0]?.PointerClick();
 
             SelectFirstVisibleItem();
-            AnimateItems();
 
             if (inventoryCategoryView != null) 
             {
@@ -229,14 +228,6 @@ public class InventoryView : ViewBase
         else if (avatar != null)
         {
             avatar.sprite = null;
-        }
-    }
-
-    private void AnimateItems()
-    {
-        foreach (var item in inventoryItems)
-        {
-            item.Animation(animationDuration);
         }
     }
 }

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ch\u1ECDn"
+  m_text: "Ti\u1EBFp T\u1EE5c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -147,6 +147,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2274625264026674591}
   - component: {fileID: 8617638658996439787}
+  - component: {fileID: 2215518897681083115}
+  - component: {fileID: 4648247845344379178}
+  - component: {fileID: 3946716212092614404}
   m_Layer: 5
   m_Name: View Menu Slot
   m_TagString: Untagged
@@ -186,6 +189,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5216fd9d62df2544dbd0701de7a3d770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ViewButtonBase
+--- !u!114 &2215518897681083115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395572660757823139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1734c6b3507139049b1ab4d7e6aef62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverEnter
+  time: 0.35
+--- !u!114 &4648247845344379178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395572660757823139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06cbd77361888d04f89db90ea41fa217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverExit
+  time: 0.35
+--- !u!114 &3946716212092614404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395572660757823139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6744bc80376956f4c8020c875f41ef38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ani_List_MoveX
+  time: 1
+  X: -500
+  Y: 250
+  Space: 0.02
 --- !u!1 &9167020050043883780
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.854902, g: 0.4392157, b: 0.8392158, a: 1}
+  m_Color: {r: 0.8666667, g: 0.627451, b: 0.8666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

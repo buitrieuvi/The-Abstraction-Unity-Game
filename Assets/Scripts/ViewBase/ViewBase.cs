@@ -72,13 +72,13 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
 
     }
 
-    public void Dotween_1() 
-    {
-        tfView.DOScale(1.1f, 0.35f).SetEase(Ease.OutBack).From(1);
-    }
+    //public void Dotween_1() 
+    //{
+    //    tfView.DOScale(1.1f, 0.35f).SetEase(Ease.OutBack).From(1);
+    //}
 
-    public void Dotween_2()
-    {
-        tfView.DOScale(1f, 0.35f).SetEase(Ease.OutBack);
-    }
+    //public void Dotween_2()
+    //{
+    //    tfView.DOScale(1f, 0.35f).SetEase(Ease.OutBack);
+    //}
 }
