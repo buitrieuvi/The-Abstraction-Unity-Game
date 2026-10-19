@@ -147,9 +147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2274625264026674591}
   - component: {fileID: 8617638658996439787}
-  - component: {fileID: 2215518897681083115}
-  - component: {fileID: 4648247845344379178}
-  - component: {fileID: 3946716212092614404}
   m_Layer: 5
   m_Name: View Menu Slot
   m_TagString: Untagged
@@ -172,8 +169,8 @@ RectTransform:
   - {fileID: 5035986270008585153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 425, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -189,48 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5216fd9d62df2544dbd0701de7a3d770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ViewButtonBase
---- !u!114 &2215518897681083115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395572660757823139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1734c6b3507139049b1ab4d7e6aef62c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverEnter
-  time: 0.35
---- !u!114 &4648247845344379178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395572660757823139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06cbd77361888d04f89db90ea41fa217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverExit
-  time: 0.35
---- !u!114 &3946716212092614404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395572660757823139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6744bc80376956f4c8020c875f41ef38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_List_MoveX
-  time: 1
-  X: -500
-  Y: 250
-  Space: 0.02
 --- !u!1 &9167020050043883780
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,8 +197,8 @@ GameObject:
   - component: {fileID: 5035986270008585153}
   - component: {fileID: 4761423502173641360}
   - component: {fileID: 5239374323595914641}
-  - component: {fileID: 7540734810205928848}
   - component: {fileID: 6111430496437791547}
+  - component: {fileID: 331048528403606490}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -266,10 +221,10 @@ RectTransform:
   - {fileID: 2120681859020450879}
   m_Father: {fileID: 2274625264026674591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 424, y: 50}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4761423502173641360
 CanvasRenderer:
@@ -309,50 +264,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7540734810205928848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9167020050043883780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5239374323595914641}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6111430496437791547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,3 +278,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 25
   image: {fileID: 5239374323595914641}
+--- !u!114 &331048528403606490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9167020050043883780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5216fd9d62df2544dbd0701de7a3d770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ViewButtonBase

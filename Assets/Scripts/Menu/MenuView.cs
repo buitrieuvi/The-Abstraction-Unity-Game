@@ -4,11 +4,13 @@ using System;
 using NUnit.Framework;
 using System.Linq;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class MenuView : ViewBase
 {
     [SerializeField] Transform tfMenu;
-        
+    List<ViewButtonBase> slots;
+
     public override void Awake()
     {
         base.Awake();
@@ -28,22 +30,26 @@ public class MenuView : ViewBase
     {
         base.Open(ctrl);
 
-        //List<ViewButtonBase> slots = tfMenu.GetComponentsInChildren<ViewButtonBase>().ToList();
+        slots = tfMenu.GetComponentsInChildren<ViewButtonBase>().ToList();
+        foreach (var item in slots) 
+        {
+            item.transform.DOLocalMoveX(-500, 0);
+        }
 
-        //foreach (var item in slots)
-        //{
-        //    item.Anim_MenuSlot();
+        foreach (var item in slots)
+        {
+            item.OnEnter += (e) =>
+            {
+                item.Dotween_Ani_HoverEnter(1.05f);
+            };
 
-        //    item.OnEnter += (e) =>
-        //    {
-        //        item.Dotween_1();
-        //    };
+            item.OnExit += (e) =>
+            {
+                item.Dotween_Ani_HoverExit();
+            };
 
-        //    item.OnExit += (e) =>
-        //    {
-        //        item.Dotween_2();
-        //    };
-        //}
+            item.Dotween_Ani_MoveX(0.45f, 0.035f, -500, 120);
+        }
     }
 
     public override void PointerClick()

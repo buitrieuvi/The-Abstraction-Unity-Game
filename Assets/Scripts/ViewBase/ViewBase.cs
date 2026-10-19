@@ -1,9 +1,12 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using R3;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 using Zenject;
 
 public abstract class ViewBase : MonoBehaviour, IViewBase,
@@ -72,10 +75,9 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
 
     }
 
-
-    public void Dotween_Ani_HoverEnter()
+    public void Dotween_Ani_HoverEnter(float e)
     {
-        tfView.DOScale(1.1f, 0.35f).SetEase(Ease.OutBack).From(1);
+        tfView.DOScale(e, 0.35f).SetEase(Ease.OutBack).From(1);
     }
 
     public void Dotween_Ani_HoverExit()
@@ -86,5 +88,11 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public void Dotween_Ani_ScaleX(float time, float sp)
     {
         tfView.DOScale(1f, time).SetEase(Ease.OutBack).From(0).SetDelay(tfView.transform.GetSiblingIndex() * sp);
+    }
+
+    public void Dotween_Ani_MoveX(float time, float sp, float s, float e)
+    {
+        
+        tfView.DOLocalMoveX(e, time).From(s).SetEase(Ease.InSine).SetDelay(tfView.transform.GetSiblingIndex() * sp);
     }
 }
