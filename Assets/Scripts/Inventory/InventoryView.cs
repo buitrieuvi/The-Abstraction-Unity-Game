@@ -10,12 +10,11 @@ public class InventoryView : ViewBase
 {
     [Inject] private DiContainer container;
 
-
     [SerializeField] float time;
     [SerializeField] float spaceTime;
 
     [SerializeField] private Transform itemContainer;
-    [SerializeField] private Button closeButton;
+    [SerializeField] private ViewBase closeButton;
     [SerializeField] private ViewBase avatar;
 
     private List<InventoryCategoryView> inventoryCategoryViews =
@@ -50,14 +49,14 @@ public class InventoryView : ViewBase
 
             foreach (var cat in inventoryCategoryViews)
             {
-                cat.OnEnter += (e) => cat.Dotween_Ani_HoverEnter();
+                cat.OnEnter += (e) => cat.Dotween_Ani_HoverEnter(1.05f);
                 cat.OnExit += (e) => cat.Dotween_Ani_HoverExit();
             }
         }
 
         foreach (var item in inventoryItems)
         {
-            item.OnEnter += (e) => item.Dotween_Ani_HoverEnter();
+            item.OnEnter += (e) => item.Dotween_Ani_HoverEnter(1.05f);
             item.OnExit += (e) => item.Dotween_Ani_HoverExit();
 
             item.Dotween_Ani_ScaleX(time, spaceTime);
@@ -111,7 +110,7 @@ public class InventoryView : ViewBase
 
         if (closeButton != null)
         {
-            closeButton.onClick.AddListener(async () => await viewManager.ShowView<InventoryView>(inventory));
+            closeButton.OnClick += async (e) => await viewManager.ShowView<InventoryView>(inventory);
         }
     }
 

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ViewManager
   viewContainer: {fileID: 8916717223923674085}
   darkPanel: {fileID: 557518171497121599}
-  transitionDuration: 0.25
+  transitionDuration: 0.45
 --- !u!225 &-895791627238231741
 CanvasGroup:
   m_ObjectHideFlags: 0

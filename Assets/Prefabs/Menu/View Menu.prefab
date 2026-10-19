@@ -274,7 +274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d3240aae00b4cdd4cbb4e007517a864d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 3098719002239906696}
   - component: {fileID: 724674915214625777}
   - component: {fileID: 1856191219162053883}
-  - component: {fileID: 5773503480718762560}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -320,8 +319,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: 0}
-  m_SizeDelta: {x: 100, y: -200}
+  m_AnchoredPosition: {x: -24, y: 0}
+  m_SizeDelta: {x: 110, y: -60}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3098719002239906696
 CanvasRenderer:
@@ -374,21 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithIndependentRoundedCorners
   r: {x: 40, y: 40, z: 40, w: 40}
-  rect2props: {x: 0, y: 0.0000076293945, z: -63.639614, w: -63.639614}
+  rect2props: {x: 0.0000019073486, y: 0.0000038146973, z: -10.606603, w: -10.606603}
   image: {fileID: 724674915214625777}
---- !u!114 &5773503480718762560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4491811200877611442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad81d28b200900443a2f202b4ee951e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_SacleY
-  time: 0.35
 --- !u!1 &5117234475667294719
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +475,7 @@ MonoBehaviour:
     m_Top: 200
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 17
+  m_Spacing: 10.76
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -596,7 +582,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5347902545094044974}
-  - component: {fileID: 700439600386598039}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -624,18 +609,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 425, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &700439600386598039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8516246969174730522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5216fd9d62df2544dbd0701de7a3d770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ViewButtonBase
 --- !u!1001 &188307030683198645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -647,6 +620,14 @@ PrefabInstance:
     - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_text
       value: "C\xE0i \u0111\u1EB7t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSize
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23.9
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_Pivot.x
@@ -678,7 +659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,6 +735,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1153656064473129896}
     m_Modifications:
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSize
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -784,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -864,6 +853,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "Tho\xE1t Game"
       objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSize
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -894,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -974,6 +971,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "Ch\u01A1i M\u1EDBi"
       objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSize
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1004,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1056,27 +1061,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5035986270008585153, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5035986270008585153, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5035986270008585153, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035986270008585153, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035986270008585153, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 424
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035986270008585153, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5239374323595914641, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_Material
@@ -1108,6 +1113,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "L\u1EADp Tr\xECnh Vi\xEAn"
       objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSize
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078000924303513264, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1138,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2274625264026674591, guid: edcb2e9eb48d75045a00a3722d1b619b, type: 3}
       propertyPath: m_LocalPosition.x
