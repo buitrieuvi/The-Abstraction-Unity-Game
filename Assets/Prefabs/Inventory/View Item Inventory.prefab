@@ -1073,9 +1073,6 @@ GameObject:
   - component: {fileID: 3409958186375720013}
   - component: {fileID: 6168113482928360180}
   - component: {fileID: 7267291695849095830}
-  - component: {fileID: 8104094676969195300}
-  - component: {fileID: 3817423053308678918}
-  - component: {fileID: 3542467861951042889}
   m_Layer: 5
   m_Name: View Item Inventory
   m_TagString: Untagged
@@ -1141,46 +1138,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8104094676969195300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7259555343745955599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1734c6b3507139049b1ab4d7e6aef62c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverEnter
-  time: 0.35
---- !u!114 &3817423053308678918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7259555343745955599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06cbd77361888d04f89db90ea41fa217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_HoverExit
-  time: 0.35
---- !u!114 &3542467861951042889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7259555343745955599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657b47b53efea454f9b76a9b484653e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ani_List_Scale
-  time: 0.35
-  Space: 0.02
 --- !u!1 &7836076296558653220
 GameObject:
   m_ObjectHideFlags: 0

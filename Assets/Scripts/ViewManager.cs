@@ -1,10 +1,10 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
 using System.Linq;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using Cysharp.Threading.Tasks;
 
 
 public sealed class ViewManager : MonoBehaviour
@@ -205,6 +205,4 @@ public sealed class ViewManager : MonoBehaviour
     {
         return dataManager.GetView<T>();
     }
-
-
 }

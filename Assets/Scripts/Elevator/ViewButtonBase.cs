@@ -45,8 +45,5 @@ public class ViewButtonBase : ViewBase
         return transform.GetSiblingIndex();
     }
 
-    public void Anim_MenuSlot() 
-    {
-        tfViewChild.DOMoveX(250f, 0.35f).From(-500).SetEase(Ease.OutBack).SetDelay(tfView.transform.GetSiblingIndex() * 0.02f);
-    }
+
 }

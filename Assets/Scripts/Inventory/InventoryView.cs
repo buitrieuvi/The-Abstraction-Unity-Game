@@ -8,14 +8,15 @@ using Zenject;
 
 public class InventoryView : ViewBase
 {
-    [SerializeField] private float animationDuration = 0.5f;
-
     [Inject] private DiContainer container;
 
 
+    [SerializeField] float time;
+    [SerializeField] float spaceTime;
+
     [SerializeField] private Transform itemContainer;
     [SerializeField] private Button closeButton;
-    [SerializeField] private Image avatar;
+    [SerializeField] private ViewBase avatar;
 
     private List<InventoryCategoryView> inventoryCategoryViews =
         new List<InventoryCategoryView>();
@@ -29,6 +30,10 @@ public class InventoryView : ViewBase
     public override void Awake()
     {
         base.Awake();
+    }
+
+    public override void Open(ControllerBase ctrl)
+    {
 
         if (itemContainer != null)
         {
@@ -42,11 +47,22 @@ public class InventoryView : ViewBase
                 InventoryCategoryViews
                     .GetComponentsInChildren<InventoryCategoryView>(true)
                     .ToList();
-        }
-    }
 
-    public override void Open(ControllerBase ctrl)
-    {
+            foreach (var cat in inventoryCategoryViews)
+            {
+                cat.OnEnter += (e) => cat.Dotween_Ani_HoverEnter();
+                cat.OnExit += (e) => cat.Dotween_Ani_HoverExit();
+            }
+        }
+
+        foreach (var item in inventoryItems)
+        {
+            item.OnEnter += (e) => item.Dotween_Ani_HoverEnter();
+            item.OnExit += (e) => item.Dotween_Ani_HoverExit();
+
+            item.Dotween_Ani_ScaleX(time, spaceTime);
+        }
+
         base.Open(ctrl);
 
         if (ctrl is not InventoryController inventory)
@@ -70,7 +86,7 @@ public class InventoryView : ViewBase
         }
 
         SelectFirstVisibleItem();
-        //AnimateItems();
+
 
         SetBtnCat(inventory, 0, "");
         SetBtnCat(inventory, 1, "f");
@@ -113,13 +129,9 @@ public class InventoryView : ViewBase
 
         if (avatar != null && selectedItem.AvatarImage != null)
         {
-            avatar.sprite = selectedItem.AvatarImage.sprite;
+            avatar.GetComponent<Image>().sprite = selectedItem.AvatarImage.sprite;
+            avatar.Dotween_Ani_ScaleX(time, spaceTime);
 
-            avatar.transform
-                .DOScale(1f, 0.2f)
-                .SetEase(Ease.OutBack)
-                .From(0f)
-                .SetUpdate(true);
         }
     }
 
@@ -144,7 +156,6 @@ public class InventoryView : ViewBase
                 : dataManager.Categories.FirstOrDefault(
                     x => x.CategoryName == tag);
 
-            // Không lọc nếu tên danh mục không hợp lệ.
             if (!string.IsNullOrEmpty(tag) && category == null)
             {
                 Debug.LogWarning(
@@ -179,8 +190,12 @@ public class InventoryView : ViewBase
 
                 itemCtrl.IsShow = show;
 
-                if (show)
+                if (show) 
+                {
                     itemView.Open(inventory.GetByIndex(i));
+                    itemView.Dotween_Ani_ScaleX(time, spaceTime);
+                }
+
                 else
                     itemView.Close();
             }
@@ -196,6 +211,8 @@ public class InventoryView : ViewBase
             inventoryCategoryView = categoryView;
             inventoryCategoryView.OnOutline(true);
         };
+
+
     }
 
     private void SelectFirstVisibleItem()
@@ -209,7 +226,7 @@ public class InventoryView : ViewBase
         }
         else if (avatar != null)
         {
-            avatar.sprite = null;
+            avatar.GetComponent<Image>().sprite = null;
         }
     }
 }

@@ -62,10 +62,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b5697804d4e99950b417775128048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ViewInventory
-  animationDuration: 0.0035
+  time: 0.35
+  spaceTime: 0.0035
   itemContainer: {fileID: 1480669203695769964}
   closeButton: {fileID: 3560425477681838971}
-  avatar: {fileID: 5183460523382514076}
+  avatar: {fileID: 2296254841642648992}
   InventoryCategoryViews: {fileID: 4438720806324984673}
 --- !u!114 &5495792637602422767
 MonoBehaviour:
@@ -581,6 +582,7 @@ GameObject:
   - component: {fileID: 8410964170050608421}
   - component: {fileID: 8054106416521001957}
   - component: {fileID: 5183460523382514076}
+  - component: {fileID: 2296254841642648992}
   m_Layer: 5
   m_Name: Avartar
   m_TagString: Untagged
@@ -659,6 +661,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2296254841642648992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2262535337368365083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5216fd9d62df2544dbd0701de7a3d770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ViewButtonBase
 --- !u!1 &4409030316310662761
 GameObject:
   m_ObjectHideFlags: 0
@@ -7378,7 +7392,9 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3841799928551537721, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
+    - {fileID: 6583012000979772242, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8008,7 +8024,9 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3841799928551537721, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
+    - {fileID: 6583012000979772242, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8376,7 +8394,9 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3841799928551537721, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
+    - {fileID: 6583012000979772242, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
