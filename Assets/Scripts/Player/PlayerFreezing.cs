@@ -11,7 +11,7 @@ public class PlayerFreezing : PlayerMovementState
     public override void Enter()
     {
         playerState.player.InputManager.InputActions.Player.Move.Disable();
-        playerState.player.InputManager.SetCursorVisible(false);
+        playerState.player.InputManager.SetCursorVisible(true);
         playerState.player.CameraManager.SetInputIsActiveCameras("cam3", false);
         base.Enter();
     }
@@ -19,7 +19,7 @@ public class PlayerFreezing : PlayerMovementState
     public override void Exit()
     {
         playerState.player.InputManager.InputActions.Player.Move.Enable();
-        playerState.player.InputManager.SetCursorVisible(true);
+        playerState.player.InputManager.SetCursorVisible(false);
         playerState.player.CameraManager.SetInputIsActiveCameras("cam3", true);
         base.Exit();
     }

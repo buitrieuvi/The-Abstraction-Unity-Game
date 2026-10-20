@@ -61,6 +61,7 @@ public sealed class PlayerController : MonoBehaviour
         Movement.ChangeState(Movement.idling);
         Animator = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody>();
+
         InputManager.SetCursorVisible(false);
 
 
@@ -74,8 +75,6 @@ public sealed class PlayerController : MonoBehaviour
             {
                 InputManager.InputActions.Player.Inventory.performed -= OnInventoryPerformed;
             }
-
-            //InputManager.IsInventoryOpen = false;
         });
 
         destroyCancellationToken.Register(() =>
@@ -85,40 +84,35 @@ public sealed class PlayerController : MonoBehaviour
             {
                 InputManager.InputActions.Player.Esc.performed -= OnMenuPerformed;
             }
-
-            //InputManager.IsMenuOpen = false;
         });
     }
 
+    
 
     private async void OnInventoryPerformed(InputAction.CallbackContext context)
     {
-        //if (!InputManager.IsInventoryOpen)
-        //{
-        //    Movement.ChangeState(Movement.freezing);
-        //}
-        //else
-        //{
-        //    Movement.ChangeState(Movement.idling);
-        //}
-
-        //InputManager.IsInventoryOpen = true;
-        await ViewManager.ShowView<InventoryView>(DataManager.PlayerInventory);
+        var v = await ViewManager.ShowView<InventoryView>(DataManager.PlayerInventory);
+        if (v != null)
+        {
+            Movement.ChangeState(Movement.freezing);
+        }
+        else 
+        {
+            Movement.ChangeState(Movement.idling);
+        }
     }
 
     private async void OnMenuPerformed(InputAction.CallbackContext context)
     {
-        //if (!InputManager.IsMenuOpen)
-        //{
-        //    Movement.ChangeState(Movement.freezing);
-        //}
-        //else
-        //{
-        //    Movement.ChangeState(Movement.idling);
-        //}
-
-        //InputManager.IsMenuOpen = true;
-        await ViewManager.ShowView<MenuView>(DataManager.PlayerInventory);
+        var v = await ViewManager.ShowView<MenuView>(DataManager.PlayerInventory);
+        if (v != null)
+        {
+            Movement.ChangeState(Movement.freezing);
+        }
+        else
+        {
+            Movement.ChangeState(Movement.idling);
+        }
     }
 
     private void Start()
