@@ -21,11 +21,10 @@ public sealed class ViewManager : MonoBehaviour
 
     public bool IsTransitioning { get; private set; }
 
-    private ViewBase viewBase;
-
-    public ViewBase ViewBase => viewBase;
-
+    private ViewBase viewBaseCurr;
     private Stack<ViewBase> stack = new();
+
+    bool isClose = false;
 
     public void Awake()
     {
@@ -35,22 +34,34 @@ public sealed class ViewManager : MonoBehaviour
     public async UniTask<ViewBase> ShowView<T>(ControllerBase ctrl) where T : ViewBase
     {
         if (IsTransitioning) return null;
+
         if (darkPanel != null)
             darkPanel.DOKill();
 
-        bool closeCurrentView = viewBase != null
-            && viewBase.GetType() == typeof(T);
-
-        T prefab = closeCurrentView
-            ? null
-            : dataManager.GetView<T>();
-
-        if (!closeCurrentView && prefab == null)
+        if (viewBaseCurr != null)
         {
-            Debug.LogWarning(
-                $"View prefab {typeof(T).Name} is not loaded.", this);
-            return null;
+            if (viewBaseCurr.GetType() == typeof(T))
+            {
+                isClose = true;
+            }
+            else 
+            {
+                if (typeof(MenuView).IsAssignableFrom(typeof(T)))
+                {
+                    isClose = true;
+                }
+                else 
+                {
+                    return null;
+                }
+            }
         }
+        else 
+        {
+            isClose = false;
+        }
+
+
 
         IsTransitioning = true;
 
@@ -64,36 +75,33 @@ public sealed class ViewManager : MonoBehaviour
                 .From(0)
                 .AsyncWaitForCompletion();
 
-            if (viewBase != null)
+            if (isClose)
             {
-                viewBase.Close();
+                viewBaseCurr.Close();
                 stack.Pop();
-                Destroy(viewBase.gameObject);
-                viewBase = null;
+                Destroy(viewBaseCurr.gameObject);
+                viewBaseCurr = null;
+                isClose = false;
             }
-
-            if (!closeCurrentView)
+            else 
             {
-                T view = container.InstantiatePrefabForComponent<T>(
-                    prefab.gameObject, viewContainer);
+                T prefab = dataManager.GetView<T>();
+
+                T view = container.InstantiatePrefabForComponent<T>(prefab.gameObject, viewContainer);
 
                 view.Open(ctrl);
-                viewBase = view;
-                stack.Push(viewBase);
+                viewBaseCurr = view;
+                stack.Push(viewBaseCurr);
             }
-
-            return viewBase;
+            return viewBaseCurr;
         }
         catch (Exception exception)
         {
             Debug.LogException(exception, this);
-            return viewBase;
+            return viewBaseCurr;
         }
         finally
         {
-            inputManager.IsInventoryOpen = viewBase is InventoryView;
-            inputManager.SetCursorVisible(viewBase != null);
-
             if (darkPanel != null)
             {
                 await darkPanel
@@ -106,63 +114,4 @@ public sealed class ViewManager : MonoBehaviour
             IsTransitioning = false;
         }
     }
-
-    //public async UniTask<ViewBase> ShowView<T>(ControllerBase ctrl)
-    //where T : ViewBase
-    //{
-    //    if (IsTransitioning)
-    //        return null;
-
-    //    if (stack.Count == 0)
-    //    {
-    //        IsTransitioning = true;
-    //        darkPanel.gameObject.SetActive(true);
-    //        await darkPanel
-    //            .DOFade(1, transitionDuration)
-    //            .From(0)
-    //            .AsyncWaitForCompletion();
-
-    //        T prefab = dataManager.GetView<T>();
-    //        T view = container.InstantiatePrefabForComponent<T>(
-    //            prefab.gameObject, viewContainer);
-    //        view.Open(ctrl);
-    //        viewBase = view;
-    //        stack.Push(viewBase);
-
-    //        await darkPanel
-    //        .DOFade(0, transitionDuration)
-    //        .AsyncWaitForCompletion();
-    //        darkPanel.gameObject.SetActive(false);
-    //        IsTransitioning = false;
-
-
-    //    }
-    //    else 
-    //    {
-    //        if (typeof(MenuView).IsAssignableFrom(typeof(T)) || typeof(T) == viewBase.GetType()) 
-    //        {
-
-    //            IsTransitioning = true;
-    //            darkPanel.gameObject.SetActive(true);
-    //            await darkPanel
-    //            .DOFade(1, transitionDuration)
-    //            .From(0)
-    //            .AsyncWaitForCompletion();
-
-    //            stack.Pop();
-    //            viewBase.Close();
-    //            Destroy(viewBase.gameObject);
-    //            viewBase = null;
-
-    //            await darkPanel
-    //            .DOFade(0, transitionDuration)
-    //            .From(1)
-    //            .AsyncWaitForCompletion();
-    //            darkPanel.gameObject.SetActive(false);
-    //            IsTransitioning = false;
-    //        }
-    //    }
-
-    //    return viewBase;
-    //}
 }
