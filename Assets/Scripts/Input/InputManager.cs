@@ -4,8 +4,8 @@ using Zenject;
 
 public sealed class InputManager : IInitializable, IDisposable
 {
-    public bool IsInventoryOpen { get; set; }
-    public bool IsMenuOpen { get; set; }
+    //public bool IsInventoryOpen { get; set; }
+    //public bool IsMenuOpen { get; set; }
 
     public InputSystem_Actions InputActions { get; private set; } = new InputSystem_Actions();
 

@@ -193,7 +193,7 @@ public sealed class ThirdPersonCameraController : MonoBehaviour
 
     private void CaptureCursor()
     {
-        if (player != null && player.InputManager != null && player.InputManager.IsInventoryOpen)
+        if (player != null && player.InputManager != null)
         {
             return;
         }
