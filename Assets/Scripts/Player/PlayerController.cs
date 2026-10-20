@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -53,6 +54,12 @@ public sealed class PlayerController : MonoBehaviour
     private static readonly int AnimationSpeedParameter =
         UnityEngine.Animator.StringToHash("speed");
 
+    private Transform heldCubeTransform = null; // Lưu giữ đối tượng Cube đang cầm
+    private Rigidbody heldCubeRb = null;
+
+    [Header("Cài đặt xoay khi cầm")]
+    public float rotationSpeed = 50f; // Tốc độ xoay của Cube (độ/giây)
+
     private void Awake()
     {
         CharCtrl = GetComponent<CharacterController>();
@@ -63,6 +70,32 @@ public sealed class PlayerController : MonoBehaviour
         Rb = GetComponent<Rigidbody>();
 
         InputManager.SetCursorVisible(false);
+
+        InputManager.InputActions.Player.Attack.performed += (e) =>
+        {
+            // THƯỜNG TRƯỜNG HỢP 1: ĐANG CẦM CUBE -> THÌ NÉM ĐI
+            if (heldCubeTransform != null)
+            {
+                ThrowCube();
+                return;
+            }
+
+            // TRƯỜNG HỢP 2: CHƯA CẦM GÌ -> THÌ BẮN RAYCAST ĐỂ NHẶT
+            Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Transform objectHit = hit.transform;
+                Cube cb = objectHit.GetComponent<Cube>();
+
+                if (cb != null)
+                {
+                    PickupCube(cb);
+                }
+            }
+        };
 
 
         InputManager.InputActions.Player.Inventory.performed += OnInventoryPerformed;
@@ -146,6 +179,15 @@ public sealed class PlayerController : MonoBehaviour
     {
         Movement.HandleInput();
         Movement.Update();
+
+
+        // Nếu đang cầm Cube, liên tục xoay nó quanh trục Y (hoặc trục tùy ý) theo thời gian thực
+        if (heldCubeTransform != null)
+        {
+            // Xoay theo không gian cục bộ (Local) của Cube hoặc Camera
+            heldCubeTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.Self);
+            heldCubeTransform.Rotate(Vector3.left * rotationSpeed * Time.deltaTime, Space.Self);
+        }
     }
 
     private void FixedUpdate()
@@ -189,5 +231,51 @@ public sealed class PlayerController : MonoBehaviour
     private void HandleSprint(InputAction.CallbackContext context)
     {
         IsPressRunning = IsRunningMode || context.ReadValueAsButton();
+    }
+
+    void PickupCube(Cube cb)
+    {
+
+        heldCubeTransform = cb.transform;
+        heldCubeRb = cb.Rb;
+
+        // 1. Tắt Rigidbody để vật thể không bị rơi
+        if (heldCubeRb != null)
+        {
+            heldCubeRb.isKinematic = true;
+            heldCubeRb.useGravity = false;
+        }
+
+        // 2. Gắn làm con của Camera để nó xoay theo hướng nhìn của người chơi
+        heldCubeTransform.SetParent(Camera.main.transform);
+
+        // 3. Đặt vị trí ở trước mặt
+        heldCubeTransform.localPosition = new Vector3(0f, 0f, 2f);
+        heldCubeTransform.localRotation = Quaternion.identity;
+
+        heldCubeRb.transform.DOScale(0.1f, 0);
+    }
+
+    void ThrowCube()
+    {
+        heldCubeRb.transform.DOScale(0.5f, 0);
+
+        // 1. Tách khỏi Camera (hết làm con)
+        heldCubeTransform.SetParent(null);
+
+        // 2. Bật lại Rigidbody và trọng lực
+        if (heldCubeRb != null)
+        {
+            heldCubeRb.isKinematic = false;
+            heldCubeRb.useGravity = true;
+
+            // 3. Dùng lực đẩy (AddForce) hoặc vận tốc (velocity) để ném cube bay về phía camera đang nhìn
+            float throwForce = 15f; // Bạn có thể chỉnh độ mạnh của lực ném tại đây
+            heldCubeRb.AddForce(Camera.main.transform.forward * throwForce, ForceMode.Impulse);
+        }
+
+        // Xóa trạng thái đang cầm
+        heldCubeTransform = null;
+        heldCubeRb = null;
     }
 }

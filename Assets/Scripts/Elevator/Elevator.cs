@@ -9,9 +9,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder.Shapes;
 using Zenject;
 
-
-
-
 public class Elevator : EventTrigger
 {
     [Inject] public ViewManager ViewManager;
@@ -21,7 +18,6 @@ public class Elevator : EventTrigger
     [SerializeField] List<BoxCollider> doors;
 
     public bool isIn;
-
 
 
     public void Awake()
