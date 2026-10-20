@@ -21,7 +21,6 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     
     public UnityAction<ViewBase> OnEnter;
     public UnityAction<ViewBase> OnExit;
-
     public UnityAction<ViewBase> OnClick;
 
     public virtual void Awake()
@@ -93,6 +92,6 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public void Dotween_Ani_MoveX(float time, float sp, float s, float e)
     {
         
-        tfView.DOLocalMoveX(e, time).From(s).SetEase(Ease.InSine).SetDelay(tfView.transform.GetSiblingIndex() * sp);
+        tfViewChild.DOLocalMoveX(e, time).From(s).SetEase(Ease.InSine).SetDelay(tfView.transform.GetSiblingIndex() * sp);
     }
 }

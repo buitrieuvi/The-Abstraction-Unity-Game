@@ -33,7 +33,7 @@ public class MenuView : ViewBase
         slots = tfMenu.GetComponentsInChildren<ViewButtonBase>().ToList();
         foreach (var item in slots) 
         {
-            item.transform.DOLocalMoveX(-500, 0);
+            item.transform.DOLocalMoveX(-1000, 0);
         }
 
         foreach (var item in slots)
@@ -48,7 +48,7 @@ public class MenuView : ViewBase
                 item.Dotween_Ani_HoverExit();
             };
 
-            item.Dotween_Ani_MoveX(0.45f, 0.035f, -500, 120);
+            item.Dotween_Ani_MoveX(0.45f, 0.035f, -1000, 138f);
         }
     }
 
