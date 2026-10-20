@@ -12,7 +12,7 @@ public class InsCube : MonoBehaviour
         {
             Instantiate(Prefab, transform);
 
-            await UniTask.WaitForSeconds(0.34f);
+            await UniTask.WaitForSeconds(0.04f);
         }
     }
 }
