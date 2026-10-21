@@ -3786,8 +3786,9 @@ GameObject:
   m_Component:
   - component: {fileID: 585820953}
   - component: {fileID: 585820954}
+  - component: {fileID: 585820955}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3821,6 +3822,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsCube
   Prefab: {fileID: 1278983174505265732, guid: bc80614c3caf27d48961a9b779b44d7f, type: 3}
+--- !u!114 &585820955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585820952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5ce0260bee76b4eacb716c05025c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CubePickThrow
 --- !u!1 &698729036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5662,7 +5675,7 @@ Light:
   serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95, b: 0.85, a: 1}
-  m_Intensity: 1.2
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
