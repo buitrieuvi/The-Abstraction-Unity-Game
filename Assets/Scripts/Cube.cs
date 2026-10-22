@@ -1,17 +1,18 @@
-
 using DG.Tweening;
 using UnityEngine;
 
 public class Cube : EventTrigger
 {
     public Rigidbody Rb;
-
+    private Renderer cubeRenderer; // Fixed: Used to change material colors properly
     private Tween tween;
 
     private void Start()
     {
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
+
+        cubeRenderer = GetComponent<Renderer>();
     }
 
     public void PickupCube()
@@ -23,13 +24,12 @@ public class Cube : EventTrigger
 
         Rb.isKinematic = true;
         Rb.useGravity = false;
-        Rb.linearVelocity = Vector3.zero;
+        Rb.linearVelocity = Vector3.zero;     // Use Rb.velocity if you are on Unity 2022 or older
         Rb.angularVelocity = Vector3.zero;
 
         transform.SetParent(Camera.main.transform, false);
         transform.localPosition = new Vector3(0f, 0f, 2f);
         transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector3.one * 0.1f;
 
         Ani_Cube(true);
     }
@@ -42,7 +42,6 @@ public class Cube : EventTrigger
         Ani_Cube(false);
 
         transform.SetParent(null, true);
-        transform.localScale = Vector3.one * 0.5f;
 
         Rb.isKinematic = false;
         Rb.useGravity = true;
@@ -75,5 +74,26 @@ public class Cube : EventTrigger
     private void OnDestroy()
     {
         tween?.Kill();
+    }
+
+    public void Rand()
+    {
+        // Fixed: Use Random.Range instead of Random.RandomRange
+        float x = Random.Range(0.2f, .7f);
+        float y = Random.Range(0.2f, .7f);
+        float z = Random.Range(0.2f, .7f);
+
+        transform.localScale = new Vector3(x, y, z);
+
+        // Option A: Use Random.ColorHSV() for easy, vibrant random colors
+        if (cubeRenderer != null)
+        {
+            cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
+        }
+
+        /* 
+         * Option B: If you want specific numeric ranges normalized between 0 and 1:
+         * cubeRenderer.material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+         */
     }
 }
