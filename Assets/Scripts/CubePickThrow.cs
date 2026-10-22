@@ -12,7 +12,6 @@ public class CubePickThrow : MonoBehaviour
     {
         input.InputActions.Player.Attack.performed += (e) =>
         {
-            // THƯỜNG TRƯỜNG HỢP 1: ĐANG CẦM CUBE -> THÌ NÉM ĐI
             if (cube != null)
             {
                 cube.ThrowCube();
@@ -21,7 +20,6 @@ public class CubePickThrow : MonoBehaviour
                 return;
             }
 
-            // TRƯỜNG HỢP 2: CHƯA CẦM GÌ -> THÌ BẮN RAYCAST ĐỂ NHẶT
             Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
             Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
             RaycastHit hit;

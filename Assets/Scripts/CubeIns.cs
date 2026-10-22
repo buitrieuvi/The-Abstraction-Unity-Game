@@ -14,7 +14,8 @@ public class CubeIns : MonoBehaviour
         Observable.Interval(TimeSpan.FromSeconds(0.35f))
         .Subscribe(_ =>
         {
-            Instantiate(Prefab, transform);
+            var cube = Instantiate(Prefab, transform);
+            cube.GetComponent<Cube>().Rand();
         })
         .AddTo(this);
 
