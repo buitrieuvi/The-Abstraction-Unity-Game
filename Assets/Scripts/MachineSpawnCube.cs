@@ -4,7 +4,7 @@ using R3;
 using System;
 using UnityEngine;
 
-public class CubeIns : MonoBehaviour
+public class MachineSpawnCube : MonoBehaviour
 {
     public GameObject Prefab;
 

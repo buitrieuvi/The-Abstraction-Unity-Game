@@ -1,3 +1,4 @@
+using DG.Tweening;
 using EasyTextEffects;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,7 @@ public abstract class EventTrigger : MonoBehaviour,
 
     [Inject] protected InputManager inputManager;
     [Inject] protected ViewManager viewManager;
+    [Inject] protected DataManager dataManager;
 
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] TextEffect textEf;
@@ -51,5 +53,17 @@ public abstract class EventTrigger : MonoBehaviour,
     public virtual void OnOnInteracted() 
     {
         OnInteract?.Invoke();
+    }
+
+    public void Ani_UpDown() 
+    {
+        //transform.DOMove(transform.position + new Vector3(0, 1, 0), 2).Rewind();
+    }
+    public void Ani_ScaleZero()
+    {
+         transform.DOScale(new Vector3(0,0,0), 0.95f).OnComplete(() =>
+         {
+             Destroy(gameObject);
+         }); ;
     }
 }
