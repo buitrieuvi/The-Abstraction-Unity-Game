@@ -18,7 +18,6 @@ public class MachineSpawnCube : MonoBehaviour
         .Subscribe(_ =>
         {
             var cube = Instantiate(Prefab, transform);
-            cube.GetComponent<Cube>().Rand();
         })
         .AddTo(this);
 
