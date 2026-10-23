@@ -8,6 +8,8 @@ public class CubePickThrow : MonoBehaviour
 
     [Inject] private InputManager input;
 
+
+
     public void Start()
     {
         input.InputActions.Player.Attack.performed += (e) =>

@@ -78,22 +78,15 @@ public class Cube : EventTrigger
 
     public void Rand()
     {
-        // Fixed: Use Random.Range instead of Random.RandomRange
         float x = Random.Range(0.2f, .7f);
         float y = Random.Range(0.2f, .7f);
         float z = Random.Range(0.2f, .7f);
 
         transform.localScale = new Vector3(x, y, z);
 
-        // Option A: Use Random.ColorHSV() for easy, vibrant random colors
         if (cubeRenderer != null)
         {
             cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
         }
-
-        /* 
-         * Option B: If you want specific numeric ranges normalized between 0 and 1:
-         * cubeRenderer.material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-         */
     }
 }
