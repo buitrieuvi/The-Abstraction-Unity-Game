@@ -9,9 +9,12 @@ public class CubeIns : MonoBehaviour
     public GameObject Prefab;
 
     // Dùng Start thay vì Update
+
+    public float time = 5;
+
     async void Start()
     {
-        Observable.Interval(TimeSpan.FromSeconds(0.35f))
+        Observable.Interval(TimeSpan.FromSeconds(time))
         .Subscribe(_ =>
         {
             var cube = Instantiate(Prefab, transform);
