@@ -7,6 +7,7 @@ TagManager:
   - ship
   - asteroid
   - cam3
+  - Cube
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Interac
-  - 
+  - Cube
   - 
   - 
   - 
