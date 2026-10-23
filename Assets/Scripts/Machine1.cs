@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Machine1 : EventTrigger
@@ -15,7 +16,13 @@ public class Machine1 : EventTrigger
 
         if (c != null) 
         {
-            Destroy(c.gameObject);
+            float v = c.GetValue();
+
+            c.OnIdle();
+            c.Ani_ScaleZero();
+
+            dataManager.Money += v;
+            //Destroy(c.gameObject);
         }
     }
 
@@ -27,7 +34,7 @@ public class Machine1 : EventTrigger
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Ani_UpDown();
     }
 
     // Update is called once per frame

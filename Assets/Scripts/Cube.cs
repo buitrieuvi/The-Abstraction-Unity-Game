@@ -78,15 +78,26 @@ public class Cube : EventTrigger
 
     public void Rand()
     {
-        float x = Random.Range(0.2f, .7f);
-        float y = Random.Range(0.2f, .7f);
-        float z = Random.Range(0.2f, .7f);
+        float x = Random.Range(0.1f, .3f);
+        float y = Random.Range(0.1f, .3f);
+        float z = Random.Range(0.1f, .3f);
 
         transform.localScale = new Vector3(x, y, z);
 
-        if (cubeRenderer != null)
-        {
-            cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
-        }
+        //if (cubeRenderer != null)
+        //{
+        //    cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
+        //}
+    }
+
+    public float GetValue() 
+    {
+        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) /3;
+    }
+
+    public void OnIdle() 
+    {
+        Rb.isKinematic = transform;
+        Rb.useGravity = false;
     }
 }

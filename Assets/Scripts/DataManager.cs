@@ -9,6 +9,8 @@ public sealed class DataManager : IInitializable, IDisposable
 {
     public InventoryController PlayerInventory = new();
 
+    public float Money = 0;
+
     private readonly List<ViewBase> views = new();
     private readonly List<RankSO> ranks = new();
     private readonly List<ItemSO> items = new();
