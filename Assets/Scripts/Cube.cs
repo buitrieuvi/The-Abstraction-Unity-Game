@@ -13,6 +13,18 @@ public class Cube : EventTrigger
             Rb = GetComponent<Rigidbody>();
 
         cubeRenderer = GetComponent<Renderer>();
+
+
+        float x = Random.Range(0.1f, .3f);
+        float y = Random.Range(0.1f, .3f);
+        float z = Random.Range(0.1f, .3f);
+
+        transform.localScale = new Vector3(x, y, z);
+
+        //if (cubeRenderer != null)
+        //{
+        //    cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
+        //}
     }
 
     public void PickupCube()
@@ -76,19 +88,6 @@ public class Cube : EventTrigger
         tween?.Kill();
     }
 
-    public void Rand()
-    {
-        float x = Random.Range(0.1f, .3f);
-        float y = Random.Range(0.1f, .3f);
-        float z = Random.Range(0.1f, .3f);
-
-        transform.localScale = new Vector3(x, y, z);
-
-        //if (cubeRenderer != null)
-        //{
-        //    cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
-        //}
-    }
 
     public float GetValue() 
     {

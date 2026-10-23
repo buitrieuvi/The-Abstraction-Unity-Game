@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6657876115274899854}
   - component: {fileID: 4643324164726540454}
   - component: {fileID: 3590128826344670651}
-  m_Layer: 0
+  - component: {fileID: 4776868317810376645}
+  m_Layer: 7
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,3 +157,19 @@ MonoBehaviour:
   text: {fileID: 0}
   textEf: {fileID: 0}
   Rb: {fileID: 0}
+--- !u!114 &4776868317810376645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278983174505265732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc0c30ef7bf9ec4e8e22ebc3fde3d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RingCubeItem
+  orbitAngle: 0
+  radius: 0
+  ellipseRatio: 0
+  rotationSpeed: 0
