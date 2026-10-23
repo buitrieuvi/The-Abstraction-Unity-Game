@@ -35,7 +35,7 @@ public abstract class EventTrigger : MonoBehaviour,
     {
         TriggerEnter();
 
-        SetText();
+        //SetText();
     }
 
     public virtual void OnTriggerExit(Collider other)
