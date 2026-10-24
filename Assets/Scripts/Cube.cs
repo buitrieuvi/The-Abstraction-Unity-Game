@@ -15,9 +15,9 @@ public class Cube : EventTrigger
         cubeRenderer = GetComponent<Renderer>();
 
 
-        float x = Random.Range(0.1f, .3f);
-        float y = Random.Range(0.1f, .3f);
-        float z = Random.Range(0.1f, .3f);
+        float x = Random.Range(0.01f, .1f);
+        float y = Random.Range(0.01f, .1f);
+        float z = Random.Range(0.01f, .1f);
 
         transform.localScale = new Vector3(x, y, z);
 
