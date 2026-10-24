@@ -16,7 +16,6 @@ public sealed class ViewManager : MonoBehaviour
     [SerializeField] private Image darkPanel;
     [SerializeField, Min(0.01f)] private float transitionDuration = 1.05f;
 
-    [SerializeField] TextMeshProUGUI txtMoney;
 
     [Inject] private InputManager inputManager { get; set; }
     [Inject] private DataManager dataManager { get; set; }
@@ -30,7 +29,7 @@ public sealed class ViewManager : MonoBehaviour
 
     bool isClose = false;
 
-    IDisposable itemSub;
+
 
     public void Awake()
     {
@@ -39,12 +38,7 @@ public sealed class ViewManager : MonoBehaviour
 
     public void Start()
     {
-        itemSub = Observable
-        .EveryValueChanged(dataManager, x => x.Money)
-        .Subscribe(_ =>
-        {
-            txtMoney.text = dataManager.Money.ToString();
-        });
+
     }
 
     public async UniTask<ViewBase> ShowView<T>(ControllerBase ctrl) where T : ViewBase

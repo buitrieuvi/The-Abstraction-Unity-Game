@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Machine1 : EventTrigger
 {
@@ -8,8 +9,13 @@ public class Machine1 : EventTrigger
         base.OnOnInteracted();
     }
 
+    bool isProsess;
+
     public override void OnTriggerEnter(Collider other)
     {
+        if (isProsess) return;
+        isProsess = true;
+
         base.OnTriggerEnter(other);
 
         Cube c = other.GetComponent<Cube>();
@@ -19,10 +25,17 @@ public class Machine1 : EventTrigger
             float v = c.GetValue();
 
             c.OnIdle();
-            c.Ani_ScaleZero();
 
             dataManager.Money += v;
-            //Destroy(c.gameObject);
+            dataManager.MoneyCube = v;
+            Debug.Log(dataManager.MoneyCube);
+
+            c.transform.DOScale(new Vector3(0, 0, 0), 0.95f).OnComplete(() =>
+            {
+                isProsess = false;
+                Destroy(c);
+            });
+
         }
     }
 
@@ -31,15 +44,9 @@ public class Machine1 : EventTrigger
         base.OnTriggerExit(other);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Ani_UpDown();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
