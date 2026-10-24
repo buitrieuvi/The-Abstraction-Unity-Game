@@ -61,9 +61,6 @@ public abstract class EventTrigger : MonoBehaviour,
     }
     public void Ani_ScaleZero()
     {
-         transform.DOScale(new Vector3(0,0,0), 0.95f).OnComplete(() =>
-         {
-             Destroy(gameObject);
-         }); ;
+
     }
 }

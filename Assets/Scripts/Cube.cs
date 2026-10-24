@@ -4,7 +4,6 @@ using UnityEngine;
 public class Cube : EventTrigger
 {
     public Rigidbody Rb;
-    private Renderer cubeRenderer; // Fixed: Used to change material colors properly
     private Tween tween;
 
     private void Start()
@@ -12,19 +11,11 @@ public class Cube : EventTrigger
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
-        cubeRenderer = GetComponent<Renderer>();
-
-
-        float x = Random.Range(0.01f, .1f);
-        float y = Random.Range(0.01f, .1f);
-        float z = Random.Range(0.01f, .1f);
+        float x = Random.Range(0.2f, .5f);
+        float y = Random.Range(0.2f, .5f);
+        float z = Random.Range(0.2f, .5f);
 
         transform.localScale = new Vector3(x, y, z);
-
-        //if (cubeRenderer != null)
-        //{
-        //    cubeRenderer.material.color = Random.ColorHSV(1, 2, 3, 4);
-        //}
     }
 
     public void PickupCube()
@@ -36,7 +27,7 @@ public class Cube : EventTrigger
 
         Rb.isKinematic = true;
         Rb.useGravity = false;
-        Rb.linearVelocity = Vector3.zero;     // Use Rb.velocity if you are on Unity 2022 or older
+        Rb.linearVelocity = Vector3.zero;
         Rb.angularVelocity = Vector3.zero;
 
         transform.SetParent(Camera.main.transform, false);
