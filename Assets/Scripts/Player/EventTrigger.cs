@@ -1,6 +1,7 @@
 using DG.Tweening;
 using EasyTextEffects;
 using TMPro;
+using Unity.Pipeline;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
@@ -15,12 +16,12 @@ public abstract class EventTrigger : MonoBehaviour,
 
     public UnityAction OnInteract;
 
+    public UnityAction OnPick;
+    public UnityAction OnThow;
+
     [Inject] protected InputManager inputManager;
     [Inject] protected ViewManager viewManager;
     [Inject] protected DataManager dataManager;
-
-    [SerializeField] TextMeshProUGUI text;
-    [SerializeField] TextEffect textEf;
 
     public void TriggerEnter()
     {
@@ -36,8 +37,6 @@ public abstract class EventTrigger : MonoBehaviour,
     public virtual void OnTriggerEnter(Collider other)
     {
         TriggerEnter();
-
-        //SetText();
     }
 
     public virtual void OnTriggerExit(Collider other)
@@ -45,22 +44,19 @@ public abstract class EventTrigger : MonoBehaviour,
         TriggerExit();
     }
 
-    public void SetText() 
-    {
-        textEf.Refresh();
-    }
 
-    public virtual void OnOnInteracted() 
+    public virtual void OnInteracted() 
     {
         OnInteract?.Invoke();
     }
 
-    public void Ani_UpDown() 
+    public virtual void OnPicked()
     {
-        //transform.DOMove(transform.position + new Vector3(0, 1, 0), 2).Rewind();
+        OnPick?.Invoke();
     }
-    public void Ani_ScaleZero()
-    {
 
+    public virtual void OnThrowed()
+    {
+        OnThow?.Invoke();
     }
 }

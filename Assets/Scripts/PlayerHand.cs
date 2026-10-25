@@ -2,23 +2,21 @@ using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-public class CubePickThrow : MonoBehaviour
+public class PlayerHand : MonoBehaviour
 {
-    private Cube cube = null;
+    public EventTrigger Handle;
 
     [Inject] private InputManager input;
-
 
 
     public void Start()
     {
         input.InputActions.Player.Attack.performed += (e) =>
         {
-            if (cube != null)
+            if (Handle != null)
             {
-                cube.ThrowCube();
-                cube = null;
-
+                Handle.OnThrowed();
+                Handle = null;
                 return;
             }
 
@@ -29,13 +27,15 @@ public class CubePickThrow : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                Cube cb = objectHit.GetComponent<Cube>();
-
-                if (cb != null)
+                EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
+                if (eventTrigger?.tag == "cube")
                 {
-                    cube = cb;
-                    cube.PickupCube();
+                    Handle = eventTrigger;
                 }
+
+                //if (eventTrigger == null) { return; }
+                eventTrigger?.OnPicked();
+                eventTrigger?.OnInteracted();
             }
         };
     }

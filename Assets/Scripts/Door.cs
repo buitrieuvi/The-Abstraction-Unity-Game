@@ -54,12 +54,12 @@ public class Door : EventTrigger
 
     public async void HandleInteract(InputAction.CallbackContext _)
     {
-        OnOnInteracted();
+        OnInteracted();
     }
 
-    public override void OnOnInteracted()
+    public override void OnInteracted()
     {
-        base.OnOnInteracted();
+        base.OnInteracted();
 
     }
 }

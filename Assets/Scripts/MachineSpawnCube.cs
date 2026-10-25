@@ -4,32 +4,41 @@ using R3;
 using System;
 using UnityEngine;
 
-public class MachineSpawnCube : MonoBehaviour
+public class MachineSpawnCube : EventTrigger
 {
     public GameObject Prefab;
+    public GameObject Gear;
 
-    // Dùng Start thay vì Update
+    public float time = 100f;
 
-    public float time = 5;
-
-    async void Start()
+    void Start()
     {
-        Observable.Interval(TimeSpan.FromSeconds(time))
-        .Subscribe(_ =>
-        {
-            var cube = Instantiate(Prefab, transform);
-        })
-        .AddTo(this);
+        //// 1. Start the infinite rotation
+        //Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
+        //    .SetEase(Ease.Linear)
+        //    .SetLoops(-1, LoopType.Restart);
 
-        //Observable.EveryUpdate()
-        //.ThrottleFirst(TimeSpan.FromSeconds(1))
-        //.Subscribe(_ =>
-        //{
-        //    Instantiate(Prefab, transform);
-        //})
-        //.AddTo(this);
-
+        //// 2. Use R3 to trigger the spawn precisely every 'time' seconds
+        //Observable.Interval(TimeSpan.FromSeconds(time))
+        //    .Subscribe(_ =>
+        //    {
+        //        if (Prefab != null)
+        //        {
+        //            Instantiate(Prefab, transform);
+        //        }
+        //    })
+        //    .AddTo(this);
     }
 
 
+
+    public override void OnInteracted()
+    {
+        base.OnInteracted();
+        Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
+        .SetEase(Ease.Linear).OnComplete(() =>
+        {
+            Instantiate(Prefab, transform);
+        });
+    }
 }

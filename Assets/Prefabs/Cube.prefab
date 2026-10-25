@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3590128826344670651}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0436b7a0d73497d4f8d3a9a644b9407d, type: 2}
+  - {fileID: 2100000, guid: 0ea9d525b2de04f438dbba072a7b5509, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,6 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3196f6ccf1688e64fac3bf1aa7857093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cube
-  text: {fileID: 0}
-  textEf: {fileID: 0}
   Rb: {fileID: 0}

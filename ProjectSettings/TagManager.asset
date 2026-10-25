@@ -7,7 +7,8 @@ TagManager:
   - ship
   - asteroid
   - cam3
-  - Cube
+  - gear
+  - cube
   layers:
   - Default
   - TransparentFX
