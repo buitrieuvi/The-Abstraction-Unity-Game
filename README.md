@@ -1,13 +1,26 @@
 # The Abstraction — Unity Game
 
-https://drive.google.com/drive/folders/1GEylE2CiYRXm7m9bP85lcC3NmrnQsI0n?usp=sharing
+# Bùi Triều Vĩ
+# Zalo và điện thoại: 0931512910
+# Gmail: buitrieuvi2019@gmail.com
+
+# Xem Video và hình ảnh của sản phẩm tại link Drive
+- https://drive.google.com/drive/folders/1GEylE2CiYRXm7m9bP85lcC3NmrnQsI0n?usp=sharing
+- Game đang trong quá trình phát triển trên Steam và Itch.io
 
 Nội dung bao gồm:
 - Công nghệ Unity, C# và Visual Studio.
 - Zenject, R3, DOTween, Input System, TextMeshPro và ProBuilder.
-- Chức năng nhân vật 3D, Inventory, Elevator và UI.
-- Kiến trúc State Machine, Model/Controller/View và Dependency Injection.
+- Chức năng nhân vật 3D, Inventory, Elevator, Machine, Money và UI.
+- Kiến trúc State Machine, MVVM và Dependency Injection.
 
+
+# Giai đoạn phát triển game 1
+- Machine 1 : tạo ra các cube có giá trị khác nhau
+- Machine 2 : hấp thụ các cube để tạo ra tiền
+- tiền : dùng để nâng cấp và tra đổi với game và người chơi khác
+
+# Hình ảnh Demo
 ![](./image.png)
 ![](./Screenshot(3).png)
 ![](./Screenshot(4).png)
