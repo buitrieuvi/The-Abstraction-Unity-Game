@@ -4,9 +4,9 @@ using UnityEngine.UIElements;
 
 public class Machine1 : EventTrigger
 {
-    public override void OnOnInteracted()
+    public override void OnInteracted()
     {
-        base.OnOnInteracted();
+        base.OnInteracted();
     }
 
     bool isProsess;
@@ -46,7 +46,7 @@ public class Machine1 : EventTrigger
 
     void Start()
     {
-        Ani_UpDown();
+
     }
 
 }

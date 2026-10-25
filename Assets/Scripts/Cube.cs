@@ -11,14 +11,19 @@ public class Cube : EventTrigger
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
-        float x = Random.Range(0.2f, .5f);
-        float y = Random.Range(0.2f, .5f);
-        float z = Random.Range(0.2f, .5f);
+        float x = Random.Range(0.1f, .3f);
+        float y = Random.Range(0.1f, .3f);
+        float z = Random.Range(0.1f, .3f);
 
         transform.localScale = new Vector3(x, y, z);
     }
 
-    public void PickupCube()
+    public override void OnInteracted()
+    {
+        base.OnInteracted();
+    }
+
+    public override void OnPicked()
     {
         if (Rb == null || Camera.main == null)
             return;
@@ -37,8 +42,11 @@ public class Cube : EventTrigger
         Ani_Cube(true);
     }
 
-    public void ThrowCube()
+    public override void OnThrowed()
     {
+        Debug.Log(11111);
+
+
         if (Rb == null || Camera.main == null)
             return;
 
@@ -78,13 +86,10 @@ public class Cube : EventTrigger
     {
         tween?.Kill();
     }
-
-
     public float GetValue() 
     {
         return (transform.localScale.x + transform.localScale.y + transform.localScale.z) /3;
     }
-
     public void OnIdle() 
     {
         Rb.isKinematic = transform;
