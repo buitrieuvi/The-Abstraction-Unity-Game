@@ -8,37 +8,63 @@ public class MachineSpawnCube : EventTrigger
 {
     public GameObject Prefab;
     public GameObject Gear;
-
     public float time = 100f;
+    public bool autoSpawm = false;
 
-    void Start()
-    {
-        //// 1. Start the infinite rotation
-        //Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
-        //    .SetEase(Ease.Linear)
-        //    .SetLoops(-1, LoopType.Restart);
+    public GameObject View;
 
-        //// 2. Use R3 to trigger the spawn precisely every 'time' seconds
-        //Observable.Interval(TimeSpan.FromSeconds(time))
-        //    .Subscribe(_ =>
-        //    {
-        //        if (Prefab != null)
-        //        {
-        //            Instantiate(Prefab, transform);
-        //        }
-        //    })
-        //    .AddTo(this);
-    }
-
-
+    private Tween gear;
 
     public override void OnInteracted()
     {
         base.OnInteracted();
-        Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
-        .SetEase(Ease.Linear).OnComplete(() =>
+
+        View.gameObject.SetActive(true);
+    }
+
+    public override void OnPicked()
+    {
+        base.OnPicked();
+
+
+        if (gear == null)
         {
-            Instantiate(Prefab, transform);
-        });
+            if (autoSpawm)
+            {
+                // Continuous spinning with spawning on every loop completion
+                gear = Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
+                    .SetEase(Ease.Linear)
+                    .SetLoops(-1, LoopType.Restart)
+                    .SetAutoKill(false)
+                    .OnStepComplete(() =>
+                    {
+                        if (Prefab != null) Instantiate(Prefab, transform);
+                    });
+            }
+            else
+            {
+                // Single rotation spawning once on complete
+                gear = Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
+                    .SetEase(Ease.Linear)
+                    .SetAutoKill(false)
+                    .OnComplete(() =>
+                    {
+                        if (Prefab != null) Instantiate(Prefab, transform);
+                    });
+            }
+
+            gear.Play();
+        }
+        else
+        {
+            if (gear.IsPlaying()) { return; }
+            gear.Restart();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Always good practice to kill DOTween tweens when the object is destroyed
+        gear?.Kill();
     }
 }

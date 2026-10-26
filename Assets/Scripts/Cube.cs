@@ -11,11 +11,13 @@ public class Cube : EventTrigger
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
-        float x = Random.Range(0.1f, .3f);
-        float y = Random.Range(0.1f, .3f);
-        float z = Random.Range(0.1f, .3f);
+        float x = Random.Range(0.05f, .2f);
+        float y = Random.Range(0.05f, .2f);
+        float z = Random.Range(0.05f, .2f);
 
         transform.localScale = new Vector3(x, y, z);
+
+        //transform.localRotation = Quaternion.Angle();
     }
 
     public override void OnInteracted()
@@ -44,8 +46,6 @@ public class Cube : EventTrigger
 
     public override void OnThrowed()
     {
-        Debug.Log(11111);
-
 
         if (Rb == null || Camera.main == null)
             return;
