@@ -21,8 +21,8 @@ Nội dung bao gồm:
 - tiền : dùng để nâng cấp và tra đổi với game và người chơi khác
 
 # Hình ảnh Demo
-![](./image.png)
 ![](./Screenshot111.png)
+![](./image.png)
 ![](./Screenshot(3).png)
 ![](./Screenshot(4).png)
 ![](./Screenshot(5).png)
