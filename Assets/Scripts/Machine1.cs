@@ -28,7 +28,6 @@ public class Machine1 : EventTrigger
 
             dataManager.Money += v;
             dataManager.MoneyCube = v;
-            Debug.Log(dataManager.MoneyCube);
 
             c.transform.DOScale(new Vector3(0, 0, 0), 0.95f).OnComplete(() =>
             {
