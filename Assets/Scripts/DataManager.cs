@@ -85,6 +85,8 @@ public sealed class DataManager : IInitializable, IDisposable
         PlayerInventory.ChangedItem("1", 2);
 
         PlayerInventory.ChangedItem("2", 3);
+
+        PlayerInventory.ChangedItem("3", 1);
     }
     
     private void Load<T>(string label, Action<IList<T>> onLoaded, Action<Exception> onError)

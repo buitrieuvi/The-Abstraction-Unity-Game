@@ -56,7 +56,6 @@ public sealed class InventoryItemView : ViewBase
     {
         base.Open(ctrl);
 
-        // Hủy subscription cũ trước khi đăng ký mới.
         itemSub?.Dispose();
         itemSub = null;
 
@@ -72,7 +71,6 @@ public sealed class InventoryItemView : ViewBase
             .EveryValueChanged(item, x => x.ItemModel.Quantity)
             .Subscribe(_ =>
             {
-                // Không cập nhật nếu View đã bị hủy.
                 if (this == null || gameObject == null)
                     return;
 

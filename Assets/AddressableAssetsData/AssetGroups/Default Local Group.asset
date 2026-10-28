@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f227e1860552a8c4fb9e40ca605290f1
   m_SerializeEntries:
+  - m_GUID: 0217f91bb67bbe4488a1b9ec0ae24325
+    m_Address: Assets/SOs/ItemSO-Serie.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1725f163bde0e8743bb115e7d4b396ee
     m_Address: Assets/Prefabs/View Manager.prefab
     m_ReadOnly: 0

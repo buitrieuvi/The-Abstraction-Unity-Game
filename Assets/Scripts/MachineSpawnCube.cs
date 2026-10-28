@@ -9,7 +9,7 @@ public class MachineSpawnCube : EventTrigger
     public GameObject Prefab;
     public GameObject Gear;
     public float time = 100f;
-    public bool autoSpawm = false;
+    public bool AutoSpawm;
 
     public GameObject View;
 
@@ -29,9 +29,8 @@ public class MachineSpawnCube : EventTrigger
 
         if (gear == null)
         {
-            if (autoSpawm)
+            if (AutoSpawm)
             {
-                // Continuous spinning with spawning on every loop completion
                 gear = Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
                     .SetEase(Ease.Linear)
                     .SetLoops(-1, LoopType.Restart)
@@ -43,7 +42,6 @@ public class MachineSpawnCube : EventTrigger
             }
             else
             {
-                // Single rotation spawning once on complete
                 gear = Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), time, RotateMode.FastBeyond360)
                     .SetEase(Ease.Linear)
                     .SetAutoKill(false)
@@ -64,7 +62,6 @@ public class MachineSpawnCube : EventTrigger
 
     private void OnDestroy()
     {
-        // Always good practice to kill DOTween tweens when the object is destroyed
         gear?.Kill();
     }
 }

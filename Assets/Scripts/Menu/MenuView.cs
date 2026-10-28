@@ -18,7 +18,6 @@ public class MenuView : ViewBase
     [SerializeField] ViewSliderBase sldX;
     [SerializeField] ViewSliderBase sldY;
 
-
     public override void Awake()
     {
         base.Awake();
@@ -59,6 +58,7 @@ public class MenuView : ViewBase
 
         btnExitGame.OnClick += (e) => 
         {
+            Debug.Log("Game Exit");
             Application.Quit();
         };
 

@@ -17,7 +17,11 @@ public class Cube : EventTrigger
 
         transform.localScale = new Vector3(x, y, z);
 
-        //transform.localRotation = Quaternion.Angle();
+        //transform.localRotation = Quaternion.AngleAxis(Random.Range(0, 180), new Vector3(0,0,0));
+
+        Renderer rd = GetComponent<Renderer>();
+
+        rd?.material.color.Equals(Random.ColorHSV());;
     }
 
     public override void OnInteracted()
@@ -57,7 +61,7 @@ public class Cube : EventTrigger
         Rb.isKinematic = false;
         Rb.useGravity = true;
 
-        float throwForce = 15f;
+        float throwForce = 25f;
         Rb.AddForce(
             Camera.main.transform.forward * throwForce,
             ForceMode.Impulse
