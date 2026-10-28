@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System.Linq;
 using System.Collections.Generic;
 using DG.Tweening;
+using Zenject;
 
 public class MenuView : ViewBase
 {
@@ -14,14 +15,31 @@ public class MenuView : ViewBase
     List<ViewButtonBase> slots;
 
 
-
     [SerializeField] ViewSliderBase sldX;
     [SerializeField] ViewSliderBase sldY;
-
 
     public override void Awake()
     {
         base.Awake();
+
+
+    }
+
+    public void Start()
+    {
+        CameraManager cams = FindFirstObjectByType<CameraManager>();
+
+        sldX.Slider.value = cams.CamX;
+        sldY.Slider.value = cams.CamY;
+
+        sldX.Slider.onValueChanged.AddListener((e) =>
+        {
+            cams.SetSpeedCamera(e, cams.CamY);
+        });
+        sldY.Slider.onValueChanged.AddListener((e) =>
+        {
+            cams.SetSpeedCamera(cams.CamX, e);
+        });
     }
 
     public override void Close()
@@ -40,6 +58,7 @@ public class MenuView : ViewBase
 
         btnExitGame.OnClick += (e) => 
         {
+            Debug.Log("Game Exit");
             Application.Quit();
         };
 

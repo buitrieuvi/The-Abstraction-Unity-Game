@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ViewSliderBase : ViewBase
 {
     private Slider slider;
-
     public Slider Slider => slider;
+
     [SerializeField] TextMeshProUGUI text;
 
     public override void Awake()
@@ -23,12 +23,6 @@ public class ViewSliderBase : ViewBase
         slider.onValueChanged.AddListener((e) => 
         {
             text.text = e.ToString();
-
-            //text.transform.DOPunchScale(new Vector3(1,1,1) , 0.3f);
-            text.transform.DOScale(1.1f, 0.1f).OnComplete(() => 
-            {
-                text.transform.DOScale(1f, 0.1f).SetDelay(1000);
-            });
         });
     }
 

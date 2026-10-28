@@ -29,8 +29,6 @@ public sealed class ViewManager : MonoBehaviour
 
     bool isClose = false;
 
-
-
     public void Awake()
     {
         DOTween.defaultAutoKill = true;

@@ -97,7 +97,7 @@ public class InventoryView : ViewBase
         {
             itemView.OnClick += e =>
             {
-                inventory.UpdateItem(inventoryItems.IndexOf(itemView), 1);
+                //inventory.UpdateItem(inventoryItems.IndexOf(itemView), 1);
                 if (itemView.IsEmpty || itemView == selectedItem)
                     return;
 
@@ -129,7 +129,7 @@ public class InventoryView : ViewBase
         if (avatar != null && selectedItem.AvatarImage != null)
         {
             avatar.GetComponent<Image>().sprite = selectedItem.AvatarImage.sprite;
-            avatar.Dotween_Ani_ScaleX(time, spaceTime);
+            avatar.Dotween_Ani_ScaleX(0.025f, spaceTime);
 
         }
     }

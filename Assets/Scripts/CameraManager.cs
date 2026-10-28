@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public float CamX = 10;
+    public float CamY = 10;
+
     [SerializeField] private CinemachineCamera[] _cinemachines;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _cinemachines = GetComponentsInChildren<CinemachineCamera>();
+
+        SetSpeedCamera(CamY, CamY);
     }
 
     public void SetInputIsActiveCameras(string cameraName, bool isActive)
@@ -34,7 +39,7 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    public void SetSpeedCamera(float x, float y) 
+    public void SetSpeedCamera(float x, float y)
     {
         foreach (var cam in _cinemachines)
         {
@@ -42,16 +47,41 @@ public class CameraManager : MonoBehaviour
 
             foreach (var controller in input.Controllers)
             {
-                
+
                 if (controller.Name.Contains("Look X"))
                 {
-                    controller.Input.Gain = x; 
+                    controller.Input.Gain = x;
+                    CamX = x;
                 }
                 else if (controller.Name.Contains("Look Y"))
                 {
                     controller.Input.Gain = -y;
+                    CamY = y;
                 }
             }
         }
     }
+
+    //public void SetSpeedCamera(float t)
+    //{
+    //    foreach (var cam in _cinemachines)
+    //    {
+    //        var input = cam.GetComponent<CinemachineInputAxisController>();
+
+    //        foreach (var controller in input.Controllers)
+    //        {
+
+    //            if (controller.Name.Contains("Look X"))
+    //            {
+    //                controller.Input.Gain = t;
+    //            }
+    //            else if (controller.Name.Contains("Look Y"))
+    //            {
+    //                controller.Input.Gain = -t;
+    //            }
+    //        }
+    //    }
+
+    //    Cam = t;
+    //}
 }
