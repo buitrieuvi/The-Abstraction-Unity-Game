@@ -31,6 +31,7 @@ Nội dung bao gồm:
 - Chức năng lái buôn
 
 # Giai đoạn phát triển game 4
+- Thêm chức năng các NPC phụ giúp
 - Thêm máy lắp ráp: dùng để lắp ráp các các cube lại thành kiệt tác
 
 # Hình ảnh Demo
