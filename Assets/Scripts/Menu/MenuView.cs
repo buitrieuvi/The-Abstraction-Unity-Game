@@ -9,7 +9,15 @@ using DG.Tweening;
 public class MenuView : ViewBase
 {
     [SerializeField] Transform tfMenu;
+
+    [SerializeField] ViewButtonBase btnExitGame;
     List<ViewButtonBase> slots;
+
+
+
+    [SerializeField] ViewSliderBase sldX;
+    [SerializeField] ViewSliderBase sldY;
+
 
     public override void Awake()
     {
@@ -29,6 +37,11 @@ public class MenuView : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
+
+        btnExitGame.OnClick += (e) => 
+        {
+            Application.Quit();
+        };
 
         slots = tfMenu.GetComponentsInChildren<ViewButtonBase>().ToList();
         foreach (var item in slots) 
