@@ -1124,6 +1124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ViewMenu
   tfMenu: {fileID: 1153656064473129896}
   btnExitGame: {fileID: 6892475015604554237}
+  sldX: {fileID: 5743799896075161313}
+  sldY: {fileID: 6526331052389899717}
 --- !u!1 &8093333863452195130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1706,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4085056215672314172, guid: e52498ed212a8fd49be4075e3751e32d, type: 3}
   m_PrefabInstance: {fileID: 2661611500172079407}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6526331052389899717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9114685368779992298, guid: e52498ed212a8fd49be4075e3751e32d, type: 3}
+  m_PrefabInstance: {fileID: 2661611500172079407}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16d743e08e85c94da331ae2e1b4c79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ViewSliderBase
 --- !u!1001 &2900033599123571478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1975,6 +1988,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4085056215672314172, guid: e52498ed212a8fd49be4075e3751e32d, type: 3}
   m_PrefabInstance: {fileID: 3588187614402355723}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5743799896075161313 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9114685368779992298, guid: e52498ed212a8fd49be4075e3751e32d, type: 3}
+  m_PrefabInstance: {fileID: 3588187614402355723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16d743e08e85c94da331ae2e1b4c79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ViewSliderBase
 --- !u!1001 &5699857698479183992
 PrefabInstance:
   m_ObjectHideFlags: 0
