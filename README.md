@@ -6,19 +6,31 @@
 
 # Xem Video và hình ảnh của sản phẩm tại link Drive
 - https://drive.google.com/drive/folders/1GEylE2CiYRXm7m9bP85lcC3NmrnQsI0n?usp=sharing
-- Game đang trong quá trình phát triển trên Steam và Itch.io
 
 Nội dung bao gồm:
 - Công nghệ Unity, C# và Visual Studio.
 - Zenject, R3, DOTween, Input System, TextMeshPro và ProBuilder.
 - Chức năng nhân vật 3D, Inventory, Elevator, Machine, Money và UI.
 - Kiến trúc State Machine, MVVM và Dependency Injection.
+- Server game: SQL Server và Mongodb sử dụng ASP.NET API Core (The Abstraction Server)
+- Game đang trong quá trình phát triển trên Steam và Itch.io
 
 
 # Giai đoạn phát triển game 1
-- Machine 1 : tạo ra các cube có giá trị khác nhau
-- Machine 2 : hấp thụ các cube để tạo ra tiền
-- tiền : dùng để nâng cấp và tra đổi với game và người chơi khác
+- Machine 1 (Máy tạo sinh vật chất) : tạo ra các cube có giá trị khác nhau
+- Machine 2 (Máy hấp thụ vật chất) : hấp thụ các cube để tạo ra tiền
+- Tiền : dùng để tương tác với game và trao đổi người chơi khác
+
+# Giai đoạn phát triển game 2
+- Hệ thống nâng cấp các Machine
+- Thêm Machine mới (Máy gộp, ghép, tách và các máy tinh chế vật chất)
+
+# Giai đoạn phát triển game 3
+- Chức năng bán vé số 
+- Chức năng lái buôn
+
+# Giai đoạn phát triển game 4
+- Thêm máy lắp ráp: dùng để lắp ráp các các cube lại thành kiệt tác
 
 # Hình ảnh Demo
 ![](./Screenshot111.png)
