@@ -9,13 +9,11 @@
 - https://drive.google.com/drive/folders/1GEylE2CiYRXm7m9bP85lcC3NmrnQsI0n?usp=sharing
 
 Nội dung bao gồm:
-- Công nghệ Unity, C# và Visual Studio.
-- Zenject, R3, DOTween, Input System, TextMeshPro và ProBuilder.
-- Chức năng nhân vật 3D, Inventory, Elevator, Machine, Money và UI.
-- Kiến trúc State Machine, MVVM và Dependency Injection.
-- Server game: SQL Server và Mongodb sử dụng ASP.NET API Core (The Abstraction Server)
+- Công nghệ Unity, C#, .NET.
+- Design pattern, Clean code, OOP, tối ưu hiệu năng trên Editor Unity và cấu trúc dữ liệu và giải thuật
+- Kiến trúc MVC, MVVM, DI
+- Server game: SQL Server, Mongodb sử dụng ASP.NET API Core (The Abstraction Server) và Firebase
 - Game đang trong quá trình phát triển trên Steam và Itch.io
-
 
 # Giai đoạn phát triển game 1
 - Machine 1 (Máy tạo sinh vật chất) : tạo ra các cube có giá trị khác nhau
