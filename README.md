@@ -3,6 +3,7 @@
 - Bùi Triều Vĩ
 - Zalo và điện thoại: 0931512910
 - Gmail: buitrieuvi2019@gmail.com
+- Chuyên ngành: .NET và lập trình Game
 
 # Xem Video và hình ảnh của sản phẩm tại link Drive
 - https://drive.google.com/drive/folders/1GEylE2CiYRXm7m9bP85lcC3NmrnQsI0n?usp=sharing
