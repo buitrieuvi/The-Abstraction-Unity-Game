@@ -9,6 +9,7 @@ TagManager:
   - cam3
   - gear
   - cube
+  - cam1
   layers:
   - Default
   - TransparentFX

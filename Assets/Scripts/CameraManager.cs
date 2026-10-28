@@ -13,12 +13,6 @@ public class CameraManager : MonoBehaviour
         _cinemachines = GetComponentsInChildren<CinemachineCamera>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetInputIsActiveCameras(string cameraName, bool isActive)
     {
         if (cameraName == "") 
@@ -36,6 +30,27 @@ public class CameraManager : MonoBehaviour
             {
                 cam.GetComponent<CinemachineInputAxisController>().enabled = isActive;
                 return;
+            }
+        }
+    }
+
+    public void SetSpeedCamera(float x, float y) 
+    {
+        foreach (var cam in _cinemachines)
+        {
+            var input = cam.GetComponent<CinemachineInputAxisController>();
+
+            foreach (var controller in input.Controllers)
+            {
+                
+                if (controller.Name.Contains("Look X"))
+                {
+                    controller.Input.Gain = x; 
+                }
+                else if (controller.Name.Contains("Look Y"))
+                {
+                    controller.Input.Gain = -y;
+                }
             }
         }
     }
