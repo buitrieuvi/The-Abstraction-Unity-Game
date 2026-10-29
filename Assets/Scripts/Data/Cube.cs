@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class Cube : EventTrigger
@@ -11,11 +11,17 @@ public class Cube : EventTrigger
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
-        float x = Random.Range(0.05f, .2f);
-        float y = Random.Range(0.05f, .2f);
-        float z = Random.Range(0.05f, .2f);
+        float x = Random.Range(0.5f, 1f);
+        float y = Random.Range(0.5f, 1f);
+        float z = Random.Range(0.5f, 1f);
 
         transform.localScale = new Vector3(x, y, z);
+
+        //transform.localRotation = Quaternion.AngleAxis(Random.Range(0, 180), new Vector3(0,0,0));
+
+        //Renderer rd = GetComponent<Renderer>();
+
+        //rd?.material.color.Equals(Random.ColorHSV());
     }
 
     public override void OnInteracted()
@@ -84,11 +90,11 @@ public class Cube : EventTrigger
     {
         tween?.Kill();
     }
-    public float GetValue() 
+    public float GetValue()
     {
-        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) /3;
+        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) / 3;
     }
-    public void OnIdle() 
+    public void OnIdle()
     {
         Rb.isKinematic = transform;
         Rb.useGravity = false;
