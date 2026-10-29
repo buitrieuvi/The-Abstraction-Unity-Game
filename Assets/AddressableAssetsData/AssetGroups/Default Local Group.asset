@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - view
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d3454ed1cb4572449be1220e660b227
+    m_Address: w
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - view
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29db50be63c014e45ba8d04fb51a25f4
     m_Address: Assets/SOs/RankSO-S.asset
     m_ReadOnly: 0
