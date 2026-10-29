@@ -1,5 +1,6 @@
 using DG.Tweening;
 using EasyTextEffects;
+using ITISKIRUHERE;
 using TMPro;
 using Unity.Pipeline;
 using UnityEngine;
@@ -22,6 +23,8 @@ public abstract class EventTrigger : MonoBehaviour,
     [Inject] protected InputManager inputManager;
     [Inject] protected ViewManager viewManager;
     [Inject] protected DataManager dataManager;
+
+    public AdvancedOutline outline3d;
 
     public void TriggerEnter()
     {
@@ -58,5 +61,17 @@ public abstract class EventTrigger : MonoBehaviour,
     public virtual void OnThrowed()
     {
         OnThow?.Invoke();
+    }
+
+    public virtual void TriggerHoverEnter()
+    {
+        if (outline3d == null) return;
+        outline3d.OutlineWidth = 10;
+    }
+
+    public virtual void TriggerHoverExit()
+    {
+        if (outline3d == null) return;
+        outline3d.OutlineWidth = 0;
     }
 }
