@@ -45,20 +45,20 @@ public class PlayerHand : MonoBehaviour
 
     public void Start()
     {
-        input.InputActions.Player.Interact.started += (e) =>
-        {
-            Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            RaycastHit hit;
+        //input.InputActions.Player.Interact.started += (e) =>
+        //{
+        //    Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+        //    RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                Transform objectHit = hit.transform;
-                EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+        //        Transform objectHit = hit.transform;
+        //        EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
 
-                eventTrigger?.OnInteracted();
-            }
-        };
+        //        eventTrigger?.OnInteracted();
+        //    }
+        //};
 
 
         input.InputActions.Player.Attack.performed += (e) =>
@@ -86,49 +86,49 @@ public class PlayerHand : MonoBehaviour
             }
         };
 
-        input.InputActions.Player.Attack1.performed += (e) =>
-        {
+        //input.InputActions.Player.Attack1.performed += (e) =>
+        //{
 
-            Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            RaycastHit hit;
+        //    Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+        //    RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                Transform objectHit = hit.transform;
-                EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+        //        Transform objectHit = hit.transform;
+        //        EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
 
-                eventTrigger?.OnInteracted();
-            }
+        //        eventTrigger?.OnInteracted();
+        //    }
 
-            //if (Handle != null)
-            //{
-            //    Cube c = Handle.GetComponent<Cube>();
+        //    //if (Handle != null)
+        //    //{
+        //    //    Cube c = Handle.GetComponent<Cube>();
 
-            //    if (c != null) 
-            //    {
-            //        Debug.Log(c.transform.localScale);
-            //    }
+        //    //    if (c != null) 
+        //    //    {
+        //    //        Debug.Log(c.transform.localScale);
+        //    //    }
 
-            //    //Handle.OnThrowed();
-            //    //Handle = null;
-            //}
+        //    //    //Handle.OnThrowed();
+        //    //    //Handle = null;
+        //    //}
 
-            //Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            //Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            //RaycastHit hit;
+        //    //Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        //    //Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+        //    //RaycastHit hit;
 
-            //if (Physics.Raycast(ray, out hit))
-            //{
-            //    Transform objectHit = hit.transform;
-            //    EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
-            //    if (eventTrigger?.tag == "cube")
-            //    {
-            //        Handle = eventTrigger;
-            //    }
-            //    eventTrigger?.OnPicked();
-            //}
-        };
+        //    //if (Physics.Raycast(ray, out hit))
+        //    //{
+        //    //    Transform objectHit = hit.transform;
+        //    //    EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
+        //    //    if (eventTrigger?.tag == "cube")
+        //    //    {
+        //    //        Handle = eventTrigger;
+        //    //    }
+        //    //    eventTrigger?.OnPicked();
+        //    //}
+        //};
     }
 
 }
