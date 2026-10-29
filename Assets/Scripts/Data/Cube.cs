@@ -16,12 +16,6 @@ public class Cube : EventTrigger
         float z = Random.Range(0.05f, .2f);
 
         transform.localScale = new Vector3(x, y, z);
-
-        //transform.localRotation = Quaternion.AngleAxis(Random.Range(0, 180), new Vector3(0,0,0));
-
-        //Renderer rd = GetComponent<Renderer>();
-
-        //rd?.material.color.Equals(Random.ColorHSV());
     }
 
     public override void OnInteracted()
