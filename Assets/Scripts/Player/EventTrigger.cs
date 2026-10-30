@@ -10,68 +10,77 @@ using Zenject;
 public abstract class EventTrigger : MonoBehaviour,
     IEventTrigger
 {
-    //public GameObject Owner;
+    public UnityAction TriggerEnterEvent;
+    public UnityAction TriggerExitEvent;
 
-    public UnityAction OnTriggerEnterEvent;
-    public UnityAction OnTriggerExitEvent;
+    public UnityAction TriggerHoverEnterEvent;
+    public UnityAction TriggerHoverExitEvent;
 
-    public UnityAction OnInteract;
+    public UnityAction Interact;
 
-    public UnityAction OnPick;
-    public UnityAction OnThow;
+    public UnityAction Pick;
+    public UnityAction Thorw;
 
     [Inject] protected InputManager inputManager;
     [Inject] protected ViewManager viewManager;
     [Inject] protected DataManager dataManager;
 
-    public AdvancedOutline outline3d;
+    public AdvancedOutline Outline3d;
 
-    public void TriggerEnter()
+    public void OnTriggerEnter()
     {
-        OnTriggerEnterEvent?.Invoke();
+        TriggerEnterEvent?.Invoke();
     }
 
-    public void TriggerExit()
+    public void OnTriggerExit()
     {
-        OnTriggerExitEvent?.Invoke();
+        TriggerExitEvent?.Invoke();
     }
 
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        TriggerEnter();
+        OnTriggerEnter();
     }
 
     public virtual void OnTriggerExit(Collider other)
     {
-        TriggerExit();
+        OnTriggerExit();
     }
 
 
     public virtual void OnInteracted() 
     {
-        OnInteract?.Invoke();
+        Interact?.Invoke();
     }
 
     public virtual void OnPicked()
     {
-        OnPick?.Invoke();
+        Pick?.Invoke();
     }
 
     public virtual void OnThrowed()
     {
-        OnThow?.Invoke();
+        Thorw?.Invoke();
     }
 
-    public virtual void TriggerHoverEnter()
+    public virtual void OnTriggerHoverEnter()
     {
-        if (outline3d == null) return;
-        outline3d.OutlineWidth = 10;
+        TriggerHoverEnterEvent?.Invoke();
+
+        if (Outline3d != null)
+        {
+            Outline3d.OutlineWidth = 10;
+        }
     }
 
-    public virtual void TriggerHoverExit()
+    public virtual void OnTriggerHoverExit()
     {
-        if (outline3d == null) return;
-        outline3d.OutlineWidth = 0;
+        TriggerHoverExitEvent?.Invoke();
+
+        if (Outline3d != null)
+        {
+            Outline3d.OutlineWidth = 0;
+        }
     }
 }

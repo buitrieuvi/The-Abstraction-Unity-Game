@@ -3,134 +3,79 @@ using Unity.Pipeline;
 using UnityEngine;
 using Zenject;
 
-public class PlayerHand : MonoBehaviour
+public sealed class PlayerHand : MonoBehaviour
 {
-    public EventTrigger Handle;
-    public EventTrigger HandleHover;
+    //public EventTrigger Handle;
+    //public EventTrigger HandleHover;
 
-    [Inject] private InputManager input;
+    //[Inject] public InputManager InputManager { get; private set; }
 
-    private void Update()
-    {
-        Vector3 screenCenterPoint = new Vector3(
-            Screen.width / 2f,
-            Screen.height / 2f,
-            0f
-        );
+    //private void FixedUpdate()
+    //{
+    //    Vector3 screenCenterPoint = new Vector3(
+    //        Screen.width / 2f,
+    //        Screen.height / 2f,
+    //        0f
+    //    );
 
-        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        RaycastHit hit;
+    //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+    //    RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            EventTrigger eventTrigger = hit.transform.GetComponent<EventTrigger>();
+    //    if (Physics.Raycast(ray, out hit))
+    //    {
+    //        EventTrigger eventTrigger = hit.transform.GetComponent<EventTrigger>();
 
-            if (HandleHover == eventTrigger)
-            {
-                return;
-            }
+    //        if (HandleHover == eventTrigger)
+    //        {
+    //            return;
+    //        }
 
-            HandleHover?.TriggerHoverExit();
+    //        HandleHover?.OnTriggerHoverExit();
 
-            HandleHover = eventTrigger;
+    //        HandleHover = eventTrigger;
 
-            HandleHover?.TriggerHoverEnter();
-        }
-        else
-        {
-            HandleHover?.TriggerHoverExit();
-            HandleHover = null;
-        }
-    }
+    //        HandleHover?.OnTriggerHoverEnter();
+    //    }
+    //    else
+    //    {
+    //        HandleHover?.OnTriggerHoverExit();
+    //        HandleHover = null;
+    //    }
+    //}
 
-    public void Start()
-    {
-        input.InputActions.Player.Interact.started += (e) =>
-        {
-            //Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            //Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            //RaycastHit hit;
+    //public void Start()
+    //{
 
-            //if (Physics.Raycast(ray, out hit))
-            //{
-            //    Transform objectHit = hit.transform;
-            //    EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
-
-            //    eventTrigger?.OnInteracted();
-            //}
-
-            HandleHover?.OnInteracted();
-        };
+    //    InputManager.InputActions.Player.Interact.started += (e) =>
+    //    {
+    //        HandleHover?.OnInteracted();
+    //    };
 
 
-        input.InputActions.Player.Attack.performed += (e) =>
-        {
-            if (Handle != null)
-            {
-                Handle.OnThrowed();
-                Handle = null;
-                return;
-            }
+    //    InputManager.InputActions.Player.Attack.performed += (e) =>
+    //    {
+    //        if (Handle != null)
+    //        {
+    //            Handle.OnThrowed();
+    //            Handle = null;
+    //            return;
+    //        }
 
-            Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            RaycastHit hit;
+    //        Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+    //        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+    //        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                Transform objectHit = hit.transform;
-                EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
-                if (eventTrigger?.tag == "cube")
-                {
-                    Handle = eventTrigger;
-                }
-                eventTrigger?.OnPicked();
-            }
-        };
-
-        //input.InputActions.Player.Attack1.performed += (e) =>
-        //{
-
-        //    Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        //    RaycastHit hit;
-
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        Transform objectHit = hit.transform;
-        //        EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
-
-        //        eventTrigger?.OnInteracted();
-        //    }
-
-        //    //if (Handle != null)
-        //    //{
-        //    //    Cube c = Handle.GetComponent<Cube>();
-
-        //    //    if (c != null) 
-        //    //    {
-        //    //        Debug.Log(c.transform.localScale);
-        //    //    }
-
-        //    //    //Handle.OnThrowed();
-        //    //    //Handle = null;
-        //    //}
-
-        //    //Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        //    //Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        //    //RaycastHit hit;
-
-        //    //if (Physics.Raycast(ray, out hit))
-        //    //{
-        //    //    Transform objectHit = hit.transform;
-        //    //    EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
-        //    //    if (eventTrigger?.tag == "cube")
-        //    //    {
-        //    //        Handle = eventTrigger;
-        //    //    }
-        //    //    eventTrigger?.OnPicked();
-        //    //}
-        //};
-    }
+    //        if (Physics.Raycast(ray, out hit))
+    //        {
+    //            Transform objectHit = hit.transform;
+    //            EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
+    //            if (eventTrigger?.tag == "cube")
+    //            {
+    //                Handle = eventTrigger;
+    //            }
+    //            eventTrigger?.OnPicked();
+    //        }
+    //    };
+    //}
 
 }

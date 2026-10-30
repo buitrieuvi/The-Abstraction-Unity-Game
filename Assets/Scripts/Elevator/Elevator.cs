@@ -22,7 +22,7 @@ public class Elevator : EventTrigger
 
     public void Awake()
     {
-        ElevatorController.Door.OnInteract += async () => 
+        ElevatorController.Door.Interact += async () => 
         {
             ElevatorController.ElevatorView = (ElevatorView)await ViewManager.ShowView<ElevatorView>(ElevatorController);
         };

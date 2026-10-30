@@ -43,7 +43,7 @@ public sealed class ViewManager : MonoBehaviour
     {
         if (IsTransitioning) return null;
 
-        PlayerController player = FindFirstObjectByType<PlayerController>();
+        //PlayerController player = FindFirstObjectByType<PlayerController>();
 
         if (darkPanel != null)
             darkPanel.DOKill();
@@ -93,7 +93,7 @@ public sealed class ViewManager : MonoBehaviour
                 viewBaseCurr = null;
                 isClose = false;
 
-                player.Movement.ChangeState(player.Movement.idling);
+                //player.Movement.ChangeState(player.Movement.idling);
             }
             else 
             {
@@ -104,7 +104,7 @@ public sealed class ViewManager : MonoBehaviour
                 viewBaseCurr = view;
                 stack.Push(viewBaseCurr);
 
-                player.Movement.ChangeState(player.Movement.freezing);
+                //player.Movement.ChangeState(player.Movement.freezing);
             }
             return viewBaseCurr;
         }

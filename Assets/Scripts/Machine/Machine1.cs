@@ -4,12 +4,12 @@ using UnityEngine.UIElements;
 
 public class Machine1 : EventTrigger
 {
+    bool isProsess;
+
     public override void OnInteracted()
     {
         base.OnInteracted();
     }
-
-    bool isProsess;
 
     public override void OnTriggerEnter(Collider other)
     {
@@ -43,9 +43,13 @@ public class Machine1 : EventTrigger
         base.OnTriggerExit(other);
     }
 
-    void Start()
+    public override void OnTriggerHoverEnter()
     {
-
+        base.OnTriggerHoverEnter();
     }
 
+    public override void OnTriggerHoverExit()
+    {
+        base.OnTriggerHoverExit();
+    }
 }

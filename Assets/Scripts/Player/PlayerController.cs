@@ -1,8 +1,8 @@
+
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Playables;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
@@ -19,7 +19,11 @@ public sealed class PlayerController : MonoBehaviour
     public PlayerState Movement { get; private set; }
 
     public EventTrigger CurrentTrigger { get; private set; }
-    private readonly List<EventTrigger> _activeTriggers = new();
+
+    [Header("Interaction")]
+    public EventTrigger Handle;
+    public EventTrigger HandleHover;
+    public float InteractionDistance = 5f;
 
     [Header("Movement")]
     public Vector2 Move;
@@ -52,72 +56,56 @@ public sealed class PlayerController : MonoBehaviour
     public Animator Animator;
 
     private static readonly int AnimationSpeedParameter =
-        UnityEngine.Animator.StringToHash("speed");
+        Animator.StringToHash("speed");
 
     private void Awake()
     {
         CharCtrl = GetComponent<CharacterController>();
+        Rb = GetComponent<Rigidbody>();
+        Animator = GetComponentInChildren<Animator>();
 
         Movement = new PlayerState(this);
         Movement.ChangeState(Movement.idling);
-        Animator = GetComponentInChildren<Animator>();
-        Rb = GetComponent<Rigidbody>();
-
-        InputManager.InputActions.Player.Inventory.performed += OnInventoryPerformed;
-        InputManager.InputActions.Player.Esc.performed += OnMenuPerformed;
-
-        destroyCancellationToken.Register(() =>
-        {
-
-            if (InputManager.InputActions != null) 
-            {
-                InputManager.InputActions.Player.Inventory.performed -= OnInventoryPerformed;
-            }
-        });
-
-        destroyCancellationToken.Register(() =>
-        {
-
-            if (InputManager.InputActions != null)
-            {
-                InputManager.InputActions.Player.Esc.performed -= OnMenuPerformed;
-            }
-        });
     }
 
-    private async void OnInventoryPerformed(InputAction.CallbackContext context)
+    private void OnEnable()
     {
-        var v = await ViewManager.ShowView<InventoryView>(DataManager.PlayerInventory);
+        var player = InputManager.InputActions.Player;
+
+        player.Inventory.performed += OnInventoryPerformed;
+        player.Esc.performed += OnMenuPerformed;
+
+        player.Interact.started += HandleInteract;
+        player.Alt.started += HandleAlt;
+        player.Ctrl.performed += HandleControl;
+        player.Ctrl.canceled += HandleControl;
+        player.Sprint.performed += HandleSprint;
+        player.Sprint.canceled += HandleSprint;
+
+        player.Attack.performed += HandleAttack;
     }
 
-    private async void OnMenuPerformed(InputAction.CallbackContext context)
-    {
-        var v = await ViewManager.ShowView<MenuView>(DataManager.PlayerInventory);
-    }
-
-    private void Start()
-    {
-        InputManager.InputActions.Player.Interact.started += HandleInteract;
-        InputManager.InputActions.Player.Alt.started += HandleAlt;
-        InputManager.InputActions.Player.Ctrl.performed += HandleControl;
-        InputManager.InputActions.Player.Ctrl.canceled += HandleControl;
-        InputManager.InputActions.Player.Sprint.performed += HandleSprint;
-        InputManager.InputActions.Player.Sprint.canceled += HandleSprint;
-    }
-
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (InputManager?.InputActions == null)
-        {
             return;
-        }
 
-        InputManager.InputActions.Player.Interact.started -= HandleInteract;
-        InputManager.InputActions.Player.Alt.started -= HandleAlt;
-        InputManager.InputActions.Player.Ctrl.performed -= HandleControl;
-        InputManager.InputActions.Player.Ctrl.canceled -= HandleControl;
-        InputManager.InputActions.Player.Sprint.performed -= HandleSprint;
-        InputManager.InputActions.Player.Sprint.canceled -= HandleSprint;
+        var player = InputManager.InputActions.Player;
+
+        player.Inventory.performed -= OnInventoryPerformed;
+        player.Esc.performed -= OnMenuPerformed;
+
+        player.Interact.started -= HandleInteract;
+        player.Alt.started -= HandleAlt;
+        player.Ctrl.performed -= HandleControl;
+        player.Ctrl.canceled -= HandleControl;
+        player.Sprint.performed -= HandleSprint;
+        player.Sprint.canceled -= HandleSprint;
+
+        player.Attack.performed -= HandleAttack;
+
+        HandleHover?.OnTriggerHoverExit();
+        HandleHover = null;
     }
 
     private void Update()
@@ -129,32 +117,113 @@ public sealed class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement.PhysicsUpdate();
+        UpdateInteractionRaycast();
     }
 
-    private void OnTriggerEnter(Collider other)
+    // ==================== INTERACTION ====================
+
+    private void UpdateInteractionRaycast()
     {
+        if (Camera.main == null)
+            return;
 
+        Vector3 screenCenterPoint = new Vector3(
+            Screen.width / 2f,
+            Screen.height / 2f,
+            0f
+        );
+
+        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+        EventTrigger target = null;
+
+        if (Physics.Raycast(
+            ray,
+            out RaycastHit hit,
+            InteractionDistance))
+        {
+            target = hit.transform.GetComponentInParent<EventTrigger>();
+        }
+
+        if (HandleHover == target)
+            return;
+
+        HandleHover?.OnTriggerHoverExit();
+
+        HandleHover = target;
+
+        HandleHover?.OnTriggerHoverEnter();
     }
 
-    private void OnTriggerExit(Collider other)
+    private void HandleInteract(InputAction.CallbackContext context)
     {
-
+        HandleHover?.OnInteracted();
     }
+
+    private void HandleAttack(InputAction.CallbackContext context)
+    {
+        // Throw current object
+        if (Handle != null)
+        {
+            Handle.OnThrowed();
+            Handle = null;
+            return;
+        }
+
+        if (HandleHover == null)
+            return;
+
+        // Pick object
+        if (HandleHover.CompareTag("cube"))
+        {
+            Handle = HandleHover;
+        }
+
+        HandleHover.OnPicked();
+    }
+
+    // ==================== VIEW ====================
+
+    private async void OnInventoryPerformed(InputAction.CallbackContext context)
+    {
+        var v = await ViewManager.ShowView<InventoryView>(
+            DataManager.PlayerInventory
+        );
+
+        IsView(v);
+    }
+
+    private async void OnMenuPerformed(InputAction.CallbackContext context)
+    {
+        var v = await ViewManager.ShowView<MenuView>(
+            DataManager.PlayerInventory
+        );
+
+        IsView(v);
+    }
+
+    private void IsView(ViewBase v)
+    {
+        if (v != null)
+            Movement.ChangeState(Movement.freezing);
+        else
+            Movement.ChangeState(Movement.idling);
+    }
+
+    // ==================== MOVEMENT ====================
 
     public void SetAnimationSpeed()
     {
         if (Animator != null)
         {
-            Animator.SetFloat(AnimationSpeedParameter, AnimationSpeed);
+            Animator.SetFloat(
+                AnimationSpeedParameter,
+                AnimationSpeed
+            );
         }
     }
 
-    private void HandleInteract(InputAction.CallbackContext _)
-    {
-
-    }
-
-    private void HandleAlt(InputAction.CallbackContext _)
+    private void HandleAlt(InputAction.CallbackContext context)
     {
         IsAlt = !IsAlt;
     }
@@ -168,5 +237,4 @@ public sealed class PlayerController : MonoBehaviour
     {
         IsPressRunning = IsRunningMode || context.ReadValueAsButton();
     }
-
 }

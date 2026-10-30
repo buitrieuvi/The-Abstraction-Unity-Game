@@ -16,6 +16,8 @@ public class MachineSpawnCube : EventTrigger
     public GameObject Prefab;
     public GameObject Gear;
 
+    public Transform farm;
+
     public MachineSpawnCubeController controller = new();
 
     private Tween gear;
@@ -41,20 +43,12 @@ public class MachineSpawnCube : EventTrigger
                 gear = Gear.transform.DOLocalRotate(new Vector3(0, 0, 360), controller.Time, RotateMode.FastBeyond360)
                     .SetEase(Ease.Linear)
                     .SetLoops(-1, LoopType.Restart)
-                    .SetAutoKill(false)
+                    .SetAutoKill(false) 
                     .OnStepComplete(() =>
                     {
                         if (Prefab != null) 
                         {
-                            var c = Instantiate(Prefab, transform);
-                            c.transform.SetParent(null);
-
-                            float x = UnityEngine.Random.Range(0.05f, 0.2f);
-                            float y = UnityEngine.Random.Range(0.05f, 0.2f);
-                            float z = UnityEngine.Random.Range(0.05f, 0.2f);
-                            c.transform.localScale.Set(x, y, z);
-
-
+                            var c = Instantiate(Prefab, farm);
                         }
                     });
             }
@@ -65,7 +59,7 @@ public class MachineSpawnCube : EventTrigger
                     .SetAutoKill(false)
                     .OnComplete(() =>
                     {
-                        if (Prefab != null) Instantiate(Prefab, transform);
+                        if (Prefab != null) Instantiate(Prefab, farm);
                     });
             }
 
@@ -78,14 +72,14 @@ public class MachineSpawnCube : EventTrigger
         }
     }
 
-    public override void TriggerHoverEnter()
+    public override void OnTriggerHoverEnter()
     {
-        base.TriggerHoverEnter();
+        base.OnTriggerHoverEnter();
     }
 
-    public override void TriggerHoverExit()
+    public override void OnTriggerHoverExit()
     {
-        base.TriggerHoverExit();
+        base.OnTriggerHoverExit();
     }
 
     private void OnDestroy()

@@ -1,8 +1,8 @@
 public interface IEventTrigger
 {
-    void TriggerEnter();
-    void TriggerExit();
+    void OnTriggerEnter();
+    void OnTriggerExit();
 
-    void TriggerHoverEnter();
-    void TriggerHoverExit();
+    void OnTriggerHoverEnter();
+    void OnTriggerHoverExit();
 }

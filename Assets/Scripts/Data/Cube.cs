@@ -11,6 +11,14 @@ public class Cube : EventTrigger
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
+
+        transform.SetParent(null);
+
+        float x = Random.Range(0.05f, 0.2f);
+        float y = Random.Range(0.05f, 0.2f);
+        float z = Random.Range(0.05f, 0.2f);
+
+        transform.localScale = new Vector3(x, y, z);
     }
 
     public override void OnInteracted()
@@ -32,7 +40,7 @@ public class Cube : EventTrigger
 
         transform.SetParent(Camera.main.transform, false);
         transform.localPosition = new Vector3(0f, 0f, 2f);
-        //transform.localRotation = Quaternion.identity;
+        transform.localRotation = Quaternion.identity;
 
         Ani_Cube(true);
     }
@@ -50,7 +58,7 @@ public class Cube : EventTrigger
         Rb.isKinematic = false;
         Rb.useGravity = true;
 
-        float throwForce = 25f;
+        float throwForce = 20f;
         Rb.AddForce(
             Camera.main.transform.forward * throwForce,
             ForceMode.Impulse
@@ -87,5 +95,18 @@ public class Cube : EventTrigger
     {
         Rb.isKinematic = transform;
         Rb.useGravity = false;
+    }
+
+    public override void OnTriggerHoverEnter()
+    {
+        base.OnTriggerHoverEnter();
+
+    }
+
+    public override void OnTriggerHoverExit()
+    {
+        base.OnTriggerHoverExit();
+
+
     }
 }
