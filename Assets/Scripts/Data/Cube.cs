@@ -11,17 +11,6 @@ public class Cube : EventTrigger
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
-        float x = Random.Range(0.5f, 1f);
-        float y = Random.Range(0.5f, 1f);
-        float z = Random.Range(0.5f, 1f);
-
-        transform.localScale = new Vector3(x, y, z);
-
-        //transform.localRotation = Quaternion.AngleAxis(Random.Range(0, 180), new Vector3(0,0,0));
-
-        //Renderer rd = GetComponent<Renderer>();
-
-        //rd?.material.color.Equals(Random.ColorHSV());
     }
 
     public override void OnInteracted()
@@ -43,7 +32,7 @@ public class Cube : EventTrigger
 
         transform.SetParent(Camera.main.transform, false);
         transform.localPosition = new Vector3(0f, 0f, 2f);
-        transform.localRotation = Quaternion.identity;
+        //transform.localRotation = Quaternion.identity;
 
         Ani_Cube(true);
     }

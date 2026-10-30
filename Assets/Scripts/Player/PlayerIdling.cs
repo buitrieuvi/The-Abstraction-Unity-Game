@@ -15,6 +15,8 @@ public class PlayerIdling : PlayerGrounded
 
         playerState.player.AnimationSpeed = 0f;
         modeAnimation = 0f;
+
+        playerState.player.InputManager.SetCursorVisible(false);
     }
 
     public override void Exit()
