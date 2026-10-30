@@ -45,20 +45,22 @@ public class PlayerHand : MonoBehaviour
 
     public void Start()
     {
-        //input.InputActions.Player.Interact.started += (e) =>
-        //{
-        //    Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        //    RaycastHit hit;
+        input.InputActions.Player.Interact.started += (e) =>
+        {
+            //Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+            //Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+            //RaycastHit hit;
 
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        Transform objectHit = hit.transform;
-        //        EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
+            //if (Physics.Raycast(ray, out hit))
+            //{
+            //    Transform objectHit = hit.transform;
+            //    EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
 
-        //        eventTrigger?.OnInteracted();
-        //    }
-        //};
+            //    eventTrigger?.OnInteracted();
+            //}
+
+            HandleHover?.OnInteracted();
+        };
 
 
         input.InputActions.Player.Attack.performed += (e) =>

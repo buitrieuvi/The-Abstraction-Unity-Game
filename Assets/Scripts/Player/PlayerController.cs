@@ -54,7 +54,6 @@ public sealed class PlayerController : MonoBehaviour
     private static readonly int AnimationSpeedParameter =
         UnityEngine.Animator.StringToHash("speed");
 
-
     private void Awake()
     {
         CharCtrl = GetComponent<CharacterController>();
@@ -63,9 +62,6 @@ public sealed class PlayerController : MonoBehaviour
         Movement.ChangeState(Movement.idling);
         Animator = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody>();
-
-        InputManager.SetCursorVisible(false);
-
 
         InputManager.InputActions.Player.Inventory.performed += OnInventoryPerformed;
         InputManager.InputActions.Player.Esc.performed += OnMenuPerformed;
@@ -92,27 +88,11 @@ public sealed class PlayerController : MonoBehaviour
     private async void OnInventoryPerformed(InputAction.CallbackContext context)
     {
         var v = await ViewManager.ShowView<InventoryView>(DataManager.PlayerInventory);
-        if (v != null)
-        {
-            Movement.ChangeState(Movement.freezing);
-        }
-        else 
-        {
-            Movement.ChangeState(Movement.idling);
-        }
     }
 
     private async void OnMenuPerformed(InputAction.CallbackContext context)
     {
         var v = await ViewManager.ShowView<MenuView>(DataManager.PlayerInventory);
-        if (v != null)
-        {
-            Movement.ChangeState(Movement.freezing);
-        }
-        else
-        {
-            Movement.ChangeState(Movement.idling);
-        }
     }
 
     private void Start()
@@ -123,8 +103,6 @@ public sealed class PlayerController : MonoBehaviour
         InputManager.InputActions.Player.Ctrl.canceled += HandleControl;
         InputManager.InputActions.Player.Sprint.performed += HandleSprint;
         InputManager.InputActions.Player.Sprint.canceled += HandleSprint;
-
-        InputManager.SetCursorVisible(false);
     }
 
     private void OnDestroy()
