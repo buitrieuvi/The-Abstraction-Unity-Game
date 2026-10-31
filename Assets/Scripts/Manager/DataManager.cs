@@ -9,7 +9,7 @@ public sealed class DataManager : IInitializable, IDisposable
 {
     public InventoryController PlayerInventory = new();
 
-    public float Money = 0;
+    public float Money = 100;
     public float MoneyCube = 0;
 
     private readonly List<ViewBase> views = new();
