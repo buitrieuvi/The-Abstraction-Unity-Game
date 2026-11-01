@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ViewUpgrade : ViewBase
 {
+    private InventoryView inventoryView;
+
     public override void Awake()
     {
         base.Awake();
@@ -20,6 +22,9 @@ public class ViewUpgrade : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
+        inventoryView = GetComponent<InventoryView>();
+        inventoryView.Open(dataManager.PlayerInventory);
+
     }
 
     public override void PointerClick()
