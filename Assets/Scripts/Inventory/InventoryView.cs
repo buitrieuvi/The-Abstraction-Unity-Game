@@ -86,12 +86,15 @@ public class InventoryView : ViewBase
 
         SelectFirstVisibleItem();
 
+        if(inventoryCategoryViews.Count > 0)
+        {
+            SetBtnCat(inventory, 0, "");
+            SetBtnCat(inventory, 1, "f");
+            SetBtnCat(inventory, 2, "m");
 
-        SetBtnCat(inventory, 0, "");
-        SetBtnCat(inventory, 1, "f");
-        SetBtnCat(inventory, 2, "m");
+            inventoryCategoryViews[0]?.PointerClick();
+        }
 
-        inventoryCategoryViews[0]?.PointerClick();
 
         foreach (var itemView in inventoryItems)
         {
