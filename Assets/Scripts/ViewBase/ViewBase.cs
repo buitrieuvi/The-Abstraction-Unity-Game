@@ -42,6 +42,7 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public virtual void Close()
     {
         gameObject.SetActive(false);
+        inputManager.InputActions.UI.Esc.Dispose();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
