@@ -14,6 +14,7 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
 {
     [Inject] protected DataManager dataManager;
     [Inject] protected ViewManager viewManager;
+    [Inject] protected InputManager inputManager;
 
     protected RectTransform tfView;
     protected RectTransform tfViewChild;
@@ -32,6 +33,11 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public virtual void Open(ControllerBase ctrl)
     {
         gameObject.SetActive(true);
+
+        inputManager.InputActions.UI.Esc.started += async (e) =>
+        {
+            await viewManager.ShowView<MenuView>(ctrl);
+        };
     }
     public virtual void Close()
     {

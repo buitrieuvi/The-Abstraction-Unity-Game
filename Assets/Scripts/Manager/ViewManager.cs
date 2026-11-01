@@ -45,6 +45,7 @@ public sealed class ViewManager : MonoBehaviour
 
         PlayerController player = FindFirstObjectByType<PlayerController>();
         player.Movement.ChangeState(player.Movement.freezing);
+        inputManager.SetCursorVisible(true);
 
         if (darkPanel != null)
             darkPanel.DOKill();
@@ -99,6 +100,8 @@ public sealed class ViewManager : MonoBehaviour
             }
             else 
             {
+                //inputManager.SetCursorVisible(false);
+
                 T prefab = dataManager.GetView<T>();
                 T view = container.InstantiatePrefabForComponent<T>(prefab.gameObject, viewContainer);
 
@@ -107,7 +110,6 @@ public sealed class ViewManager : MonoBehaviour
                 stack.Push(viewBaseCurr);
 
                 player.Movement.ChangeState(player.Movement.freezing);
-                inputManager.SetCursorVisible(false);
             }
             return viewBaseCurr;
         }
