@@ -34,6 +34,7 @@ public class InventoryView : ViewBase
     public override void Open(ControllerBase ctrl)
     {
 
+
         if (itemContainer != null)
         {
             itemContainer.GetComponentsInChildren<InventoryItemView>(
@@ -100,7 +101,6 @@ public class InventoryView : ViewBase
         {
             itemView.OnClick += e =>
             {
-                //inventory.UpdateItem(inventoryItems.IndexOf(itemView), 1);
                 if (itemView.IsEmpty || itemView == selectedItem)
                     return;
 
@@ -115,11 +115,19 @@ public class InventoryView : ViewBase
         {
             closeButton.OnClick += async (e) => await viewManager.ShowView<InventoryView>(inventory);
         }
+
+
+        inputManager.InputActions.UI.Inventory.started += async (e) => 
+        {
+            await viewManager.ShowView<InventoryView>(inventory);
+        };
     }
 
     public override void Close()
     {
         base.Close();
+
+        inputManager.InputActions.UI.Inventory.Dispose();
     }
 
     public void OnSelect()
