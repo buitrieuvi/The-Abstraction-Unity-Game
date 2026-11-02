@@ -10,6 +10,7 @@ TagManager:
   - gear
   - cube
   - cam1
+  - view item inventory 2
   layers:
   - Default
   - TransparentFX

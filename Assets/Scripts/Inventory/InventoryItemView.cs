@@ -167,4 +167,9 @@ public sealed class InventoryItemView : ViewBase
     //{
     //    tfView.DOScale(1, 0.35f).SetDelay(delay * transform.GetSiblingIndex()).From(0).SetEase(Ease.InOutFlash);
     //}
+
+    public override void Destroy()
+    {
+        base.Destroy();
+    }
 }
