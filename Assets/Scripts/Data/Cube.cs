@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Cube : EventTrigger
 {
@@ -14,11 +15,17 @@ public class Cube : EventTrigger
 
         transform.SetParent(null);
 
-        float x = Random.Range(0.05f, 0.2f);
-        float y = Random.Range(0.05f, 0.2f);
-        float z = Random.Range(0.05f, 0.2f);
+        float x = Mathf.Round(Mathf.Round(Random.Range(0.05f, 0.2f) * 100f)) / 100f;
+        float y = Mathf.Round(Mathf.Round(Random.Range(0.05f, 0.2f) * 100f)) / 100f;
+        float z = Mathf.Round(Mathf.Round(Random.Range(0.05f, 0.2f) * 100f)) / 100f;
 
         transform.localScale = new Vector3(x, y, z);
+
+        //MachineSpawnCube machineSpawnCube = FindFirstObjectByType<MachineSpawnCube>();
+        //if (machineSpawnCube != null)
+        //{
+        //    transform.SetParent(machineSpawnCube.farm);
+        //}
     }
 
     public override void OnInteracted()
@@ -89,7 +96,9 @@ public class Cube : EventTrigger
     }
     public float GetValue()
     {
-        return (transform.localScale.x + transform.localScale.y + transform.localScale.z) / 3;
+        float value = transform.localScale.x + transform.localScale.y + transform.localScale.z;
+        value = Mathf.Round(value * 100f) / 100f;
+        return value;
     }
     public void OnIdle()
     {
