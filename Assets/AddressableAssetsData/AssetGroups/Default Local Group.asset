@@ -39,11 +39,23 @@ MonoBehaviour:
     m_SerializedLabels:
     - rank
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3263558b0d2413a40b984953d2158de6
+    m_Address: Assets/SOs/TagSO-up2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tag
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b5b60262feabc24bbc63aa762810d4b
     m_Address: Assets/SOs/ItemSO-Stark.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c27d46f7b6f0f948970c92f28a109ad
+    m_Address: Assets/SOs/TagSO-1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tag
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 431f81eb163cff94993c6ab10ccf96b4
     m_Address: Assets/SOs/CategorySO-f.asset
@@ -75,6 +87,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - view
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a007be4454ff2db4a98030c501d79b69
+    m_Address: Assets/SOs/TagSO-up1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tag
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a64fb2d93a2ee48448d580a7bddd7ffb
     m_Address: Assets/SOs/RankSO-S 1.asset
     m_ReadOnly: 0
@@ -104,6 +122,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - view
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d50055eef452972488f7bacd8419ba75
+    m_Address: Assets/SOs/TagSO-0.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - tag
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f49adcc05d54fb5409504c16d207bf45
     m_Address: Assets/Prefabs/Menu/View Menu.prefab

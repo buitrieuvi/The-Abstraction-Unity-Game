@@ -17,7 +17,6 @@ public class InventoryView : ViewBase
     [SerializeField] private ViewBase closeButton;
     [SerializeField] private ViewBase avatar;
 
-
     private List<InventoryItemView> inventoryItems = new();
     private List<InventoryCategoryView> inventoryCategoryViews = new ();
 
@@ -235,7 +234,6 @@ public class InventoryView : ViewBase
             avatar.GetComponent<Image>().sprite = null;
         }
     }
-
 
     public void AddViews_2()
     {

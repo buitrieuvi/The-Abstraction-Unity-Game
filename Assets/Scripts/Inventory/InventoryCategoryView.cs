@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class InventoryCategoryView : ViewBase
 {
-    [SerializeField] private Outline outline;
-
     public override void Awake()
     {
         base.Awake();
@@ -41,10 +39,5 @@ public class InventoryCategoryView : ViewBase
     {
         base.PointerExit();
         //tfView.DOScale(1f, 0.1f);
-    }
-
-    public void OnOutline(bool b) 
-    {
-        outline.enabled = b;
     }
 }
