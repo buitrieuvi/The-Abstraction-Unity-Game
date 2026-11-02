@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Zenject;
 
@@ -19,15 +20,18 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     protected RectTransform tfView;
     protected RectTransform tfViewChild;
 
-    
     public UnityAction<ViewBase> OnEnter;
     public UnityAction<ViewBase> OnExit;
     public UnityAction<ViewBase> OnClick;
+
+    protected Outline outline;
 
     public virtual void Awake()
     {
         tfView = GetComponent<RectTransform>();
         tfViewChild = GetComponentInChildren<RectTransform>();
+
+        outline = GetComponent<Outline>();
     }
 
     public virtual void Open(ControllerBase ctrl)
@@ -84,6 +88,14 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public virtual void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void OnOutline(bool enabled)
+    {
+        if (outline != null)
+        {
+            outline.enabled = enabled;
+        }
     }
 
     public void Dotween_Ani_HoverEnter(float e)
