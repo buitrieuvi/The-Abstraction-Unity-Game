@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 7121276401895299067}
   - component: {fileID: 5667319648253119672}
   m_Layer: 5
-  m_Name: Image
+  m_Name: avartar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,9 +262,11 @@ GameObject:
   - component: {fileID: 650062865807327473}
   - component: {fileID: 8393956270988342403}
   - component: {fileID: 4804914817988273661}
+  - component: {fileID: -4206925732704882982}
+  - component: {fileID: -7092497958805821130}
   m_Layer: 5
   m_Name: View Item Inventory 2
-  m_TagString: Untagged
+  m_TagString: view item inventory 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,6 +330,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &-4206925732704882982
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5659209502187879728}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-7092497958805821130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5659209502187879728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb93c9a8828f13478e9e1b9aedb35fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemView
+  emptyContainer: {fileID: 6396814205702370071}
+  itemDataContainer: {fileID: 2948342847464624307}
+  avatarImage: {fileID: 3946919599435361835}
+  rankImage: {fileID: 384528105534988992}
+  quantityText: {fileID: 5507087646076145775}
+  outline: {fileID: 3824701538029018704}
 --- !u!1 &5812523160552562026
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +710,7 @@ GameObject:
   - component: {fileID: 384528105534988992}
   - component: {fileID: 8308326849377953727}
   m_Layer: 5
-  m_Name: Image
+  m_Name: rank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

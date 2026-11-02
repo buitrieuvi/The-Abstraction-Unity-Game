@@ -81,6 +81,11 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
 
     }
 
+    public virtual void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
     public void Dotween_Ani_HoverEnter(float e)
     {
         tfView.DOScale(e, 0.35f).SetEase(Ease.OutBack).From(1);

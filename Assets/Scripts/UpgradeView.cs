@@ -24,7 +24,6 @@ public class ViewUpgrade : ViewBase
         base.Open(ctrl);
         inventoryView = GetComponent<InventoryView>();
         inventoryView.Open(dataManager.PlayerInventory);
-
     }
 
     public override void PointerClick()

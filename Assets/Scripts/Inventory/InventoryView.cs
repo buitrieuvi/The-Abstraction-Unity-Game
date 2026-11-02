@@ -17,24 +17,21 @@ public class InventoryView : ViewBase
     [SerializeField] private ViewBase closeButton;
     [SerializeField] private ViewBase avatar;
 
-    private List<InventoryCategoryView> inventoryCategoryViews =
-        new List<InventoryCategoryView>();
+
+    private List<InventoryItemView> inventoryItems = new();
+    private List<InventoryCategoryView> inventoryCategoryViews = new ();
+
 
     public Transform InventoryCategoryViews;
     private InventoryCategoryView inventoryCategoryView;
-
-    private readonly List<InventoryItemView> inventoryItems = new();
     private InventoryItemView selectedItem;
 
     public override void Awake()
     {
         base.Awake();
     }
-
     public override void Open(ControllerBase ctrl)
     {
-
-
         if (itemContainer != null)
         {
             itemContainer.GetComponentsInChildren<InventoryItemView>(
@@ -145,8 +142,7 @@ public class InventoryView : ViewBase
         }
     }
 
-    public void SetBtnCat(
-        InventoryController inventory, int index, string tag)
+    public void SetBtnCat(InventoryController inventory, int index, string tag)
     {
         if (inventory == null ||
             index < 0 ||
@@ -238,5 +234,19 @@ public class InventoryView : ViewBase
         {
             avatar.GetComponent<Image>().sprite = null;
         }
+    }
+
+
+    public void AddViews_2()
+    {
+        itemContainer.GetComponentsInChildren<InventoryItemView>(true)
+            .ToList()
+            .ForEach(item => item.Destroy());
+
+        for (int i = 0; i < 50; i++)
+        {
+            Instantiate(dataManager.Views.First(x => x.tag == "view item inventory 2").gameObject, itemContainer.transform);
+        }
+        
     }
 }
