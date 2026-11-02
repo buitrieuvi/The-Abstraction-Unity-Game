@@ -1,6 +1,5 @@
 using DG.Tweening;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
@@ -35,6 +34,7 @@ public class MachineSpawnCube : EventTrigger
     {
         base.OnPicked();
 
+        GameObject cube = new GameObject();
 
         if (gear == null)
         {
@@ -48,7 +48,7 @@ public class MachineSpawnCube : EventTrigger
                     {
                         if (Prefab != null) 
                         {
-                            var c = Instantiate(Prefab, farm);
+                            cube = Instantiate(Prefab, farm);
                         }
                     });
             }
@@ -59,7 +59,10 @@ public class MachineSpawnCube : EventTrigger
                     .SetAutoKill(false)
                     .OnComplete(() =>
                     {
-                        if (Prefab != null) Instantiate(Prefab, farm);
+                        if (Prefab != null) 
+                        {
+                            cube = Instantiate(Prefab, farm);
+                        }
                     });
             }
 

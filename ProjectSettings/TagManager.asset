@@ -11,6 +11,7 @@ TagManager:
   - cube
   - cam1
   - view item inventory 2
+  - cubes
   layers:
   - Default
   - TransparentFX
