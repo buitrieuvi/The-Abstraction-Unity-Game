@@ -108,6 +108,8 @@ public class InventoryView : ViewBase
         {
             e.OnClick += e =>
             {
+                Debug.Log($"InventoryCategoryView PointerClick: {e.gameObject.name}");
+
                 InventoryCategoryView categoryView = e as InventoryCategoryView;
 
                 inventoryCategorySelectedView?.OnOutline(false);

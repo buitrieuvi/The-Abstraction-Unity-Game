@@ -1594,6 +1594,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca854848b19a8d4ea6249ed68fab451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ViewUpgrade
+  UpgradeItemViews:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UpgradeItemSeleted: {fileID: 0}
 --- !u!114 &5620453385520500368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3069,35 +3084,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 2690452685787372081}
---- !u!114 &3996515650110755393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688329062116722061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
-  CategoryName: gfdg
-  Outline: {fileID: 2125534725887471588}
---- !u!114 &675221604922128440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688329062116722061}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1 &6782848081784057377
 GameObject:
   m_ObjectHideFlags: 0
