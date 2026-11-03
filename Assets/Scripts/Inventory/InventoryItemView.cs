@@ -8,6 +8,7 @@ using Zenject;
 
 public sealed class InventoryItemView : ViewBase
 {
+    public int IndexId;
 
     [SerializeField] private GameObject emptyContainer;
     [SerializeField] private GameObject itemDataContainer;
@@ -50,8 +51,6 @@ public sealed class InventoryItemView : ViewBase
     public override void PointerClick()
     {
         base.PointerClick();
-
-        Debug.Log($"InventoryItemView PointerClick: {gameObject.name}");
     }
 
     public override void Open(ControllerBase ctrl)
@@ -88,6 +87,9 @@ public sealed class InventoryItemView : ViewBase
         scaleTween?.Kill();
         scaleTween = null;
 
+        //ShowEmpty();
+        //transform.SetAsLastSibling();
+
         base.Close();
     }
 
@@ -102,14 +104,15 @@ public sealed class InventoryItemView : ViewBase
 
     private void ShowEmpty()
     {
-        //canvasGroup.interactable = false;
-        //canvasGroup.blocksRaycasts = false;
-
         if (emptyContainer != null)
             emptyContainer.SetActive(true);
 
         if (itemDataContainer != null)
             itemDataContainer.SetActive(false);
+
+        //avatarImage.sprite = null;
+        //rankImage.color = Color.white;
+        //quantityText.text = "0";
     }
 
     private void RefreshItem(InventoryItemController item)
@@ -139,8 +142,6 @@ public sealed class InventoryItemView : ViewBase
             return;
         }
 
-        //canvasGroup.interactable = true;
-        //canvasGroup.blocksRaycasts = true;
 
         if (emptyContainer == null || itemDataContainer == null ||
             avatarImage == null || rankImage == null ||

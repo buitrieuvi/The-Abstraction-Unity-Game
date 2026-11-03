@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6311877281634883339}
   - component: {fileID: 1894071379049313571}
   - component: {fileID: 1537196777446338456}
+  - component: {fileID: 2098822583668349691}
+  - component: {fileID: 2624255932640382850}
   m_Layer: 5
   m_Name: Image (5)
   m_TagString: Untagged
@@ -90,6 +92,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 1894071379049313571}
+--- !u!114 &2098822583668349691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35963702072217987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &2624255932640382850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35963702072217987}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &345935071522668629
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +133,8 @@ GameObject:
   - component: {fileID: 7634377484526572380}
   - component: {fileID: 6538846701452733647}
   - component: {fileID: 2372055654943507175}
+  - component: {fileID: 8200121728800695842}
+  - component: {fileID: 298446222967600}
   m_Layer: 5
   m_Name: Image (18)
   m_TagString: Untagged
@@ -180,6 +213,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 6538846701452733647}
+--- !u!114 &8200121728800695842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345935071522668629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &298446222967600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345935071522668629}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &613500546203231936
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +254,8 @@ GameObject:
   - component: {fileID: 7093306119537623933}
   - component: {fileID: 6202016560605188666}
   - component: {fileID: 8956884233277370674}
+  - component: {fileID: 8472078951127792235}
+  - component: {fileID: 4591363404529331265}
   m_Layer: 5
   m_Name: Image (17)
   m_TagString: Untagged
@@ -270,6 +334,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 6202016560605188666}
+--- !u!114 &8472078951127792235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613500546203231936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &4591363404529331265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613500546203231936}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &903374793614351947
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +489,8 @@ GameObject:
   - component: {fileID: 4195241499014944584}
   - component: {fileID: 9131880012077164286}
   - component: {fileID: 1843002887836760859}
+  - component: {fileID: 1525577928285596602}
+  - component: {fileID: 566601046862004962}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -474,6 +569,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 9131880012077164286}
+--- !u!114 &1525577928285596602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272915393666950006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &566601046862004962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272915393666950006}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1601725970979991902
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +610,8 @@ GameObject:
   - component: {fileID: 4272142765006960707}
   - component: {fileID: 540533179523346774}
   - component: {fileID: 5301475561436336250}
+  - component: {fileID: 231706325992004577}
+  - component: {fileID: 4411384150114872371}
   m_Layer: 5
   m_Name: Image (15)
   m_TagString: Untagged
@@ -564,6 +690,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 540533179523346774}
+--- !u!114 &231706325992004577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601725970979991902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &4411384150114872371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601725970979991902}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1704369808056711058
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +731,8 @@ GameObject:
   - component: {fileID: 3472694223009722124}
   - component: {fileID: 89027074439627726}
   - component: {fileID: 2439844210525902047}
+  - component: {fileID: 1463877335041222733}
+  - component: {fileID: 3884845231327590002}
   m_Layer: 5
   m_Name: Image (10)
   m_TagString: Untagged
@@ -654,6 +811,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 89027074439627726}
+--- !u!114 &1463877335041222733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704369808056711058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &3884845231327590002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704369808056711058}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2389158439614932246
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +852,8 @@ GameObject:
   - component: {fileID: 2487140461803028225}
   - component: {fileID: 3580791184791065326}
   - component: {fileID: 1846264289175007162}
+  - component: {fileID: 8356414229791533054}
+  - component: {fileID: 1404175339039457320}
   m_Layer: 5
   m_Name: Image (8)
   m_TagString: Untagged
@@ -744,6 +932,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 3580791184791065326}
+--- !u!114 &8356414229791533054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389158439614932246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &1404175339039457320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389158439614932246}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2538520715983933889
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +1063,8 @@ GameObject:
   - component: {fileID: 2495985206052342164}
   - component: {fileID: 483714725834549553}
   - component: {fileID: 4071241267615275488}
+  - component: {fileID: 5336341213157791171}
+  - component: {fileID: 8785828443233821698}
   m_Layer: 5
   m_Name: Image (12)
   m_TagString: Untagged
@@ -924,6 +1143,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 483714725834549553}
+--- !u!114 &5336341213157791171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584078540704736057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &8785828443233821698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584078540704736057}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2600525135111262918
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +1184,8 @@ GameObject:
   - component: {fileID: 8588399352654163383}
   - component: {fileID: 8073007033359257048}
   - component: {fileID: 6375489608401924342}
+  - component: {fileID: 398127251874568941}
+  - component: {fileID: 8356796786809340533}
   m_Layer: 5
   m_Name: Image (16)
   m_TagString: Untagged
@@ -1014,6 +1264,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 8073007033359257048}
+--- !u!114 &398127251874568941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600525135111262918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &8356796786809340533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600525135111262918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2653574789474836962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1395,8 @@ GameObject:
   - component: {fileID: 2625179045672205166}
   - component: {fileID: 5262956209267230746}
   - component: {fileID: 8982713078200132947}
+  - component: {fileID: 2839727412893751708}
+  - component: {fileID: 7921870703177191636}
   m_Layer: 5
   m_Name: Image (9)
   m_TagString: Untagged
@@ -1194,6 +1475,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 5262956209267230746}
+--- !u!114 &2839727412893751708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762652950579656980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &7921870703177191636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762652950579656980}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3566793053969345285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,21 +1594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca854848b19a8d4ea6249ed68fab451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ViewUpgrade
-  UpgradeItemViews:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  UpgradeItemSeleted: {fileID: 0}
 --- !u!114 &5620453385520500368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,12 +1606,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b5697804d4e99950b417775128048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryView
-  time: 0
-  spaceTime: 0
+  time: 0.35
+  spaceTime: 0.0035
   itemContainer: {fileID: 2200434965527649970}
   closeButton: {fileID: 0}
   avatar: {fileID: 0}
-  InventoryCategoryViews: {fileID: 0}
+  inventoryCategoryView:
+  - {fileID: 8144552336247224408}
+  - {fileID: 1525577928285596602}
+  - {fileID: 3996515650110755393}
+  - {fileID: 8848754056925191286}
+  - {fileID: 2300836666740873572}
+  - {fileID: 2098822583668349691}
+  - {fileID: 8946653943520350980}
+  - {fileID: 3384869987114481463}
+  - {fileID: 8356414229791533054}
+  - {fileID: 2839727412893751708}
+  - {fileID: 1463877335041222733}
+  - {fileID: 5116890780181077000}
+  - {fileID: 5336341213157791171}
+  - {fileID: 4257981024880226840}
+  - {fileID: 689363122464039655}
+  - {fileID: 231706325992004577}
+  - {fileID: 398127251874568941}
+  - {fileID: 8472078951127792235}
+  - {fileID: 8200121728800695842}
+  - {fileID: 5415086293999874342}
+  - {fileID: 5859394580011314669}
+  - {fileID: 374183820801926258}
+  - {fileID: 8431648387494497}
+  - {fileID: 1175148632541047419}
+  inventoryCategorySelectedView: {fileID: 0}
 --- !u!1 &3696042333042140474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1649,8 @@ GameObject:
   - component: {fileID: 2585889693461621770}
   - component: {fileID: 6374758824534845550}
   - component: {fileID: 5095625003048794948}
+  - component: {fileID: 8946653943520350980}
+  - component: {fileID: 5673834094865454397}
   m_Layer: 5
   m_Name: Image (6)
   m_TagString: Untagged
@@ -1407,6 +1729,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 6374758824534845550}
+--- !u!114 &8946653943520350980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696042333042140474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 2
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &5673834094865454397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696042333042140474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4286403594481052078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,6 +1770,8 @@ GameObject:
   - component: {fileID: 1680554394195820876}
   - component: {fileID: 1814650945871242879}
   - component: {fileID: 8887187848266537363}
+  - component: {fileID: 8431648387494497}
+  - component: {fileID: 5751496765318476556}
   m_Layer: 5
   m_Name: Image (22)
   m_TagString: Untagged
@@ -1497,6 +1850,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 1814650945871242879}
+--- !u!114 &8431648387494497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286403594481052078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &5751496765318476556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286403594481052078}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4524343045075587295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,6 +1891,8 @@ GameObject:
   - component: {fileID: 7303954361766794263}
   - component: {fileID: 150141521718481147}
   - component: {fileID: 2107721380483370657}
+  - component: {fileID: 4257981024880226840}
+  - component: {fileID: 2904412836910202170}
   m_Layer: 5
   m_Name: Image (13)
   m_TagString: Untagged
@@ -1587,6 +1971,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 150141521718481147}
+--- !u!114 &4257981024880226840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524343045075587295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &2904412836910202170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524343045075587295}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4812137668901086566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +2012,8 @@ GameObject:
   - component: {fileID: 6254382596504621951}
   - component: {fileID: 8178296042072641394}
   - component: {fileID: 8897217706764998661}
+  - component: {fileID: 3384869987114481463}
+  - component: {fileID: 4014100816053140423}
   m_Layer: 5
   m_Name: Image (7)
   m_TagString: Untagged
@@ -1677,6 +2092,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 8178296042072641394}
+--- !u!114 &3384869987114481463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812137668901086566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 3
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &4014100816053140423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812137668901086566}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5301659440564828047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +2247,8 @@ GameObject:
   - component: {fileID: 318371623503067656}
   - component: {fileID: 5248107618754989365}
   - component: {fileID: 1994737045344699285}
+  - component: {fileID: 1175148632541047419}
+  - component: {fileID: 764305270346520682}
   m_Layer: 5
   m_Name: Image (23)
   m_TagString: Untagged
@@ -1881,6 +2327,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 5248107618754989365}
+--- !u!114 &1175148632541047419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362900632678511416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &764305270346520682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362900632678511416}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5509932704266499902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,6 +2368,8 @@ GameObject:
   - component: {fileID: 1355684941166718054}
   - component: {fileID: 2493505278558221469}
   - component: {fileID: 8156626123879224965}
+  - component: {fileID: 5859394580011314669}
+  - component: {fileID: 5387831334213072166}
   m_Layer: 5
   m_Name: Image (20)
   m_TagString: Untagged
@@ -1971,6 +2448,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 2493505278558221469}
+--- !u!114 &5859394580011314669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509932704266499902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &5387831334213072166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509932704266499902}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5731104443937642205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,6 +2718,8 @@ GameObject:
   - component: {fileID: 8902783513850644578}
   - component: {fileID: 3025036192775948464}
   - component: {fileID: 5161887974088619289}
+  - component: {fileID: 5116890780181077000}
+  - component: {fileID: 6350384280619517691}
   m_Layer: 5
   m_Name: Image (11)
   m_TagString: Untagged
@@ -2290,6 +2798,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 3025036192775948464}
+--- !u!114 &5116890780181077000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355597558310260997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &6350384280619517691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355597558310260997}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6441627289384684827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,6 +2989,8 @@ GameObject:
   - component: {fileID: 5821802669636360919}
   - component: {fileID: 2690452685787372081}
   - component: {fileID: 1424969241849904335}
+  - component: {fileID: 3996515650110755393}
+  - component: {fileID: 675221604922128440}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -2530,6 +3069,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 2690452685787372081}
+--- !u!114 &3996515650110755393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688329062116722061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: gfdg
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &675221604922128440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688329062116722061}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6782848081784057377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +3110,8 @@ GameObject:
   - component: {fileID: 9083761600054289481}
   - component: {fileID: 1581258883962929403}
   - component: {fileID: 1188657812671437532}
+  - component: {fileID: 374183820801926258}
+  - component: {fileID: 6273893950375190286}
   m_Layer: 5
   m_Name: Image (21)
   m_TagString: Untagged
@@ -2620,6 +3190,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 1581258883962929403}
+--- !u!114 &374183820801926258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782848081784057377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &6273893950375190286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782848081784057377}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6804488326117127992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,6 +3231,8 @@ GameObject:
   - component: {fileID: 3611601217133012064}
   - component: {fileID: 6818733551345775521}
   - component: {fileID: 4652135197302214905}
+  - component: {fileID: 8848754056925191286}
+  - component: {fileID: 176965397726573481}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -2710,6 +3311,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 6818733551345775521}
+--- !u!114 &8848754056925191286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804488326117127992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &176965397726573481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804488326117127992}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6926364439321532274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2722,6 +3352,8 @@ GameObject:
   - component: {fileID: 1423169601206213627}
   - component: {fileID: 5756830722733242100}
   - component: {fileID: 8751570064211213926}
+  - component: {fileID: 5415086293999874342}
+  - component: {fileID: 7838885065197578579}
   m_Layer: 5
   m_Name: Image (19)
   m_TagString: Untagged
@@ -2800,6 +3432,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 5756830722733242100}
+--- !u!114 &5415086293999874342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926364439321532274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &7838885065197578579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926364439321532274}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7054623990271181630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,6 +3473,8 @@ GameObject:
   - component: {fileID: 801038377124112262}
   - component: {fileID: 1312077307708816197}
   - component: {fileID: 9032502656276528162}
+  - component: {fileID: 8144552336247224408}
+  - component: {fileID: 2125534725887471588}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2890,6 +3553,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 1312077307708816197}
+--- !u!114 &8144552336247224408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054623990271181630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 1
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &2125534725887471588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054623990271181630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7083447308762275314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,6 +3594,8 @@ GameObject:
   - component: {fileID: 5730435784620170163}
   - component: {fileID: 8357720078413915392}
   - component: {fileID: 9017573149780554799}
+  - component: {fileID: 2300836666740873572}
+  - component: {fileID: 780686720018480053}
   m_Layer: 5
   m_Name: Image (4)
   m_TagString: Untagged
@@ -2980,6 +3674,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 8357720078413915392}
+--- !u!114 &2300836666740873572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083447308762275314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &780686720018480053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083447308762275314}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7217537836784790578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,6 +3852,8 @@ GameObject:
   - component: {fileID: 577624418496065248}
   - component: {fileID: 3431156220473804515}
   - component: {fileID: 7975825255174604643}
+  - component: {fileID: 689363122464039655}
+  - component: {fileID: 6063687477842574480}
   m_Layer: 5
   m_Name: Image (14)
   m_TagString: Untagged
@@ -3207,6 +3932,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 3431156220473804515}
+--- !u!114 &689363122464039655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606774482434145042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
+  CategoryName: 
+  Outline: {fileID: 2125534725887471588}
+--- !u!114 &6063687477842574480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606774482434145042}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7872422089966963909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3802,12 +4556,11 @@ RectTransform:
   - {fileID: 2611137152899446386}
   - {fileID: 4274799812225130628}
   - {fileID: 6398469795759139262}
-  - {fileID: 1007706517618670357}
   m_Father: {fileID: 8263697638887023938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000046414}
+  m_AnchoredPosition: {x: 0, y: 361.6303}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5271618475582320549
@@ -4045,8 +4798,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8996856788403961511}
   m_HandleRect: {fileID: 7983281458358651369}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6901961
+  m_Value: -0.31501952
+  m_Size: 0.6864328
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4218,160 +4971,6 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
   m_PrefabInstance: {fileID: 297787708813391686}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &358435320655510500
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2200434965527649970}
-    m_Modifications:
-    - target: {fileID: 384528105534988992, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 904809040128550524, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2764707920503661393, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946919599435361835, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4018727234206098247, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5659209502187879728, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: m_Name
-      value: View Item Inventory 2 (63)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7121276401895299067, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.w
-      value: -33.587585
-      objectReference: {fileID: 0}
-    - target: {fileID: 7121276401895299067, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.x
-      value: -2.500002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7121276401895299067, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.y
-      value: 2.5000038
-      objectReference: {fileID: 0}
-    - target: {fileID: 7121276401895299067, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.z
-      value: -37.12312
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308326849377953727, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.w
-      value: 1.7677671
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308326849377953727, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.x
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308326849377953727, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.y
-      value: 2.4999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308326849377953727, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-      propertyPath: rect2props.z
-      value: 1.7677671
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
---- !u!224 &1007706517618670357 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 650062865807327473, guid: 9c6d4371ddb05ac40bf143485cec6077, type: 3}
-  m_PrefabInstance: {fileID: 358435320655510500}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &417831846446069666
 PrefabInstance:

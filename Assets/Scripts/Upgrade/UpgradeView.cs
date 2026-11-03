@@ -4,8 +4,8 @@ public class ViewUpgrade : ViewBase
 {
     private InventoryView inventoryView;
 
-    public UpgradeItemView[] UpgradeItemViews;
-    public UpgradeItemView UpgradeItemSeleted;
+    //public UpgradeItemView[] UpgradeItemViews;
+    //public UpgradeItemView UpgradeItemSeleted;
 
     public override void Awake()
     {

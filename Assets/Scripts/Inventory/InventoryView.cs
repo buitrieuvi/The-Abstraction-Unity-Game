@@ -23,7 +23,10 @@ public class InventoryView : ViewBase
     private InventoryItemView inventoryItemSelected = new();
 
 
+
     [SerializeField] private InventoryCategoryView[] inventoryCategoryView;
+    [SerializeField] private InventoryCategoryView inventoryCategorySelectedView;
+
 
 
     public override void Awake()
@@ -75,6 +78,7 @@ public class InventoryView : ViewBase
             if (i >= inventory.InventoryModel.ItemCtrls.Count)
             {
                 inventoryItems[i].Open(null);
+                inventoryItems[i].IndexId = -1;
                 continue;
             }
 
@@ -82,9 +86,9 @@ public class InventoryView : ViewBase
 
             inventoryItems[i].Open(
                 itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
-        }
 
-        //SelectFirstVisibleItem();
+            inventoryItems[i].IndexId = i;
+        }
 
 
         if (closeButton != null)
@@ -106,6 +110,10 @@ public class InventoryView : ViewBase
             {
                 InventoryCategoryView categoryView = e as InventoryCategoryView;
 
+                inventoryCategorySelectedView?.OnOutline(false);
+                inventoryCategorySelectedView = categoryView;
+                inventoryCategorySelectedView.OnOutline(true);
+
                 string tag = categoryView.CategoryName;
 
                 var category = string.IsNullOrEmpty(tag)
@@ -113,10 +121,12 @@ public class InventoryView : ViewBase
                     : dataManager.Categories.FirstOrDefault(
                         x => x.CategoryName == tag);
 
-                if (!string.IsNullOrEmpty(tag) && category == null)
+                if (!string.IsNullOrEmpty(tag) && category == null || tag == "")
                 {
-                    Debug.LogWarning(
-                        $"Không tìm thấy danh mục: {tag}");
+                    Debug.LogWarning($"Không tìm thấy danh mục: {tag}");
+
+                    inventoryItems.Where(e => !e.IsEmpty).ForEach(e => e.Close());
+
                     return;
                 }
 
@@ -157,6 +167,8 @@ public class InventoryView : ViewBase
                 inventoryItems.First(e => e.gameObject.activeSelf).PointerClick();
             };
         });
+
+        inventoryCategoryView[0]?.PointerClick();
     }
 
     public override void Close()
