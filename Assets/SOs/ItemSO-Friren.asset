@@ -18,3 +18,5 @@ MonoBehaviour:
   ItemRank: {fileID: 11400000, guid: 29db50be63c014e45ba8d04fb51a25f4, type: 2}
   ItemCategorys:
   - {fileID: 11400000, guid: 431f81eb163cff94993c6ab10ccf96b4, type: 2}
+  - {fileID: 11400000, guid: fdcabe8ad86d3094697b8d584fafc08c, type: 2}
+  - {fileID: 11400000, guid: 471a3f771675dc84f9d9f31168567639, type: 2}
