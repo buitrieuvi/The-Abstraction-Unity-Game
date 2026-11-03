@@ -19,3 +19,4 @@ MonoBehaviour:
   ItemCategorys:
   - {fileID: 11400000, guid: 0bc0b4def81acf84fb38493c3cb38cf1, type: 2}
   - {fileID: 11400000, guid: 76508bd4a855ab54db3b43797fe3d7b0, type: 2}
+  - {fileID: 11400000, guid: 471a3f771675dc84f9d9f31168567639, type: 2}
