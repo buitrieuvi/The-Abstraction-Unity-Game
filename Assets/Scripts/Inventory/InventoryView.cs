@@ -24,6 +24,7 @@ public class InventoryView : ViewBase
 
 
     [SerializeField] private InventoryCategoryView[] inventoryCategoryView;
+    [SerializeField] private InventoryCategoryView inventoryCategorySelectedView;
 
 
     public override void Awake()
@@ -104,7 +105,13 @@ public class InventoryView : ViewBase
         {
             e.OnClick += e =>
             {
+                Debug.Log($"InventoryCategoryView PointerClick: {e.gameObject.name}");
+
                 InventoryCategoryView categoryView = e as InventoryCategoryView;
+
+                inventoryCategorySelectedView?.OnOutline(false);
+                inventoryCategorySelectedView = categoryView;
+                inventoryCategorySelectedView.OnOutline(true);
 
                 string tag = categoryView.CategoryName;
 
@@ -157,6 +164,8 @@ public class InventoryView : ViewBase
                 inventoryItems.First(e => e.gameObject.activeSelf).PointerClick();
             };
         });
+
+        inventoryCategoryView[0]?.PointerClick();
     }
 
     public override void Close()

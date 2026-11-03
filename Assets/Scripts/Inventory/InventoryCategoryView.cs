@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class InventoryCategoryView : ViewBase
 {
     public string CategoryName;
+    public Outline Outline;
 
     public override void Awake()
     {
         base.Awake();
+        Outline = GetComponent<Outline>();
     }
 
     public override void Close()
@@ -39,5 +41,13 @@ public class InventoryCategoryView : ViewBase
     public override void PointerExit()
     {
         base.PointerExit();
+    }
+
+    public void OnOutline(bool isOn)
+    {
+        if (Outline != null)
+        {
+            Outline.enabled = isOn;
+        }
     }
 }
