@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: 8878811831411103206}
   - {fileID: 8213107619615149582}
   - {fileID: 9173172403861059513}
+  inventoryCategorySelectedView: {fileID: 0}
 --- !u!1 &1147534517427780057
 GameObject:
   m_ObjectHideFlags: 0
@@ -12987,6 +12988,10 @@ PrefabInstance:
     - target: {fileID: 924830098552616875, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
       propertyPath: m_Name
       value: InventoryCatView (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811597810201841738, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
+      propertyPath: CategoryName
+      value: item
       objectReference: {fileID: 0}
     - target: {fileID: 8571618131573477613, guid: 1295f6f29c69d7a4285c955d23ab1f5c, type: 3}
       propertyPath: m_Material

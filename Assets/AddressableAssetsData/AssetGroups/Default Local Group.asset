@@ -57,6 +57,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - category
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 471a3f771675dc84f9d9f31168567639
+    m_Address: Assets/CategorySO-item.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - category
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 76508bd4a855ab54db3b43797fe3d7b0
     m_Address: Assets/SOs/CategorySO-m.asset
     m_ReadOnly: 0
