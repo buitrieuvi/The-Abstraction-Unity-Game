@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class InventoryCategoryView : ViewBase
 {
+    public string CategoryName;
+
     public override void Awake()
     {
         base.Awake();
@@ -32,12 +34,10 @@ public class InventoryCategoryView : ViewBase
     public override void PointerEnter()
     {
         base.PointerEnter();
-        //tfView.DOScale(1.1f, 0.1f);
-    }
+    }   
 
     public override void PointerExit()
     {
         base.PointerExit();
-        //tfView.DOScale(1f, 0.1f);
     }
 }

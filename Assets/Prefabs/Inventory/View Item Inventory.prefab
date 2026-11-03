@@ -1163,7 +1163,6 @@ GameObject:
   - component: {fileID: 331834587959864430}
   - component: {fileID: 3409958186375720013}
   - component: {fileID: 6168113482928360180}
-  - component: {fileID: 7267291695849095830}
   m_Layer: 5
   m_Name: View Item Inventory
   m_TagString: Untagged
@@ -1217,18 +1216,6 @@ MonoBehaviour:
   rankImage: {fileID: 3205071951561727829}
   quantityText: {fileID: 4171066120741497594}
   outline: {fileID: 3788629044924776065}
---- !u!225 &7267291695849095830
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7259555343745955599}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &7836076296558653220
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public sealed class InventoryItemView : ViewBase
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private Outline outline;
 
-    CanvasGroup canvasGroup;
+    //CanvasGroup canvasGroup;
 
     public Image AvatarImage => avatarImage;
     private Tween scaleTween;
@@ -33,7 +33,7 @@ public sealed class InventoryItemView : ViewBase
     {
         base.Awake();
 
-        canvasGroup = GetComponent<CanvasGroup>();
+        //canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public override void PointerEnter()
@@ -50,6 +50,8 @@ public sealed class InventoryItemView : ViewBase
     public override void PointerClick()
     {
         base.PointerClick();
+
+        Debug.Log($"InventoryItemView PointerClick: {gameObject.name}");
     }
 
     public override void Open(ControllerBase ctrl)
@@ -100,8 +102,8 @@ public sealed class InventoryItemView : ViewBase
 
     private void ShowEmpty()
     {
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        //canvasGroup.interactable = false;
+        //canvasGroup.blocksRaycasts = false;
 
         if (emptyContainer != null)
             emptyContainer.SetActive(true);
@@ -137,8 +139,8 @@ public sealed class InventoryItemView : ViewBase
             return;
         }
 
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+        //canvasGroup.interactable = true;
+        //canvasGroup.blocksRaycasts = true;
 
         if (emptyContainer == null || itemDataContainer == null ||
             avatarImage == null || rankImage == null ||
@@ -153,23 +155,18 @@ public sealed class InventoryItemView : ViewBase
         quantityText.text = model.Quantity.ToString();
     }
 
-    public void Select()
+    public override void Destroy()
+    {
+        base.Destroy();
+    }
+
+    public void OnSelect()
     {
         outline.enabled = true;
     }
 
-    public void Deselect()
+    public void OnDeSelect()
     {
         outline.enabled = false;
-    }
-
-    //public void Animation(float delay) 
-    //{
-    //    tfView.DOScale(1, 0.35f).SetDelay(delay * transform.GetSiblingIndex()).From(0).SetEase(Ease.InOutFlash);
-    //}
-
-    public override void Destroy()
-    {
-        base.Destroy();
     }
 }

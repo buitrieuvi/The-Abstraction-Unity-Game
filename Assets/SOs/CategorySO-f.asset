@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6187a26d9ab27349aa3dd0a3890a20b, type: 3}
   m_Name: CategorySO-f
   m_EditorClassIdentifier: Assembly-CSharp::CategorySO
-  CategoryID: 0
+  CategoryID: f
   CategoryName: f

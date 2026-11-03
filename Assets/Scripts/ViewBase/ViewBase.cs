@@ -1,14 +1,18 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using EasyTextEffects.Editor.MyBoxCopy.Extensions;
+using ModestTree;
 using R3;
 using System;
 using System.Threading.Tasks;
+using Unity.AppUI.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Zenject;
+
 
 public abstract class ViewBase : MonoBehaviour, IViewBase,
     IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -24,14 +28,14 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     public UnityAction<ViewBase> OnExit;
     public UnityAction<ViewBase> OnClick;
 
-    protected Outline outline;
+
+    //protected ViewBase selected;
+    //[SerializeField] ViewBase[] menuSelecte;
 
     public virtual void Awake()
     {
         tfView = GetComponent<RectTransform>();
         tfViewChild = GetComponentInChildren<RectTransform>();
-
-        outline = GetComponent<Outline>();
     }
 
     public virtual void Open(ControllerBase ctrl)
@@ -90,13 +94,6 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
         Destroy(gameObject);
     }
 
-    public void OnOutline(bool enabled)
-    {
-        if (outline != null)
-        {
-            outline.enabled = enabled;
-        }
-    }
 
     public void Dotween_Ani_HoverEnter(float e)
     {

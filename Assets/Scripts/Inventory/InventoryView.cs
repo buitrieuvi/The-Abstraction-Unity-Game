@@ -1,5 +1,7 @@
 
 using DG.Tweening;
+using EasyTextEffects.Editor.MyBoxCopy.Extensions;
+using ModestTree;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,12 +20,11 @@ public class InventoryView : ViewBase
     [SerializeField] private ViewBase avatar;
 
     private List<InventoryItemView> inventoryItems = new();
-    private List<InventoryCategoryView> inventoryCategoryViews = new ();
+    private InventoryItemView inventoryItemSelected = new();
 
 
-    public Transform InventoryCategoryViews;
-    private InventoryCategoryView inventoryCategoryView;
-    private InventoryItemView selectedItem;
+    [SerializeField] private InventoryCategoryView[] inventoryCategoryView;
+
 
     public override void Awake()
     {
@@ -37,24 +38,28 @@ public class InventoryView : ViewBase
                 true, inventoryItems);
         }
 
-        if (InventoryCategoryViews != null)
-        {
-            inventoryCategoryViews =
-                InventoryCategoryViews
-                    .GetComponentsInChildren<InventoryCategoryView>(true)
-                    .ToList();
-
-            foreach (var cat in inventoryCategoryViews)
-            {
-                cat.OnEnter += (e) => cat.Dotween_Ani_HoverEnter(1.05f);
-                cat.OnExit += (e) => cat.Dotween_Ani_HoverExit();
-            }
-        }
-
         foreach (var item in inventoryItems)
         {
             item.OnEnter += (e) => item.Dotween_Ani_HoverEnter(1.05f);
             item.OnExit += (e) => item.Dotween_Ani_HoverExit();
+            item.OnClick += e =>
+            {
+                if (item.IsEmpty || item == inventoryItemSelected)
+                    return;
+
+                if (inventoryItemSelected != null)
+                {
+                    inventoryItemSelected.OnDeSelect();
+                }
+                inventoryItemSelected = item;
+                inventoryItemSelected.OnSelect();
+                if (avatar != null && inventoryItemSelected.AvatarImage != null)
+                {
+                    avatar.GetComponent<Image>().sprite = inventoryItemSelected.AvatarImage.sprite;
+                    avatar.Dotween_Ani_ScaleX(0.025f, spaceTime);
+                }
+
+            };
 
             item.Dotween_Ani_ScaleX(time, spaceTime);
         }
@@ -64,8 +69,6 @@ public class InventoryView : ViewBase
         if (ctrl is not InventoryController inventory)
             return;
 
-        selectedItem?.Deselect();
-        selectedItem = null;
 
         for (int i = 0; i < inventoryItems.Count; i++)
         {
@@ -81,30 +84,7 @@ public class InventoryView : ViewBase
                 itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
         }
 
-        SelectFirstVisibleItem();
-
-        if(inventoryCategoryViews.Count > 0)
-        {
-            SetBtnCat(inventory, 0, "");
-            SetBtnCat(inventory, 1, "f");
-            SetBtnCat(inventory, 2, "m");
-
-            inventoryCategoryViews[0]?.PointerClick();
-        }
-
-
-        foreach (var itemView in inventoryItems)
-        {
-            itemView.OnClick += e =>
-            {
-                if (itemView.IsEmpty || itemView == selectedItem)
-                    return;
-
-                selectedItem?.Deselect();
-                selectedItem = itemView;
-                OnSelect();
-            };
-        }
+        //SelectFirstVisibleItem();
 
 
         if (closeButton != null)
@@ -117,6 +97,66 @@ public class InventoryView : ViewBase
         {
             await viewManager.ShowView<InventoryView>(inventory);
         };
+
+        inventoryItems[0]?.PointerClick();
+
+        inventoryCategoryView?.ForEach(e =>
+        {
+            e.OnClick += e =>
+            {
+                InventoryCategoryView categoryView = e as InventoryCategoryView;
+
+                string tag = categoryView.CategoryName;
+
+                var category = string.IsNullOrEmpty(tag)
+                    ? null
+                    : dataManager.Categories.FirstOrDefault(
+                        x => x.CategoryName == tag);
+
+                if (!string.IsNullOrEmpty(tag) && category == null)
+                {
+                    Debug.LogWarning(
+                        $"Không tìm thấy danh mục: {tag}");
+                    return;
+                }
+
+                int count = Mathf.Min(
+                    inventoryItems.Count,
+                    inventory.InventoryModel.ItemCtrls.Count);
+
+                for (int i = 0; i < inventoryItems.Count; i++)
+                {
+                    var itemView = inventoryItems[i];
+
+                    if (i >= count)
+                    {
+                        itemView.Open(null);
+                        continue;
+                    }
+
+                    var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
+                    var itemSO = dataManager.GetItem(itemCtrl.ItemModel.Id);
+
+                    bool show = string.IsNullOrEmpty(tag) ||
+                        (itemSO != null &&
+                         itemSO.ItemCategorys != null &&
+                         itemSO.ItemCategorys.Contains(category));
+
+                    itemCtrl.IsShow = show;
+
+                    if (show)
+                    {
+                        itemView.Open(inventory.GetByIndex(i));
+                        itemView.Dotween_Ani_ScaleX(time, spaceTime);
+                    }
+
+                    else
+                        itemView.Close();
+                }
+
+                inventoryItems.First(e => e.gameObject.activeSelf).PointerClick();
+            };
+        });
     }
 
     public override void Close()
@@ -124,127 +164,5 @@ public class InventoryView : ViewBase
         base.Close();
 
         inputManager.InputActions.UI.Inventory.Dispose();
-    }
-
-    public void OnSelect()
-    {
-        if (selectedItem == null || selectedItem.IsEmpty)
-            return;
-
-        selectedItem.Select();
-
-        if (avatar != null && selectedItem.AvatarImage != null)
-        {
-            avatar.GetComponent<Image>().sprite = selectedItem.AvatarImage.sprite;
-            avatar.Dotween_Ani_ScaleX(0.025f, spaceTime);
-
-        }
-    }
-
-    public void SetBtnCat(InventoryController inventory, int index, string tag)
-    {
-        if (inventory == null ||
-            index < 0 ||
-            index >= inventoryCategoryViews.Count)
-            return;
-
-        var categoryView = inventoryCategoryViews[index];
-
-        if (categoryView.OnClick != null)
-            return;
-
-        categoryView.OnClick += e =>
-        {
-
-            var category = string.IsNullOrEmpty(tag)
-                ? null
-                : dataManager.Categories.FirstOrDefault(
-                    x => x.CategoryName == tag);
-
-            if (!string.IsNullOrEmpty(tag) && category == null)
-            {
-                Debug.LogWarning(
-                    $"Không tìm thấy danh mục: {tag}");
-                return;
-            }
-
-            selectedItem?.Deselect();
-            selectedItem = null;
-
-            int count = Mathf.Min(
-                inventoryItems.Count,
-                inventory.InventoryModel.ItemCtrls.Count);
-
-            for (int i = 0; i < inventoryItems.Count; i++)
-            {
-                var itemView = inventoryItems[i];
-
-                if (i >= count)
-                {
-                    itemView.Open(null);
-                    continue;
-                }
-
-                var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
-                var itemSO = dataManager.GetItem(itemCtrl.ItemModel.Id);
-
-                bool show = string.IsNullOrEmpty(tag) ||
-                    (itemSO != null &&
-                     itemSO.ItemCategorys != null &&
-                     itemSO.ItemCategorys.Contains(category));
-
-                itemCtrl.IsShow = show;
-
-                if (show) 
-                {
-                    itemView.Open(inventory.GetByIndex(i));
-                    itemView.Dotween_Ani_ScaleX(time, spaceTime);
-                }
-
-                else
-                    itemView.Close();
-            }
-
-            inventoryItems[0]?.PointerClick();
-
-            SelectFirstVisibleItem();
-
-            if (inventoryCategoryView != null) 
-            {
-                inventoryCategoryView.OnOutline(false);
-            }
-            inventoryCategoryView = categoryView;
-            inventoryCategoryView.OnOutline(true);
-        };
-
-
-    }
-
-    private void SelectFirstVisibleItem()
-    {
-        selectedItem = inventoryItems.FirstOrDefault(
-            item => item != null && !item.IsEmpty);
-
-        if (selectedItem != null)
-        {
-            OnSelect();
-        }
-        else if (avatar != null)
-        {
-            avatar.GetComponent<Image>().sprite = null;
-        }
-    }
-
-    public void AddViews_2()
-    {
-        itemContainer.GetComponentsInChildren<InventoryItemView>(true)
-            .ToList()
-            .ForEach(item => item.Destroy());
-
-        for (int i = 0; i < 50; i++)
-        {
-            Instantiate(dataManager.Views.First(x => x.tag == "view item inventory 2").gameObject, itemContainer.transform);
-        }
-        
     }
 }

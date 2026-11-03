@@ -28,23 +28,19 @@ public class ViewUpgrade : ViewBase
         inventoryView = GetComponent<InventoryView>();
         inventoryView.Open(dataManager.PlayerInventory);
 
-        foreach (var item in UpgradeItemViews)
-        {
-            item.OnClick += (e) => 
-            {
-                if (UpgradeItemSeleted != null)
-                {
-                    UpgradeItemSeleted.OnOutline(false);
-                }
+        //foreach (var item in UpgradeItemViews)
+        //{
+        //    item.OnClick += (e) => 
+        //    {
+        //        if (UpgradeItemSeleted != null)
+        //        {
+        //            UpgradeItemSeleted.OnOutline(false);
+        //        }
 
-                UpgradeItemSeleted = item;
-                UpgradeItemSeleted.OnOutline(true);
-
-                //inventoryView.
-            };
-
-
-        }
+        //        UpgradeItemSeleted = item;
+        //        UpgradeItemSeleted.OnOutline(true);
+        //    };
+        //}
     }
 
     public override void PointerClick()

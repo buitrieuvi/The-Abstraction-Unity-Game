@@ -17,4 +17,4 @@ MonoBehaviour:
   Avatar: {fileID: 21300000, guid: 7f241eb55c4b15d409e370ef64d69068, type: 3}
   ItemRank: {fileID: 11400000, guid: 86bd9720ce13dd44bb7568ab49c1188c, type: 2}
   ItemCategorys:
-  - {fileID: 11400000, guid: 76508bd4a855ab54db3b43797fe3d7b0, type: 2}
+  - {fileID: 11400000, guid: 0bc0b4def81acf84fb38493c3cb38cf1, type: 2}
