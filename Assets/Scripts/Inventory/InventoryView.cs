@@ -119,6 +119,30 @@ public class InventoryView : ViewBase
 
                 string tag = categoryView.CategoryName;
 
+                if (tag == "") return;
+                if (tag == "item") 
+                {
+
+                    for (int i = 0; i < inventoryItems.Count; i++)
+                    {
+                        if (i >= inventory.InventoryModel.ItemCtrls.Count)
+                        {
+                            inventoryItems[i].Open(null);
+                            inventoryItems[i].IndexId = -1;
+                            continue;
+                        }
+
+                        var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
+
+                        inventoryItems[i].Open(
+                            itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
+
+                        inventoryItems[i].IndexId = i;
+                    }
+
+                    return;
+                };
+
                 InventoryController inventorySort = new();
 
                 inventory.InventoryModel.ItemCtrls.ForEach(item => 
