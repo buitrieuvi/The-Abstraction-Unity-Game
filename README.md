@@ -33,11 +33,16 @@ Nội dung bao gồm:
 - Thêm máy lắp ráp: dùng để lắp ráp các các cube lại thành kiệt tác
 
 # Hình ảnh Demo
-![](./Screenshot111.png)
-![](./image.png)
-![](./Screenshot(3).png)
-![](./a.png)
-![](./Screenshot(8).png)
+![](./Screenshot1.png)
+![](./Screenshot2.png)
+![](./Screenshot3.png)
+![](./Screenshot4.png)
+![](./Screenshot6.png)
+![](./Screenshot7.png)
+![](./Screenshot8.png)
+![](./Screenshot9.png)
+![](./Screenshot10.png)
+![](./Screenshot11.png)
 
 ## Công nghệ và Package sử dụng
 
