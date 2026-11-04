@@ -104,7 +104,7 @@ public class InventoryView : ViewBase
 
         inventoryCategoryView?.ForEach(e =>
         {
-            e.OnClick += e =>
+            e.OnClick += _ =>
             {
                 inventoryItems.ForEach(e => e.Open(null));
 
@@ -135,6 +135,8 @@ public class InventoryView : ViewBase
                             itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
 
                         inventoryItems[i].IndexId = i;
+
+                        inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
                     }
 
                     return;
@@ -172,6 +174,7 @@ public class InventoryView : ViewBase
                         itemCtrl.IsShow ? inventorySort.GetByIndex(i) : null);
 
                     inventoryItems[i].IndexId = i;
+                    inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
                 }
             };
         });
