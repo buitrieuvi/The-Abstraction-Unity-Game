@@ -1594,21 +1594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca854848b19a8d4ea6249ed68fab451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ViewUpgrade
-  UpgradeItemViews:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  UpgradeItemSeleted: {fileID: 0}
 --- !u!114 &5620453385520500368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,29 +1613,7 @@ MonoBehaviour:
   avatar: {fileID: 0}
   inventoryCategoryView:
   - {fileID: 8144552336247224408}
-  - {fileID: 1525577928285596602}
-  - {fileID: 3996515650110755393}
-  - {fileID: 8848754056925191286}
-  - {fileID: 2300836666740873572}
-  - {fileID: 2098822583668349691}
   - {fileID: 8946653943520350980}
-  - {fileID: 3384869987114481463}
-  - {fileID: 8356414229791533054}
-  - {fileID: 2839727412893751708}
-  - {fileID: 1463877335041222733}
-  - {fileID: 5116890780181077000}
-  - {fileID: 5336341213157791171}
-  - {fileID: 4257981024880226840}
-  - {fileID: 689363122464039655}
-  - {fileID: 231706325992004577}
-  - {fileID: 398127251874568941}
-  - {fileID: 8472078951127792235}
-  - {fileID: 8200121728800695842}
-  - {fileID: 5415086293999874342}
-  - {fileID: 5859394580011314669}
-  - {fileID: 374183820801926258}
-  - {fileID: 8431648387494497}
-  - {fileID: 1175148632541047419}
   inventoryCategorySelectedView: {fileID: 0}
 --- !u!1 &3696042333042140474
 GameObject:
@@ -2119,7 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
-  CategoryName: 3
+  CategoryName: 
   Outline: {fileID: 2125534725887471588}
 --- !u!114 &4014100816053140423
 MonoBehaviour:
@@ -3004,8 +2967,6 @@ GameObject:
   - component: {fileID: 5821802669636360919}
   - component: {fileID: 2690452685787372081}
   - component: {fileID: 1424969241849904335}
-  - component: {fileID: 3996515650110755393}
-  - component: {fileID: 675221604922128440}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -4546,7 +4507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 361.6303}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5271618475582320549
@@ -4784,8 +4745,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8996856788403961511}
   m_HandleRect: {fileID: 7983281458358651369}
   m_Direction: 2
-  m_Value: -0.31501952
-  m_Size: 0.6864328
+  m_Value: 1
+  m_Size: 0.7619048
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
