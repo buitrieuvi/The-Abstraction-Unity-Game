@@ -20,7 +20,6 @@ public class InventoryView : ViewBase
     [SerializeField] private ViewBase avatar;
 
     private List<InventoryItemView> inventoryItems = new();
-    private List<InventoryItemView> inventorySotrItems = new();
     private InventoryItemView inventoryItemSelected = new();
 
 
@@ -174,66 +173,6 @@ public class InventoryView : ViewBase
 
                     inventoryItems[i].IndexId = i;
                 }
-
-                //Debug.Log($"InventoryCategoryView PointerClick: {e.gameObject.name}");
-
-                //InventoryCategoryView categoryView = e as InventoryCategoryView;
-
-                //inventoryCategorySelectedView?.OnOutline(false);
-                //inventoryCategorySelectedView = categoryView;
-                //inventoryCategorySelectedView.OnOutline(true);
-
-                //string tag = categoryView.CategoryName;
-
-                //var category = string.IsNullOrEmpty(tag)
-                //    ? null
-                //    : dataManager.Categories.FirstOrDefault(
-                //        x => x.CategoryName == tag);
-
-                //if (!string.IsNullOrEmpty(tag) && category == null || tag == "")
-                //{
-                //    Debug.LogWarning($"Không tìm thấy danh mục: {tag}");
-
-                //    inventoryItems.Where(e => !e.IsEmpty).ForEach(e => e.Close());
-
-                //    return;
-                //}
-
-                //int count = Mathf.Min(
-                //    inventoryItems.Count,
-                //    inventory.InventoryModel.ItemCtrls.Count);
-
-                //for (int i = 0; i < inventoryItems.Count; i++)
-                //{
-                //    var itemView = inventoryItems[i];
-
-                //    if (i >= count)
-                //    {
-                //        itemView.Open(null);
-                //        continue;
-                //    }
-
-                //    var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
-                //    var itemSO = dataManager.GetItem(itemCtrl.ItemModel.Id);
-
-                //    bool show = string.IsNullOrEmpty(tag) ||
-                //        (itemSO != null &&
-                //         itemSO.ItemCategorys != null &&
-                //         itemSO.ItemCategorys.Contains(category));
-
-                //    itemCtrl.IsShow = show;
-
-                //    if (show)
-                //    {
-                //        itemView.Open(inventory.GetByIndex(i));
-                //        itemView.Dotween_Ani_ScaleX(time, spaceTime);
-                //    }
-
-                //    else
-                //        itemView.Close();
-                //}
-
-                //inventoryItems.First(e => e.gameObject.activeSelf).PointerClick();
             };
         });
 
