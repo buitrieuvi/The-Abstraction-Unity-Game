@@ -42,7 +42,6 @@ Nội dung bao gồm:
 ![](./Screenshot8.png)
 ![](./Screenshot9.png)
 ![](./Screenshot10.png)
-![](./Screenshot11.png)
 
 ## Công nghệ và Package sử dụng
 
