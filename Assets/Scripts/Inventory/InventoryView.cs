@@ -28,8 +28,6 @@ public class InventoryView : ViewBase
     [SerializeField] private InventoryCategoryView[] inventoryCategoryView;
     [SerializeField] private InventoryCategoryView inventoryCategorySelectedView;
 
-
-
     public override void Awake()
     {
         base.Awake();
