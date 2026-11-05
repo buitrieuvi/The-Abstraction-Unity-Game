@@ -44,12 +44,14 @@ public sealed class InventoryItemView : ViewBase
 
     public override void PointerExit()
     {
+        
         base.PointerExit();
    
     }
 
     public override void PointerClick()
     {
+        Debug.Log(IndexId); 
         base.PointerClick();
     }
 
@@ -109,6 +111,8 @@ public sealed class InventoryItemView : ViewBase
 
         if (itemDataContainer != null)
             itemDataContainer.SetActive(false);
+
+        IndexId = -1;
 
         //avatarImage.sprite = null;
         //rankImage.color = Color.white;

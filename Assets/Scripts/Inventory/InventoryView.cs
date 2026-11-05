@@ -22,8 +22,6 @@ public class InventoryView : ViewBase
     private List<InventoryItemView> inventoryItems = new();
     private InventoryItemView inventoryItemSelected = new();
 
-
-
     [SerializeField] private InventoryCategoryView[] inventoryCategoryView;
     [SerializeField] private InventoryCategoryView inventoryCategorySelectedView;
 
@@ -33,6 +31,7 @@ public class InventoryView : ViewBase
     }
     public override void Open(ControllerBase ctrl)
     {
+
         if (itemContainer != null)
         {
             itemContainer.GetComponentsInChildren<InventoryItemView>(
@@ -53,13 +52,12 @@ public class InventoryView : ViewBase
                     inventoryItemSelected.OnDeSelect();
                 }
                 inventoryItemSelected = item;
-                inventoryItemSelected.OnSelect();
+                inventoryItemSelected.OnSelect();   
                 if (avatar != null && inventoryItemSelected.AvatarImage != null)
                 {
                     avatar.GetComponent<Image>().sprite = inventoryItemSelected.AvatarImage.sprite;
                     avatar.Dotween_Ani_ScaleX(0.025f, spaceTime);
                 }
-
             };
 
             item.Dotween_Ani_ScaleX(time, spaceTime);
@@ -76,29 +74,13 @@ public class InventoryView : ViewBase
             if (i >= inventory.InventoryModel.ItemCtrls.Count)
             {
                 inventoryItems[i].Open(null);
-                inventoryItems[i].IndexId = -1;
                 continue;
             }
 
             var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
 
-            inventoryItems[i].Open(
-                itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
-
-            inventoryItems[i].IndexId = i;
+            inventoryItems[i].Open(itemCtrl);
         }
-
-
-        if (closeButton != null)
-        {
-            closeButton.OnClick += async (e) => await viewManager.ShowView<InventoryView>(inventory);
-        }
-
-
-        inputManager.InputActions.UI.Inventory.started += async (e) => 
-        {
-            await viewManager.ShowView<InventoryView>(inventory);
-        };
 
         inventoryItems[0]?.PointerClick();
 
@@ -116,33 +98,40 @@ public class InventoryView : ViewBase
 
                 string tag = categoryView.CategoryName;
 
-                if (tag == "") return;
-                if (tag == "item") 
+                if (tag == "") 
                 {
-
-                    for (int i = 0; i < inventoryItems.Count; i++)
-                    {
-                        if (i >= inventory.InventoryModel.ItemCtrls.Count)
-                        {
-                            inventoryItems[i].Open(null);
-                            inventoryItems[i].IndexId = -1;
-                            continue;
-                        }
-
-                        var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
-
-                        inventoryItems[i].Open(
-                            itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
-
-                        inventoryItems[i].IndexId = i;
-
-                        inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
-                    }
-
+                    inventoryItems.ForEach(e => e.Open(null));
                     return;
-                };
+                }
+
+                //if (tag == "item") 
+                //{
+
+                //    for (int i = 0; i < inventoryItems.Count; i++)
+                //    {
+                //        if (i >= inventory.InventoryModel.ItemCtrls.Count)
+                //        {
+                //            inventoryItems[i].Open(null);
+                //            inventoryItems[i].IndexId = -1;
+                //            continue;
+                //        }
+
+                //        var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
+
+                //        inventoryItems[i].Open(
+                //            itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
+
+                //        inventoryItems[i].IndexId = i;
+
+                //        inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
+                //    }
+
+                //    return;
+                //};
 
                 InventoryController inventorySort = new();
+
+                int index = 0;
 
                 inventory.InventoryModel.ItemCtrls.ForEach(item => 
                 {
@@ -152,34 +141,50 @@ public class InventoryView : ViewBase
                     {
                         if (category.CategoryName == tag)
                         {
-                            inventorySort.ChangedItem(item.ItemModel.Id, item.ItemModel.Quantity);
+                            inventorySort.InventoryModel.ItemCtrls.Add(item);
+                            inventoryItems[index].Open(item);
+                            inventoryItems[index].IndexId = inventory.InventoryModel.ItemCtrls.IndexOf(item);
+                            index++;
+                            //ChangedItem(item.ItemModel.Id, item.ItemModel.Quantity);                            
                         }
                     });
+
+
 
                 });
 
 
-                for (int i = 0; i < inventoryItems.Count; i++)
-                {
-                    if (i >= inventorySort.InventoryModel.ItemCtrls.Count)
-                    {
-                        inventoryItems[i].Open(null);
-                        inventoryItems[i].IndexId = -1;
-                        continue;
-                    }
+                //for (int i = 0; i < inventoryItems.Count; i++)
+                //{
+                //    if (i >= inventorySort.InventoryModel.ItemCtrls.Count)
+                //    {
+                //        inventoryItems[i].Open(null);
+                //        inventoryItems[i].IndexId = -1;
+                //        continue;
+                //    }
 
-                    var itemCtrl = inventorySort.InventoryModel.ItemCtrls[i];
+                //    var itemCtrl = inventorySort.InventoryModel.ItemCtrls[i];
 
-                    inventoryItems[i].Open(
-                        itemCtrl.IsShow ? inventorySort.GetByIndex(i) : null);
+                //    inventoryItems[i].Open(
+                //        itemCtrl.IsShow ? inventorySort.GetByIndex(i) : null);
 
-                    inventoryItems[i].IndexId = i;
-                    inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
-                }
+                //    inventoryItems[i].IndexId = i;
+                //    inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
+                //}
             };
         });
 
         inventoryCategoryView[0]?.PointerClick();
+
+        if (closeButton != null)
+        {
+            closeButton.OnClick += async (e) => await viewManager.ShowView<InventoryView>(inventory);
+        }
+
+        inputManager.InputActions.UI.Inventory.started += async (e) =>
+        {
+            await viewManager.ShowView<InventoryView>(inventory);
+        };
     }
 
     public override void Close()

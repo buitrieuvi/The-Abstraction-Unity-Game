@@ -42,15 +42,15 @@ public abstract class ViewBase : MonoBehaviour, IViewBase,
     {
         gameObject.SetActive(true);
 
-        inputManager.InputActions.UI.Esc.started += async (e) =>
-        {
-            await viewManager.ShowView<MenuView>(ctrl);
-        };
+        //inputManager.InputActions.UI.Esc.started += async (e) =>
+        //{
+        //    await viewManager.ShowView<MenuView>(ctrl);
+        //};
     }
     public virtual void Close()
     {
         gameObject.SetActive(false);
-        inputManager.InputActions.UI.Esc.Dispose();
+        //inputManager.InputActions.UI.Esc.Dispose();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
