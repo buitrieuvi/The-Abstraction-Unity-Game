@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 10
+    m_Top: 30
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 2
@@ -1210,6 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb93c9a8828f13478e9e1b9aedb35fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::View_ItemInventory
+  IndexId: 0
   emptyContainer: {fileID: 5761780156598785905}
   itemDataContainer: {fileID: 8335623482914093373}
   avatarImage: {fileID: 502622438624580375}
