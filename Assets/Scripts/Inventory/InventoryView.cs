@@ -100,34 +100,8 @@ public class InventoryView : ViewBase
 
                 if (tag == "") 
                 {
-                    inventoryItems.ForEach(e => e.Open(null));
                     return;
                 }
-
-                //if (tag == "item") 
-                //{
-
-                //    for (int i = 0; i < inventoryItems.Count; i++)
-                //    {
-                //        if (i >= inventory.InventoryModel.ItemCtrls.Count)
-                //        {
-                //            inventoryItems[i].Open(null);
-                //            inventoryItems[i].IndexId = -1;
-                //            continue;
-                //        }
-
-                //        var itemCtrl = inventory.InventoryModel.ItemCtrls[i];
-
-                //        inventoryItems[i].Open(
-                //            itemCtrl.IsShow ? inventory.GetByIndex(i) : null);
-
-                //        inventoryItems[i].IndexId = i;
-
-                //        inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
-                //    }
-
-                //    return;
-                //};
 
                 InventoryController inventorySort = new();
 
@@ -144,33 +118,13 @@ public class InventoryView : ViewBase
                             inventorySort.InventoryModel.ItemCtrls.Add(item);
                             inventoryItems[index].Open(item);
                             inventoryItems[index].IndexId = inventory.InventoryModel.ItemCtrls.IndexOf(item);
-                            index++;
-                            //ChangedItem(item.ItemModel.Id, item.ItemModel.Quantity);                            
+                            inventoryItems[index].Dotween_Ani_ScaleX(time, spaceTime);
+                            index++;                            
                         }
                     });
-
-
-
                 });
 
-
-                //for (int i = 0; i < inventoryItems.Count; i++)
-                //{
-                //    if (i >= inventorySort.InventoryModel.ItemCtrls.Count)
-                //    {
-                //        inventoryItems[i].Open(null);
-                //        inventoryItems[i].IndexId = -1;
-                //        continue;
-                //    }
-
-                //    var itemCtrl = inventorySort.InventoryModel.ItemCtrls[i];
-
-                //    inventoryItems[i].Open(
-                //        itemCtrl.IsShow ? inventorySort.GetByIndex(i) : null);
-
-                //    inventoryItems[i].IndexId = i;
-                //    inventoryItems[i].Dotween_Ani_ScaleX(time, spaceTime);
-                //}
+                
             };
         });
 
