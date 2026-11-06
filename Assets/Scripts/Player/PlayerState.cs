@@ -10,6 +10,8 @@ public class PlayerState : StateMachine
     public PlayerRunning running { get; }
     public PlayerFall falling { get; }
 
+    public PlayerAttackA1 attackA1 { get; }
+
     public PlayerState(PlayerController player)
     {
         this.player = player;
@@ -21,6 +23,8 @@ public class PlayerState : StateMachine
         running = new PlayerRunning(this);
         stoping = new PlayerStoping(this);
         falling = new PlayerFall(this);
+
+        attackA1 = new PlayerAttackA1(this);
 
         //player.Input.SetCursorVisible(false);
     }

@@ -45,6 +45,9 @@ public sealed class PlayerController : MonoBehaviour
     public bool IsMoving;
     public bool IsStoping;
     public float DistanceToGround;
+
+    public bool IsAttacking;
+
     public LayerMask GroundLayer = Physics.DefaultRaycastLayers;
 
     public float VerticalVelocity;
@@ -55,8 +58,10 @@ public sealed class PlayerController : MonoBehaviour
     public float AnimationSpeed;
     public Animator Animator;
 
-    private static readonly int AnimationSpeedParameter =
-        Animator.StringToHash("speed");
+    private static readonly int AnimationSpeedParameter = Animator.StringToHash("speed");
+    private static readonly int AnimationAttackParameter = Animator.StringToHash("attack");
+
+    public int AnimationAttackParameterHash => AnimationAttackParameter;
 
     private void Awake()
     {
@@ -77,12 +82,15 @@ public sealed class PlayerController : MonoBehaviour
 
         player.Interact.started += HandleInteract;
         player.Alt.started += HandleAlt;
+
         player.Ctrl.performed += HandleControl;
         player.Ctrl.canceled += HandleControl;
+
         player.Sprint.performed += HandleSprint;
         player.Sprint.canceled += HandleSprint;
 
         player.Attack.performed += HandleAttack;
+        player.Attack.canceled += HandleAttack;
     }
 
     private void OnDisable()
@@ -102,7 +110,9 @@ public sealed class PlayerController : MonoBehaviour
         player.Sprint.performed -= HandleSprint;
         player.Sprint.canceled -= HandleSprint;
 
+
         player.Attack.performed -= HandleAttack;
+        player.Attack.canceled -= HandleAttack;
 
         HandleHover?.OnTriggerHoverExit();
         HandleHover = null;
@@ -162,24 +172,32 @@ public sealed class PlayerController : MonoBehaviour
 
     private void HandleAttack(InputAction.CallbackContext context)
     {
-        // Throw current object
-        if (Handle != null)
+        IsAttacking = context.ReadValueAsButton();
+
+        if (IsAttacking)
         {
-            Handle.OnThrowed();
-            Handle = null;
-            return;
+            Movement.ChangeState(Movement.attackA1);
+        }
+        else
+        {
+            Movement.ChangeState(Movement.idling);
         }
 
-        if (HandleHover == null)
-            return;
+        //if (Handle != null)
+        //{
+        //    Handle.OnThrowed();
+        //    Handle = null;
+        //    return;
+        //}
 
-        // Pick object
-        if (HandleHover.CompareTag("cube"))
-        {
-            Handle = HandleHover;
-        }
+        //if (HandleHover == null)
+        //    return;
+        //if (HandleHover.CompareTag("cube"))
+        //{
+        //    Handle = HandleHover;
+        //}
 
-        HandleHover.OnPicked();
+        //HandleHover.OnPicked();
     }
 
     // ==================== VIEW ====================
