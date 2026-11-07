@@ -25,10 +25,19 @@ public class InventoryView : ViewBase
     [SerializeField] private InventoryCategoryView[] inventoryCategoryView;
     [SerializeField] private InventoryCategoryView inventoryCategorySelectedView;
 
+    public InventoryCategoryView InventoryCategorySelectedView => inventoryCategorySelectedView;
+
+
+    public void SeletedCat0() { inventoryItems[0]?.PointerClick(); }
+    public void SeletedItem0() { inventoryCategoryView[0]?.PointerClick(); }
+
+    public Image AvatarImage => inventoryItemSelected.AvatarImage;
+
     public override void Awake()
     {
         base.Awake();
     }
+
     public override void Open(ControllerBase ctrl)
     {
 
@@ -82,7 +91,7 @@ public class InventoryView : ViewBase
             inventoryItems[i].Open(itemCtrl);
         }
 
-        inventoryItems[0]?.PointerClick();
+        SeletedItem0();
 
         inventoryCategoryView?.ForEach(e =>
         {
@@ -128,7 +137,7 @@ public class InventoryView : ViewBase
             };
         });
 
-        inventoryCategoryView[0]?.PointerClick();
+        SeletedCat0();
 
         if (closeButton != null)
         {

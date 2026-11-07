@@ -224,8 +224,8 @@ GameObject:
   - component: {fileID: 3266350195104595002}
   - component: {fileID: 3782138883716227321}
   - component: {fileID: 6561834086769289118}
-  - component: {fileID: 6291237480727012324}
   - component: {fileID: 4266842376612033624}
+  - component: {fileID: 5057572940344716922}
   m_Layer: 5
   m_Name: View Upgrade Slot
   m_TagString: Untagged
@@ -306,20 +306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Nobi.UiRoundedCorners::Nobi.UiRoundedCorners.ImageWithRoundedCorners
   radius: 12
   image: {fileID: 3782138883716227321}
---- !u!114 &6291237480727012324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5165271701241239682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4397feaadea23a74298846ec4ae26f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryCategoryView
-  CategoryName: 1
-  Outline: {fileID: 4266842376612033624}
 --- !u!114 &4266842376612033624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +321,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0.25943398, g: 1, b: 0.27311987, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &5057572940344716922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165271701241239682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155ed24043068734fb9ed4666636ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeItemView
+  CategoryName: 
+  Outline: {fileID: 4266842376612033624}
+  slotIndex: 0
+  AvatarImage: {fileID: 0}
+  NumSlot: {fileID: 0}

@@ -89,8 +89,6 @@ public sealed class DataManager : IInitializable, IDisposable
         PlayerInventory.ChangedItem("3", 1);
 
         PlayerInventory.ChangedItem("mc1", 1);
-
-        Debug.Log(items.Count);
     }
     
     private void Load<T>(string label, Action<IList<T>> onLoaded, Action<Exception> onError)
