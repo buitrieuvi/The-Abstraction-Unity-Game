@@ -51,7 +51,6 @@ public sealed class InventoryItemView : ViewBase
 
     public override void PointerClick()
     {
-        Debug.Log(IndexId); 
         base.PointerClick();
     }
 

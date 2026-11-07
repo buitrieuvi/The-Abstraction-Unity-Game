@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class ViewUpgrade : ViewBase
 {
-    private InventoryView inventoryView;
-
-    //public UpgradeItemView[] UpgradeItemViews;
-    //public UpgradeItemView UpgradeItemSeleted;
-
     public override void Awake()
     {
         base.Awake();
@@ -25,22 +20,6 @@ public class ViewUpgrade : ViewBase
     public override void Open(ControllerBase ctrl)
     {
         base.Open(ctrl);
-        inventoryView = GetComponent<InventoryView>();
-        inventoryView.Open(dataManager.PlayerInventory);
-
-        //foreach (var item in UpgradeItemViews)
-        //{
-        //    item.OnClick += (e) => 
-        //    {
-        //        if (UpgradeItemSeleted != null)
-        //        {
-        //            UpgradeItemSeleted.OnOutline(false);
-        //        }
-
-        //        UpgradeItemSeleted = item;
-        //        UpgradeItemSeleted.OnOutline(true);
-        //    };
-        //}
     }
 
     public override void PointerClick()
