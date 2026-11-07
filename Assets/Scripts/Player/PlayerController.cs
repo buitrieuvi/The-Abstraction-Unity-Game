@@ -89,8 +89,10 @@ public sealed class PlayerController : MonoBehaviour
         player.Sprint.performed += HandleSprint;
         player.Sprint.canceled += HandleSprint;
 
-        player.Attack.performed += HandleAttack;
-        player.Attack.canceled += HandleAttack;
+        //player.Attack.performed += HandleAttack;
+        //player.Attack.canceled += HandleAttack;
+
+        player.Attack.started += HandleAttack;
     }
 
     private void OnDisable()
@@ -110,9 +112,10 @@ public sealed class PlayerController : MonoBehaviour
         player.Sprint.performed -= HandleSprint;
         player.Sprint.canceled -= HandleSprint;
 
+        //player.Attack.performed -= HandleAttack;
+        //player.Attack.canceled -= HandleAttack;
 
-        player.Attack.performed -= HandleAttack;
-        player.Attack.canceled -= HandleAttack;
+        player.Attack.started -= HandleAttack;
 
         HandleHover?.OnTriggerHoverExit();
         HandleHover = null;
