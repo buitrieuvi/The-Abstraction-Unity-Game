@@ -7,6 +7,7 @@ public class Machine1UpgradeView : ViewUpgrade
     public InventoryView InventoryView;
 
     public ViewButtonBase Setbtn;
+    public ViewButtonBase SetNull;
 
     //public UpgradeCategoryItemView InventoryCategoryViewSeletected;
     //public InventoryItemView InventoryItemViewSeletected;
@@ -26,12 +27,19 @@ public class Machine1UpgradeView : ViewUpgrade
 
         Setbtn.OnClick += (e) =>
         {
-            Debug.Log("lap trinh tiep cho nay");
-
             UpgradeCategoryItemView upgradeCategoryItemView = InventoryView.InventoryCategorySelectedView as UpgradeCategoryItemView;
 
             upgradeCategoryItemView.AvatarImage.gameObject.SetActive(true);
             upgradeCategoryItemView.AvatarImage.sprite = InventoryView.AvatarImage.sprite;
+            upgradeCategoryItemView.NumSlot.gameObject.SetActive(false);
+        };
+
+        SetNull.OnClick += (e) =>
+        {
+            UpgradeCategoryItemView upgradeCategoryItemView = InventoryView.InventoryCategorySelectedView as UpgradeCategoryItemView;
+
+            upgradeCategoryItemView.AvatarImage.gameObject.SetActive(false);
+            upgradeCategoryItemView.NumSlot.gameObject.SetActive(true);
         };
 
 

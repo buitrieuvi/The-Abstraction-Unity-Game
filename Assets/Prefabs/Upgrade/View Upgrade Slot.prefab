@@ -333,8 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155ed24043068734fb9ed4666636ebf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeItemView
-  CategoryName: 
+  CategoryName: 1
   Outline: {fileID: 4266842376612033624}
-  slotIndex: 0
-  AvatarImage: {fileID: 0}
-  NumSlot: {fileID: 0}
+  AvatarImage: {fileID: 1191339381101668801}
+  NumSlot: {fileID: 3154745361204108801}

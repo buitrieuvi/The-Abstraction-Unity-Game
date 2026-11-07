@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Machine1UpgradeView
   InventoryView: {fileID: 0}
   Setbtn: {fileID: 5818397804467958235}
+  SetNull: {fileID: 6167506747369315821}
 --- !u!114 &5620453385520500368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1052,7 @@ GameObject:
   - component: {fileID: 3111248228883482381}
   - component: {fileID: 7413659954404089461}
   - component: {fileID: 9067463598067545857}
+  - component: {fileID: 6167506747369315821}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -1130,6 +1132,18 @@ MonoBehaviour:
   r: {x: 20, y: 20, z: 20, w: 20}
   rect2props: {x: 0.0000038146973, y: -0.0000076293945, z: 56.568546, w: 56.568546}
   image: {fileID: 7413659954404089461}
+--- !u!114 &6167506747369315821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381189252091803695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5216fd9d62df2544dbd0701de7a3d770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ViewButtonBase
 --- !u!1 &7872422089966963909
 GameObject:
   m_ObjectHideFlags: 0
@@ -6193,10 +6207,6 @@ PrefabInstance:
     - target: {fileID: 3782138883716227321, guid: 38f31a6e145111e49aef3a62a3e18e4a, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5057572940344716922, guid: 38f31a6e145111e49aef3a62a3e18e4a, type: 3}
-      propertyPath: CategoryName
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5165271701241239682, guid: 38f31a6e145111e49aef3a62a3e18e4a, type: 3}
       propertyPath: m_Name

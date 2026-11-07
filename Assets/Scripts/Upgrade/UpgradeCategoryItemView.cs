@@ -12,10 +12,7 @@ public class UpgradeCategoryItemView : InventoryCategoryView
 
     private void Start()
     {
-        AvatarImage = GetComponentInChildren<Image>(true);
-        NumSlot = GetComponentInChildren<TextMeshProUGUI>();
-        //slotIndex = int.Parse(NumSlot.text);
-        //CategoryName = slotIndex.ToString();
+
     }
 
 }
