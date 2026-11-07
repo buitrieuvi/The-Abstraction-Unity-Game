@@ -46,7 +46,7 @@ public class Cube : EventTrigger
         Rb.angularVelocity = Vector3.zero;
 
         transform.SetParent(Camera.main.transform, false);
-        transform.localPosition = new Vector3(0f, 0f, 2f);
+        transform.localPosition = new Vector3(0f, 0f, 1f);
         transform.localRotation = Quaternion.identity;
 
         Ani_Cube(true);

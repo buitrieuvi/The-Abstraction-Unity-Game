@@ -21,8 +21,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - item
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0bc0b4def81acf84fb38493c3cb38cf1
-    m_Address: Assets/CategorySO-m.asset
+  - m_GUID: 16d36cbbd0343f74bb8bbbfc3e8122c4
+    m_Address: Assets/CategorySO-f.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - category
@@ -45,6 +45,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - rank
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37822c6b70916af4ea5cfc562abc83b6
+    m_Address: Assets/CategorySO-1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - category
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b5b60262feabc24bbc63aa762810d4b
     m_Address: Assets/SOs/ItemSO-Stark.asset
     m_ReadOnly: 0
@@ -57,17 +63,22 @@ MonoBehaviour:
     m_SerializedLabels:
     - category
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 471a3f771675dc84f9d9f31168567639
-    m_Address: Assets/CategorySO-item.asset
+  - m_GUID: 672afa764a51d484088b506675e95607
+    m_Address: Assets/Prefabs/Inventory/View Inventory 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - category
+    - view
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 76508bd4a855ab54db3b43797fe3d7b0
     m_Address: Assets/SOs/CategorySO-m.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - category
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8433fe84588afcd4099e0a7569a614e2
+    m_Address: Assets/CategorySO-m.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86bd9720ce13dd44bb7568ab49c1188c
     m_Address: Assets/SOs/RankSO-B.asset
@@ -93,12 +104,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - rank
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ace3e742c605d0449aa577cfb5656cd9
-    m_Address: Assets/View Inventory 2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - view
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4f3fb457bd557b4b92771cd84c9339d
     m_Address: Assets/SOs/RankSO-C.asset
     m_ReadOnly: 0
@@ -116,12 +121,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - view
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fdcabe8ad86d3094697b8d584fafc08c
-    m_Address: Assets/CategorySO-2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - category
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff53154160bef2141a4021b8f34af404
     m_Address: Assets/SOs/ItemSO-Fern.asset

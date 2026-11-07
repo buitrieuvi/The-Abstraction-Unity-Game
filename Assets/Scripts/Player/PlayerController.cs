@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 public sealed class PlayerController : MonoBehaviour
 {
     [Inject] public InputManager InputManager { get; private set; }
@@ -172,32 +172,32 @@ public sealed class PlayerController : MonoBehaviour
 
     private void HandleAttack(InputAction.CallbackContext context)
     {
-        IsAttacking = context.ReadValueAsButton();
+        //IsAttacking = context.ReadValueAsButton();
 
-        if (IsAttacking)
-        {
-            Movement.ChangeState(Movement.attackA1);
-        }
-        else
-        {
-            Movement.ChangeState(Movement.idling);
-        }
-
-        //if (Handle != null)
+        //if (IsAttacking)
         //{
-        //    Handle.OnThrowed();
-        //    Handle = null;
-        //    return;
+        //    Movement.ChangeState(Movement.attackA1);
+        //}
+        //else
+        //{
+        //    Movement.ChangeState(Movement.idling);
         //}
 
-        //if (HandleHover == null)
-        //    return;
-        //if (HandleHover.CompareTag("cube"))
-        //{
-        //    Handle = HandleHover;
-        //}
+        if (Handle != null)
+        {
+            Handle.OnThrowed();
+            Handle = null;
+            return;
+        }
 
-        //HandleHover.OnPicked();
+        if (HandleHover == null)
+            return;
+        if (HandleHover.CompareTag("cube"))
+        {
+            Handle = HandleHover;
+        }
+
+        HandleHover.OnPicked();
     }
 
     // ==================== VIEW ====================
