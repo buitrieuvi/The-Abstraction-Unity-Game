@@ -14,4 +14,9 @@ public class ItemSO : ScriptableObjectInstaller<ItemSO>
     public override void InstallBindings()
     {
     }
+
+    public virtual void Run(ControllerBase ct)
+    {
+        Debug.Log($"ItemSO {ItemName} initialized.");
+    }
 }
