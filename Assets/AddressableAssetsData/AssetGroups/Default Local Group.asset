@@ -110,6 +110,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - rank
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5e355965cd4ef64d92e7e261fbb256d
+    m_Address: Assets/SOs/ItemSO-machine-1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - item
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cbb8c1aa16ae4924292ef4aa67b15a6b
     m_Address: Assets/Prefabs/Elevator/Elevator View.prefab
     m_ReadOnly: 0

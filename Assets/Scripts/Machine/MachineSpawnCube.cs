@@ -1,13 +1,15 @@
 using DG.Tweening;
+using EasyTextEffects.Editor.MyBoxCopy.Extensions;
 using System;
 using UnityEngine;
 
 [Serializable]
 public class MachineSpawnCubeController : ControllerBase 
 {
-    public float Time = 10f;
+    public float Time = 2f;
     public bool AutoSpawm = false;
 
+    public ItemSOFactory[] ItemSOFactorys;
 }
 
 public class MachineSpawnCube : EventTrigger
@@ -22,6 +24,14 @@ public class MachineSpawnCube : EventTrigger
     private Tween gear;
 
     public ViewUpgrade viewUpgrade;
+
+    public void Start()
+    {
+        controller.ItemSOFactorys.ForEach(itemSOFactory =>
+        {
+            itemSOFactory.Run(controller);
+        });
+    }
 
     public override async void OnInteracted()
     {
