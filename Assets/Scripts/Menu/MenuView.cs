@@ -27,19 +27,19 @@ public class MenuView : ViewBase
 
     public void Start()
     {
-        CameraManager cams = FindFirstObjectByType<CameraManager>();
+        //CameraManager cams = FindFirstObjectByType<CameraManager>();
 
-        sldX.Slider.value = cams.CamX;
-        sldY.Slider.value = cams.CamY;
+        //sldX.Slider.value = cams.CamX;
+        //sldY.Slider.value = cams.CamY;
 
-        sldX.Slider.onValueChanged.AddListener((e) =>
-        {
-            cams.SetSpeedCamera(e, cams.CamY);
-        });
-        sldY.Slider.onValueChanged.AddListener((e) =>
-        {
-            cams.SetSpeedCamera(cams.CamX, e);
-        });
+        //sldX.Slider.onValueChanged.AddListener((e) =>
+        //{
+        //    cams.SetSpeedCamera(e, cams.CamY);
+        //});
+        //sldY.Slider.onValueChanged.AddListener((e) =>
+        //{
+        //    cams.SetSpeedCamera(cams.CamX, e);
+        //});
     }
 
     public override void Close()

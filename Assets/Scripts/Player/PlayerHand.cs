@@ -1,81 +1,126 @@
 using DG.Tweening;
-using Unity.Pipeline;
+using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
+using UnityEngine.InputSystem;
 
 public sealed class PlayerHand : MonoBehaviour
 {
-    //public EventTrigger Handle;
-    //public EventTrigger HandleHover;
+    [Header("References")]
+    [SerializeField] private GameObject GameObjectPrefab;
+    [SerializeField] private Transform StartPoint;
 
-    //[Inject] public InputManager InputManager { get; private set; }
+    [Header("Pooling")]
+    [SerializeField] private int poolSize = 10;
 
-    //private void FixedUpdate()
+    [Header("Projectile")]
+    [SerializeField] private float moveSpeed = 15f;
+    [SerializeField] private float moveDistance = 10f;
+
+    private readonly Queue<GameObject> pool = new();
+
+    [Zenject.Inject] InputManager inputManager;
+
+    [SerializeField] private float rotationSpeed = 15f;
+    [SerializeField] private LayerMask groundLayer;
+
+    private void Awake()
+    {
+        InitializePool();
+    }
+
+    private void Update()
+    {
+        RotateToMouse();
+    }
+
+    private void RotateToMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(
+            Mouse.current.position.ReadValue()
+        );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
+        {
+            Vector3 direction = hit.point - transform.position;
+
+            // Chỉ xoay trên trục Y
+            direction.y = 0f;
+
+            if (direction.sqrMagnitude < 0.001f)
+                return;
+
+            Quaternion targetRotation =
+                Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime
+            );
+        }
+    }
+
+    private void InitializePool()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject obj = Instantiate(GameObjectPrefab);
+            obj.SetActive(false);
+            pool.Enqueue(obj);
+        }
+
+        inputManager.InputActions.Player.Attack.performed += async ctx =>
+        {
+            Shoot();
+        };
+    }
+
+    public void Shoot()
+    {
+        if (pool.Count == 0)
+            return;
+
+        GameObject projectile = pool.Dequeue();
+
+        // Lấy hướng trước mặt StartPoint
+        Vector3 direction = StartPoint.forward.normalized;
+
+        // Thiết lập vị trí và rotation
+        projectile.transform.SetPositionAndRotation(
+            StartPoint.position,
+            Quaternion.LookRotation(direction)
+        );
+
+        projectile.SetActive(true);
+
+        // Tính khoảng cách và thời gian di chuyển
+        Vector3 targetPosition =
+            StartPoint.position + direction * moveDistance;
+
+        float duration = moveDistance / moveSpeed;
+
+        // Di chuyển bằng DOTween
+        projectile.transform.DOMove(targetPosition, duration)
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                ReturnToPool(projectile);
+            });
+    }
+
+    private void ReturnToPool(GameObject obj)
+    {
+        obj.transform.DOKill();
+        obj.SetActive(false);
+        pool.Enqueue(obj);
+    }
+
+    //private void OnDestroy()
     //{
-    //    Vector3 screenCenterPoint = new Vector3(
-    //        Screen.width / 2f,
-    //        Screen.height / 2f,
-    //        0f
-    //    );
-
-    //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-    //    RaycastHit hit;
-
-    //    if (Physics.Raycast(ray, out hit))
+    //    foreach (var obj in pool)
     //    {
-    //        EventTrigger eventTrigger = hit.transform.GetComponent<EventTrigger>();
-
-    //        if (HandleHover == eventTrigger)
-    //        {
-    //            return;
-    //        }
-
-    //        HandleHover?.OnTriggerHoverExit();
-
-    //        HandleHover = eventTrigger;
-
-    //        HandleHover?.OnTriggerHoverEnter();
-    //    }
-    //    else
-    //    {
-    //        HandleHover?.OnTriggerHoverExit();
-    //        HandleHover = null;
+    //        obj.transform.DOKill();
+    //        Destroy(obj);
     //    }
     //}
-
-    //public void Start()
-    //{
-
-    //    InputManager.InputActions.Player.Interact.started += (e) =>
-    //    {
-    //        HandleHover?.OnInteracted();
-    //    };
-
-
-    //    InputManager.InputActions.Player.Attack.performed += (e) =>
-    //    {
-    //        if (Handle != null)
-    //        {
-    //            Handle.OnThrowed();
-    //            Handle = null;
-    //            return;
-    //        }
-
-    //        Vector3 screenCenterPoint = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-    //        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-    //        RaycastHit hit;
-
-    //        if (Physics.Raycast(ray, out hit))
-    //        {
-    //            Transform objectHit = hit.transform;
-    //            EventTrigger eventTrigger = objectHit.GetComponent<EventTrigger>();
-    //            if (eventTrigger?.tag == "cube")
-    //            {
-    //                Handle = eventTrigger;
-    //            }
-    //            eventTrigger?.OnPicked();
-    //        }
-    //    };
-    //}
-
 }

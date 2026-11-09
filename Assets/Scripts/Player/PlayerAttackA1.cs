@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class PlayerAttackA1 : PlayerAttack
     public override async void Enter()
     {
         playerState.player.Animator.SetFloat(playerState.player.AnimationAttackParameterHash, 1.1f);
+        await UniTask.WaitForSeconds(0.5f);
+        playerState.ChangeState(playerState.player.Movement.idling);
         base.Enter();
     }
 

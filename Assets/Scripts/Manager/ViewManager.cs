@@ -45,7 +45,7 @@ public sealed class ViewManager : MonoBehaviour
 
         PlayerController player = FindFirstObjectByType<PlayerController>();
         player.Movement.ChangeState(player.Movement.freezing);
-        inputManager.SetCursorVisible(true);
+        //inputManager.SetCursorVisible(true);
 
         if (darkPanel != null)
             darkPanel.DOKill();
@@ -96,7 +96,7 @@ public sealed class ViewManager : MonoBehaviour
                 isClose = false;
 
                 player.Movement.ChangeState(player.Movement.idling);
-                inputManager.SetCursorVisible(true);
+                //inputManager.SetCursorVisible(true);
             }
             else 
             {
