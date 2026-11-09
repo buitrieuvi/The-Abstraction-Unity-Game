@@ -63,6 +63,9 @@ public sealed class PlayerController : MonoBehaviour
 
     public int AnimationAttackParameterHash => AnimationAttackParameter;
 
+
+
+
     private void Awake()
     {
         CharCtrl = GetComponent<CharacterController>();
@@ -130,7 +133,7 @@ public sealed class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement.PhysicsUpdate();
-        UpdateInteractionRaycast();
+        //UpdateInteractionRaycast();
     }
 
     // ==================== INTERACTION ====================
@@ -175,6 +178,8 @@ public sealed class PlayerController : MonoBehaviour
 
     private void HandleAttack(InputAction.CallbackContext context)
     {
+        Movement.ChangeState(Movement.attackA1);
+
         //IsAttacking = context.ReadValueAsButton();
 
         //if (IsAttacking)
@@ -186,21 +191,21 @@ public sealed class PlayerController : MonoBehaviour
         //    Movement.ChangeState(Movement.idling);
         //}
 
-        if (Handle != null)
-        {
-            Handle.OnThrowed();
-            Handle = null;
-            return;
-        }
+        //if (Handle != null)
+        //{
+        //    Handle.OnThrowed();
+        //    Handle = null;
+        //    return;
+        //}
 
-        if (HandleHover == null)
-            return;
-        if (HandleHover.CompareTag("cube"))
-        {
-            Handle = HandleHover;
-        }
+        //if (HandleHover == null)
+        //    return;
+        //if (HandleHover.CompareTag("cube"))
+        //{
+        //    Handle = HandleHover;
+        //}
 
-        HandleHover.OnPicked();
+        //HandleHover.OnPicked();
     }
 
     // ==================== VIEW ====================

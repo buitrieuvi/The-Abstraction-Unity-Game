@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
     {
         _cinemachines = GetComponentsInChildren<CinemachineCamera>();
 
-        SetSpeedCamera(CamY, CamY);
+        //SetSpeedCamera(CamY, CamY);
     }
 
     public void SetInputIsActiveCameras(string cameraName, bool isActive)
