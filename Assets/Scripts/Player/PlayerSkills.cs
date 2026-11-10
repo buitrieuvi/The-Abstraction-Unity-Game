@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public sealed class PlayerHand : MonoBehaviour
+public sealed class PlayerSkills : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject GameObjectPrefab;
@@ -17,8 +17,6 @@ public sealed class PlayerHand : MonoBehaviour
     [SerializeField] private float moveDistance = 10f;
 
     private readonly Queue<GameObject> pool = new();
-
-    [Zenject.Inject] InputManager inputManager;
 
     [SerializeField] private float rotationSpeed = 15f;
     [SerializeField] private LayerMask groundLayer;
@@ -68,11 +66,6 @@ public sealed class PlayerHand : MonoBehaviour
             obj.SetActive(false);
             pool.Enqueue(obj);
         }
-
-        inputManager.InputActions.Player.Attack.performed += async ctx =>
-        {
-            Shoot();
-        };
     }
 
     public void Shoot()

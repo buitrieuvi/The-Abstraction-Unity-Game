@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Zenject;
 
@@ -27,6 +28,9 @@ public sealed class ViewManager : MonoBehaviour
     private ViewBase viewBaseCurr;
     private Stack<ViewBase> stack = new();
 
+    public InputSystem_Actions.PlayerActions PlayerInput;
+    public InputSystem_Actions.UIActions UiInput;
+
     bool isClose = false;
 
     public void Awake()
@@ -36,7 +40,24 @@ public sealed class ViewManager : MonoBehaviour
 
     public void Start()
     {
+        PlayerInput = inputManager.InputActions.Player;
+        UiInput = inputManager.InputActions.UI;
 
+        PlayerInput.Inventory.started += OnInventoryStarted;
+        UiInput.Inventory.started += OnInventoryStarted;
+
+        PlayerInput.Esc.started += OnMenuStarted;
+        UiInput.Esc.started += OnMenuStarted;
+    }
+
+    private async void OnInventoryStarted(InputAction.CallbackContext context)
+    {
+        await ShowView<InventoryView>(dataManager.PlayerInventory);
+    }
+
+    private async void OnMenuStarted(InputAction.CallbackContext context)
+    {
+        await ShowView<MenuView>(null);
     }
 
     public async UniTask<ViewBase> ShowView<T>(ControllerBase ctrl) where T : ViewBase

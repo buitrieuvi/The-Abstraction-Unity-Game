@@ -15,8 +15,8 @@ public class PlayerFreezing : PlayerMovementState
         playerState.player.CameraManager.SetInputIsActiveCameras("cam3", false);
         playerState.player.CameraManager.SetInputIsActiveCameras("cam1", false);
 
-        playerState.player.InputManager.InputActions.Player.Disable();
-        playerState.player.InputManager.InputActions.UI.Enable();
+        //playerState.player.InputManager.InputActions.Player.Disable();
+        //playerState.player.InputManager.InputActions.UI.Enable();
 
         base.Enter();
     }
@@ -28,8 +28,8 @@ public class PlayerFreezing : PlayerMovementState
         playerState.player.CameraManager.SetInputIsActiveCameras("cam3", true);
         playerState.player.CameraManager.SetInputIsActiveCameras("cam1", true);
 
-        playerState.player.InputManager.InputActions.Player.Enable();
-        playerState.player.InputManager.InputActions.UI.Disable();
+        //playerState.player.InputManager.InputActions.Player.Enable();
+        //playerState.player.InputManager.InputActions.UI.Disable();
 
         base.Exit();
     }
