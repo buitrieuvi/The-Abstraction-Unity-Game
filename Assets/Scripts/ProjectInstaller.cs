@@ -3,7 +3,7 @@ using UnityEngine;
 
 public sealed class ProjectInstaller : MonoInstaller
 {
-    [SerializeField] private LayerController layerController;
+    [SerializeField] private LayerManager layerController;
     [SerializeField] private ViewManager viewManagerPrefab;
     public override void InstallBindings()
     {
@@ -15,7 +15,7 @@ public sealed class ProjectInstaller : MonoInstaller
 
         QualitySettings.antiAliasing = 8;
 
-        Container.Bind<LayerController>().FromInstance(layerController).AsSingle();
+        Container.Bind<LayerManager>().FromInstance(layerController).AsSingle();
 
 
         Container.BindInterfacesAndSelfTo<DataManager>()

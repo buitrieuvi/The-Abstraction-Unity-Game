@@ -152,10 +152,10 @@ public class PlayerMovementState : IState
             speed,
             player.CrouchTime * Time.deltaTime);
 
-        player.AnimationSpeed = Mathf.MoveTowards(
-            player.AnimationSpeed,
-            modeAnimation,
-            player.CrouchTime * Time.deltaTime);
+        //player.AnimationSpeed = Mathf.MoveTowards(
+        //    player.AnimationSpeed,
+        //    modeAnimation,
+        //    player.CrouchTime * Time.deltaTime);
 
         Camera mainCamera = Camera.main;
         if (mainCamera == null)
@@ -206,7 +206,7 @@ public class PlayerMovementState : IState
             return;
         }
 
-        if (player.IsPressRunning)
+        if (player.IsSprint)
         {
             if (!player.IsRunning)
             {
@@ -221,7 +221,6 @@ public class PlayerMovementState : IState
             playerState.ChangeState(playerState.walking);
         }
     }
-
 
     protected float CheckDistanceToGroundCharCtrl()
     {

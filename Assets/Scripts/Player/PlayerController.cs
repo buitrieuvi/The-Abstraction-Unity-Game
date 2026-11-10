@@ -5,54 +5,64 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-//[RequireComponent(typeof(CharacterController))]
 public sealed class PlayerController : MonoBehaviour
 {
     [Inject] public InputManager InputManager { get; private set; }
-    [Inject] public LayerController Layer { get; private set; }
+    [Inject] public LayerManager Layer { get; private set; }
     [Inject] public ViewManager ViewManager { get; set; }
     [Inject] public DataManager DataManager { get; set; }
     [Inject] public CameraManager CameraManager { get; set; }
 
     public CharacterController CharCtrl { get; private set; }
     public Rigidbody Rb { get; private set; }
+
+
     public PlayerState Movement { get; private set; }
 
-    public EventTrigger CurrentTrigger { get; private set; }
+    //public EventTrigger CurrentTrigger { get; private set; }
 
-    [Header("Interaction")]
-    public EventTrigger Handle;
-    public EventTrigger HandleHover;
-    public float InteractionDistance = 5f;
+    //[Header("Interaction")]
+    //public EventTrigger Handle;
+    //public EventTrigger HandleHover;
+    //public float InteractionDistance = 5f;
 
     [Header("Movement")]
     public Vector2 Move;
     public Vector2 LastMove;
-    public bool IsRunningMode;
-    public bool IsPressRunning;
-    public bool IsCtrl;
-    public bool IsAlt;
-    public float CrouchTime = 10f;
+
+    [Header("Speed")]
+    public float Speed;
     public float SpeedSlowing = 2f;
     public float SpeedWalking = 5f;
     public float SpeedRunning = 8f;
-    public float Speed;
+    public float CrouchTime = 10f;
+
+    [Header("Mode")]
+    public bool IsRunningMode;
+    public bool IsSprint;
+    public bool IsCtrl;
+    public bool IsAlt;
+
+    [Header("State")]
     public bool IsGrounded;
     public bool IsIdling;
-    public bool IsWalking;
-    public bool IsSlowing;
-    public bool IsRunning;
     public bool IsMoving;
+    public bool IsWalking;
+    public bool IsRunning;
+    public bool IsSlowing;
     public bool IsStoping;
+
+    public bool IsAirbone;
+    public bool IsFalling;
+
     public float DistanceToGround;
 
-    public bool IsAttacking;
+    //public bool IsAttacking;
 
     public LayerMask GroundLayer = Physics.DefaultRaycastLayers;
 
     public float VerticalVelocity;
-    public bool IsAirbone;
-    public bool IsFalling;
+
 
     [Header("Animation")]
     public float AnimationSpeed;
@@ -64,7 +74,8 @@ public sealed class PlayerController : MonoBehaviour
     public int AnimationAttackParameterHash => AnimationAttackParameter;
 
 
-
+    [Header("Player Input")]
+    InputSystem_Actions.PlayerActions playerInput;
 
     private void Awake()
     {
@@ -74,54 +85,55 @@ public sealed class PlayerController : MonoBehaviour
 
         Movement = new PlayerState(this);
         Movement.ChangeState(Movement.idling);
+
+        playerInput = InputManager.InputActions.Player;
     }
 
     private void OnEnable()
     {
-        var player = InputManager.InputActions.Player;
+        //player.Inventory.performed += OnInventoryPerformed;
+        //player.Esc.performed += OnMenuPerformed;
 
-        player.Inventory.performed += OnInventoryPerformed;
-        player.Esc.performed += OnMenuPerformed;
+        //player.Interact.started += HandleInteract;
+        //player.Alt.started += HandleAlt;
 
-        player.Interact.started += HandleInteract;
-        player.Alt.started += HandleAlt;
 
-        player.Ctrl.performed += HandleControl;
-        player.Ctrl.canceled += HandleControl;
+        playerInput.Sprint.performed += HandleSprint;
+        playerInput.Sprint.canceled += HandleSprint;
 
-        player.Sprint.performed += HandleSprint;
-        player.Sprint.canceled += HandleSprint;
+        playerInput.Ctrl.performed += HandleControl;
+        playerInput.Ctrl.canceled += HandleControl;
 
         //player.Attack.performed += HandleAttack;
         //player.Attack.canceled += HandleAttack;
 
-        player.Attack.started += HandleAttack;
+        //player.Attack.started += HandleAttack;
     }
 
     private void OnDisable()
     {
-        if (InputManager?.InputActions == null)
-            return;
+        //if (InputManager?.InputActions == null)
+        //    return;
 
-        var player = InputManager.InputActions.Player;
+        //player.Inventory.performed -= OnInventoryPerformed;
+        //player.Esc.performed -= OnMenuPerformed;
 
-        player.Inventory.performed -= OnInventoryPerformed;
-        player.Esc.performed -= OnMenuPerformed;
+        //player.Interact.started -= HandleInteract;
+        //player.Alt.started -= HandleAlt;
 
-        player.Interact.started -= HandleInteract;
-        player.Alt.started -= HandleAlt;
-        player.Ctrl.performed -= HandleControl;
-        player.Ctrl.canceled -= HandleControl;
-        player.Sprint.performed -= HandleSprint;
-        player.Sprint.canceled -= HandleSprint;
+        playerInput.Sprint.performed -= HandleSprint;
+        playerInput.Sprint.canceled -= HandleSprint;
+
+        playerInput.Ctrl.performed -= HandleControl;
+        playerInput.Ctrl.canceled -= HandleControl;
 
         //player.Attack.performed -= HandleAttack;
         //player.Attack.canceled -= HandleAttack;
 
-        player.Attack.started -= HandleAttack;
+        //player.Attack.started -= HandleAttack;
 
-        HandleHover?.OnTriggerHoverExit();
-        HandleHover = null;
+        //HandleHover?.OnTriggerHoverExit();
+        //HandleHover = null;
     }
 
     private void Update()
@@ -136,107 +148,109 @@ public sealed class PlayerController : MonoBehaviour
         //UpdateInteractionRaycast();
     }
 
-    // ==================== INTERACTION ====================
+    //private void UpdateInteractionRaycast()
+    //{
+    //    if (Camera.main == null)
+    //        return;
 
-    private void UpdateInteractionRaycast()
-    {
-        if (Camera.main == null)
-            return;
+    //    Vector3 screenCenterPoint = new Vector3(
+    //        Screen.width / 2f,
+    //        Screen.height / 2f,
+    //        0f
+    //    );
 
-        Vector3 screenCenterPoint = new Vector3(
-            Screen.width / 2f,
-            Screen.height / 2f,
-            0f
-        );
+    //    Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+    //    EventTrigger target = null;
 
-        EventTrigger target = null;
+    //    if (Physics.Raycast(
+    //        ray,
+    //        out RaycastHit hit,
+    //        InteractionDistance))
+    //    {
+    //        target = hit.transform.GetComponentInParent<EventTrigger>();
+    //    }
 
-        if (Physics.Raycast(
-            ray,
-            out RaycastHit hit,
-            InteractionDistance))
-        {
-            target = hit.transform.GetComponentInParent<EventTrigger>();
-        }
+    //    if (HandleHover == target)
+    //        return;
 
-        if (HandleHover == target)
-            return;
+    //    HandleHover?.OnTriggerHoverExit();
 
-        HandleHover?.OnTriggerHoverExit();
+    //    HandleHover = target;
 
-        HandleHover = target;
+    //    HandleHover?.OnTriggerHoverEnter();
+    //}
 
-        HandleHover?.OnTriggerHoverEnter();
-    }
+    //private void HandleInteract(InputAction.CallbackContext context)
+    //{
+    //    HandleHover?.OnInteracted();
+    //}
 
-    private void HandleInteract(InputAction.CallbackContext context)
-    {
-        HandleHover?.OnInteracted();
-    }
+    //private void HandleAttack(InputAction.CallbackContext context)
+    //{
+    //    Movement.ChangeState(Movement.attackA1);
 
-    private void HandleAttack(InputAction.CallbackContext context)
-    {
-        Movement.ChangeState(Movement.attackA1);
+    //    //IsAttacking = context.ReadValueAsButton();
 
-        //IsAttacking = context.ReadValueAsButton();
+    //    //if (IsAttacking)
+    //    //{
+    //    //    Movement.ChangeState(Movement.attackA1);
+    //    //}
+    //    //else
+    //    //{
+    //    //    Movement.ChangeState(Movement.idling);
+    //    //}
 
-        //if (IsAttacking)
-        //{
-        //    Movement.ChangeState(Movement.attackA1);
-        //}
-        //else
-        //{
-        //    Movement.ChangeState(Movement.idling);
-        //}
+    //    //if (Handle != null)
+    //    //{
+    //    //    Handle.OnThrowed();
+    //    //    Handle = null;
+    //    //    return;
+    //    //}
 
-        //if (Handle != null)
-        //{
-        //    Handle.OnThrowed();
-        //    Handle = null;
-        //    return;
-        //}
+    //    //if (HandleHover == null)
+    //    //    return;
+    //    //if (HandleHover.CompareTag("cube"))
+    //    //{
+    //    //    Handle = HandleHover;
+    //    //}
 
-        //if (HandleHover == null)
-        //    return;
-        //if (HandleHover.CompareTag("cube"))
-        //{
-        //    Handle = HandleHover;
-        //}
+    //    //HandleHover.OnPicked();
+    //}
 
-        //HandleHover.OnPicked();
-    }
+    //private async void OnInventoryPerformed(InputAction.CallbackContext context)
+    //{
+    //    var v = await ViewManager.ShowView<InventoryView>(
+    //        DataManager.PlayerInventory
+    //    );
 
-    // ==================== VIEW ====================
+    //    IsView(v);
+    //}
 
-    private async void OnInventoryPerformed(InputAction.CallbackContext context)
-    {
-        var v = await ViewManager.ShowView<InventoryView>(
-            DataManager.PlayerInventory
-        );
+    //private async void OnMenuPerformed(InputAction.CallbackContext context)
+    //{
+    //    var v = await ViewManager.ShowView<MenuView>(
+    //        DataManager.PlayerInventory
+    //    );
 
-        IsView(v);
-    }
+    //    IsView(v);
+    //}
 
-    private async void OnMenuPerformed(InputAction.CallbackContext context)
-    {
-        var v = await ViewManager.ShowView<MenuView>(
-            DataManager.PlayerInventory
-        );
+    //private void IsView(ViewBase v)
+    //{
+    //    if (v != null)
+    //        Movement.ChangeState(Movement.freezing);
+    //    else
+    //        Movement.ChangeState(Movement.idling);
+    //}
 
-        IsView(v);
-    }
 
-    private void IsView(ViewBase v)
-    {
-        if (v != null)
-            Movement.ChangeState(Movement.freezing);
-        else
-            Movement.ChangeState(Movement.idling);
-    }
+    //private void HandleAlt(InputAction.CallbackContext context)
+    //{
+    //    IsAlt = !IsAlt;
+    //}
 
-    // ==================== MOVEMENT ====================
+
 
     public void SetAnimationSpeed()
     {
@@ -249,18 +263,13 @@ public sealed class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleAlt(InputAction.CallbackContext context)
+    private void HandleSprint(InputAction.CallbackContext context)
     {
-        IsAlt = !IsAlt;
+        IsSprint = context.ReadValueAsButton();
     }
 
     private void HandleControl(InputAction.CallbackContext context)
     {
         IsCtrl = context.ReadValueAsButton();
-    }
-
-    private void HandleSprint(InputAction.CallbackContext context)
-    {
-        IsPressRunning = IsRunningMode || context.ReadValueAsButton();
     }
 }

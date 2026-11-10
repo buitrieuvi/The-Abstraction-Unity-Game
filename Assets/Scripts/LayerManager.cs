@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class LayerController
+public class LayerManager
 {
     public LayerMask GroundLayer;
     public LayerMask InteracLayer;

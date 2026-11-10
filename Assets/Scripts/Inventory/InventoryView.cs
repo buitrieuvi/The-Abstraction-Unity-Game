@@ -5,6 +5,7 @@ using ModestTree;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Zenject;
 
@@ -40,7 +41,6 @@ public class InventoryView : ViewBase
 
     public override void Open(ControllerBase ctrl)
     {
-
         if (itemContainer != null)
         {
             itemContainer.GetComponentsInChildren<InventoryItemView>(
@@ -71,8 +71,6 @@ public class InventoryView : ViewBase
 
             item.Dotween_Ani_ScaleX(time, spaceTime);
         }
-
-        base.Open(ctrl);
 
         if (ctrl is not InventoryController inventory)
             return;
@@ -144,16 +142,11 @@ public class InventoryView : ViewBase
             closeButton.OnClick += async (e) => await viewManager.ShowView<InventoryView>(inventory);
         }
 
-        inputManager.InputActions.UI.Inventory.started += async (e) =>
-        {
-            await viewManager.ShowView<InventoryView>(inventory);
-        };
+        base.Open(ctrl);
     }
 
     public override void Close()
     {
         base.Close();
-
-        inputManager.InputActions.UI.Inventory.Dispose();
     }
 }
