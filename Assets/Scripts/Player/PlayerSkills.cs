@@ -1,10 +1,15 @@
 using DG.Tweening;
+using R3.Triggers;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public sealed class PlayerSkills : MonoBehaviour
 {
+
+    [Inject] public InputManager InputManager { get; private set; }
+
     [Header("References")]
     [SerializeField] private GameObject GameObjectPrefab;
     [SerializeField] private Transform StartPoint;
@@ -24,10 +29,12 @@ public sealed class PlayerSkills : MonoBehaviour
     private void Awake()
     {
         InitializePool();
+
     }
 
     private void Update()
     {
+        InputManager.InputActions.Player.Attack.performed += _ => Shoot();
         RotateToMouse();
     }
 
@@ -65,6 +72,20 @@ public sealed class PlayerSkills : MonoBehaviour
             GameObject obj = Instantiate(GameObjectPrefab);
             obj.SetActive(false);
             pool.Enqueue(obj);
+
+            var particle = obj.GetComponent<ParticleSystem>();
+
+            //particle.OnDisableAsObservable()
+            //    .Subscribe( += () => ReturnToPool(obj))
+            //    .AddTo(obj);
+
+            //if (particleSystem != null)
+            //{
+            //    var main = particleSystem.main;
+            //    main.stopAction = ParticleSystemStopAction.Callback;
+            //    particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            //    particleSystem.gameObject.AddComponent<ParticleReturnToPool>().Initialize(this, obj);
+            //}
         }
     }
 
@@ -87,24 +108,24 @@ public sealed class PlayerSkills : MonoBehaviour
         projectile.SetActive(true);
 
         // Tính khoảng cách và thời gian di chuyển
-        Vector3 targetPosition =
-            StartPoint.position + direction * moveDistance;
+        //Vector3 targetPosition =
+        //    StartPoint.position + direction * moveDistance;
 
-        float duration = moveDistance / moveSpeed;
+        //float duration = moveDistance / moveSpeed;
 
         // Di chuyển bằng DOTween
-        projectile.transform.DOMove(targetPosition, duration)
-            .SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                ReturnToPool(projectile);
-            });
+        //projectile.transform.DOMove(targetPosition, duration)
+        //    .SetEase(Ease.Linear)
+        //    .OnComplete(() =>
+        //    {
+        //        ReturnToPool(projectile);
+        //    });
     }
 
     private void ReturnToPool(GameObject obj)
     {
         obj.transform.DOKill();
-        obj.SetActive(false);
+        //obj.SetActive(false);
         pool.Enqueue(obj);
     }
 

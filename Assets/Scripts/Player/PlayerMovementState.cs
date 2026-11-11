@@ -1,4 +1,6 @@
+using Unity.InferenceEngine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementState : IState
 {
@@ -417,4 +419,7 @@ public class PlayerMovementState : IState
         // Nâng Rigidbody trong bước vật lý.
         player.Rb.MovePosition(player.Rb.position + lift);
     }
+
+
+   
 }
