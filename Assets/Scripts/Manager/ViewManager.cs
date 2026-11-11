@@ -43,6 +43,9 @@ public sealed class ViewManager : MonoBehaviour
         PlayerInput = inputManager.InputActions.Player;
         UiInput = inputManager.InputActions.UI;
 
+        
+
+
         PlayerInput.Inventory.started += OnInventoryStarted;
         UiInput.Inventory.started += OnInventoryStarted;
 
