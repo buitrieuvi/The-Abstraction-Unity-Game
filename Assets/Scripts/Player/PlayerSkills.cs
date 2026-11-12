@@ -7,7 +7,6 @@ using Zenject;
 
 public sealed class PlayerSkills : MonoBehaviour
 {
-
     [Inject] public InputManager InputManager { get; private set; }
 
     [Header("References")]
@@ -72,20 +71,6 @@ public sealed class PlayerSkills : MonoBehaviour
             GameObject obj = Instantiate(GameObjectPrefab);
             obj.SetActive(false);
             pool.Enqueue(obj);
-
-            var particle = obj.GetComponent<ParticleSystem>();
-
-            //particle.OnDisableAsObservable()
-            //    .Subscribe( += () => ReturnToPool(obj))
-            //    .AddTo(obj);
-
-            //if (particleSystem != null)
-            //{
-            //    var main = particleSystem.main;
-            //    main.stopAction = ParticleSystemStopAction.Callback;
-            //    particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            //    particleSystem.gameObject.AddComponent<ParticleReturnToPool>().Initialize(this, obj);
-            //}
         }
     }
 
@@ -96,45 +81,18 @@ public sealed class PlayerSkills : MonoBehaviour
 
         GameObject projectile = pool.Dequeue();
 
-        // Lấy hướng trước mặt StartPoint
         Vector3 direction = StartPoint.forward.normalized;
-
-        // Thiết lập vị trí và rotation
         projectile.transform.SetPositionAndRotation(
             StartPoint.position,
             Quaternion.LookRotation(direction)
         );
 
         projectile.SetActive(true);
-
-        // Tính khoảng cách và thời gian di chuyển
-        //Vector3 targetPosition =
-        //    StartPoint.position + direction * moveDistance;
-
-        //float duration = moveDistance / moveSpeed;
-
-        // Di chuyển bằng DOTween
-        //projectile.transform.DOMove(targetPosition, duration)
-        //    .SetEase(Ease.Linear)
-        //    .OnComplete(() =>
-        //    {
-        //        ReturnToPool(projectile);
-        //    });
     }
 
-    private void ReturnToPool(GameObject obj)
+    public void ReturnToPool(GameObject obj)
     {
         obj.transform.DOKill();
-        //obj.SetActive(false);
         pool.Enqueue(obj);
     }
-
-    //private void OnDestroy()
-    //{
-    //    foreach (var obj in pool)
-    //    {
-    //        obj.transform.DOKill();
-    //        Destroy(obj);
-    //    }
-    //}
 }
