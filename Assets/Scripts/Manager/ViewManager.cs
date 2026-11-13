@@ -44,8 +44,6 @@ public sealed class ViewManager : MonoBehaviour
         UiInput = inputManager.InputActions.UI;
 
         
-
-
         PlayerInput.Inventory.started += OnInventoryStarted;
         UiInput.Inventory.started += OnInventoryStarted;
 
@@ -120,12 +118,9 @@ public sealed class ViewManager : MonoBehaviour
                 isClose = false;
 
                 player.Movement.ChangeState(player.Movement.idling);
-                //inputManager.SetCursorVisible(true);
             }
             else 
             {
-                //inputManager.SetCursorVisible(false);
-
                 T prefab = dataManager.GetView<T>();
                 T view = container.InstantiatePrefabForComponent<T>(prefab.gameObject, viewContainer);
 

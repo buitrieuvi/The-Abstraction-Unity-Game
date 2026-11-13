@@ -4,11 +4,16 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class Cube : EventTrigger
 {
+
+    PlayerSkills playerSkills;
+
     public Rigidbody Rb;
     private Tween tween;
 
     private void Start()
     {
+        playerSkills = FindFirstObjectByType<PlayerSkills>();
+
         if (Rb == null)
             Rb = GetComponent<Rigidbody>();
 
@@ -111,11 +116,19 @@ public class Cube : EventTrigger
         base.OnTriggerHoverEnter();
 
     }
-
     public override void OnTriggerHoverExit()
     {
         base.OnTriggerHoverExit();
 
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+
+        Enermy e = collision.gameObject.GetComponent<Enermy>();
+
+        playerSkills.ReturnToPool(gameObject);
     }
 }

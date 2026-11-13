@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using R3.Triggers;
 using System.Collections.Generic;
@@ -81,18 +82,36 @@ public sealed class PlayerSkills : MonoBehaviour
 
         GameObject projectile = pool.Dequeue();
 
+        // Lấy hướng trước mặt StartPoint
         Vector3 direction = StartPoint.forward.normalized;
+
+        // Thiết lập vị trí và rotation
         projectile.transform.SetPositionAndRotation(
             StartPoint.position,
             Quaternion.LookRotation(direction)
         );
 
         projectile.SetActive(true);
+
+        // Tính khoảng cách và thời gian di chuyển
+        Vector3 targetPosition =
+            StartPoint.position + direction * moveDistance;
+
+        float duration = moveDistance / moveSpeed;
+
+        // Di chuyển bằng DOTween
+        projectile.transform.DOMove(targetPosition, duration)
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                //ReturnToPool(projectile);
+            });
     }
 
     public void ReturnToPool(GameObject obj)
     {
         obj.transform.DOKill();
+        obj.SetActive(false);
         pool.Enqueue(obj);
     }
 }
