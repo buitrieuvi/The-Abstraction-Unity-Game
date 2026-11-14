@@ -1,6 +1,7 @@
+using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
 
 public class Child : MonoBehaviour
 {
@@ -38,6 +39,30 @@ public class Child : MonoBehaviour
     [Header("Animation")]
     public Animator Animator;
     private static readonly int AnimationSpeedParameter = Animator.StringToHash("speed");
+
+
+    public int HP = 100;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "cube")
+        {
+            HP -= 10;
+        }
+
+        gameObject.transform?.DOKill();
+
+        gameObject.transform.DOScale(new Vector3(.7f, .7f, .7f), 0.25f).OnComplete(() =>
+        {
+            gameObject.transform.DOScale(new Vector3(.5f, .5f, .5f), 0.25f);
+        });
+
+        if (HP == 0)
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
 
     private void Start()
     {
