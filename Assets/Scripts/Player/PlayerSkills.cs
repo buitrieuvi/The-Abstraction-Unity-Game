@@ -104,7 +104,7 @@ public sealed class PlayerSkills : MonoBehaviour
             .SetEase(Ease.Linear)
             .OnComplete(() =>
             {
-                //ReturnToPool(projectile);
+                ReturnToPool(projectile);
             });
     }
 
