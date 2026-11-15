@@ -125,9 +125,16 @@ public class Cube : EventTrigger
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
 
-        Enermy e = collision.gameObject.GetComponent<Enermy>();
+    }
+
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+
+        Debug.Log(other.gameObject.name);
+
+        EnemyAI e = other.gameObject.GetComponent<EnemyAI>();
 
         playerSkills.ReturnToPool(gameObject);
     }
